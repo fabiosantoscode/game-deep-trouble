@@ -39,11 +39,11 @@ tile_set = SubResource("TileSet_pnvjf")
 position = Vector2(208, 217)
 
 [node name="EnemySub" parent="." instance=ExtResource("4_e8p81")]
-position = Vector2(183, 121)
+position = Vector2(133, 122)
 progress_ratio_per_second = 0.1
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]
-position = Vector2(3.79787, 0)
+position = Vector2(53, 0)
 scale = Vector2(1.07447, 1)
 curve = SubResource("Curve2D_py88r")
 
