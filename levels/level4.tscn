@@ -25,9 +25,9 @@ sources/0 = SubResource("TileSetAtlasSource_r4e4k")
 
 [sub_resource type="Curve2D" id="Curve2D_lpgdq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 120, -1, 0, 0, 0, 0, 141, 76, 0, 0, 0, 0, 119, 155, 0, 0, 0, 0, -2, 170, 0, 0, 0, 0, -121, 167, 0, 0, 0, 0, -149, 79, 0, 0, 0, 0, -133, 2, 0, 0, 0, 0, -1, -1)
+"points": PackedVector2Array(-12.9378, -9.24129, 12.9378, 9.24129, 120, -8, -3.23445, -52.9064, 3.23445, 52.9064, 144, 80, 15.4792, -10.3965, -15.4792, 10.3965, 105, 169, 13.8619, 6.23787, -13.8619, -6.23787, -116, 167, -0.693097, 51.2892, 0.693097, -51.2892, -153, 81, -15.0171, 6.4689, 15.0171, -6.4689, -126, -8, -17.0964, -8.08613, 17.0964, 8.08613, 120, -8)
 }
-point_count = 9
+point_count = 7
 
 [node name="Level4" type="Node2D"]
 
@@ -43,6 +43,7 @@ position = Vector2(188, 274)
 progress_ratio_per_second = 0.025
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]
+position = Vector2(-4, 0)
 curve = SubResource("Curve2D_lpgdq")
 
 [node name="Sub" parent="." instance=ExtResource("4_cc5tm")]
