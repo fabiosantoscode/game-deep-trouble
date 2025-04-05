@@ -25,11 +25,11 @@ func _on_player_seen(sub: Node2D):
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
 	if result.get("collider", null) is Sub:
-		print("TODO: we've been found!")
+		LevelRotator.restart_level(self)
 
 func _on_player_kill(sub: Node2D):
 	if sub is Sub:
-		print("TODO: we've been touched!")
+		LevelRotator.restart_level(self)
 
 func _physics_process(delta: float) -> void:
 	var enemy_sub: EnemySub = self.owner

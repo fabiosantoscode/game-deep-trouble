@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
-[ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/camera_follows_sub.gd" id="2_3ibi6"]
+[ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
 [ext_resource type="Texture2D" uid="uid://gy3ya5ojcnul" path="res://sub/claw.png" id="2_egpih"]
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="3_edyj4"]
 [ext_resource type="Texture2D" uid="uid://clu652pcwt7wp" path="res://sub/sub2.png" id="4_8nxnj"]
@@ -39,7 +39,7 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_jrcp4")
 
-[node name="CameraFollowsSub" type="Node" parent="."]
+[node name="SubCameraFollows" type="Node2D" parent="."]
 script = ExtResource("2_3ibi6")
 
 [node name="SubMovement" type="Node2D" parent="."]

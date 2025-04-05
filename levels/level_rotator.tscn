@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dsnts0xg2pd74"]
+
+[node name="LevelRotator" type="Node2D"]
