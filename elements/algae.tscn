@@ -24,7 +24,7 @@ size = Vector2(68, 58)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l610t")
-frame_progress = 0.594038
+frame_progress = 0.576721
 speed_scale = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

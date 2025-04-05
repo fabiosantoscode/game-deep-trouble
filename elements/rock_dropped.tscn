@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwpm0agmjftsk"]
 
 [ext_resource type="Script" uid="uid://bmnnaapjrugkx" path="res://elements/rock_dropped.gd" id="1_e2j48"]
-[ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://sub/rock.png" id="2_x68me"]
+[ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://elements/rock.png" id="2_x68me"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6g8e2"]
 size = Vector2(18, 12)
