@@ -17,10 +17,9 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=960
+window/size/viewport_width=320
+window/size/viewport_height=240
 window/stretch/mode="viewport"
-window/stretch/scale=4.0
 window/stretch/scale_mode="integer"
 
 [input]
@@ -69,6 +68,8 @@ shoot={
 2d_physics/layer_2="rock & claw"
 2d_physics/layer_3="subs"
 2d_physics/layer_4="falling rock"
+2d_physics/layer_5="hiding the player"
+2d_physics/layer_6="player (vision)"
 
 [rendering]
 

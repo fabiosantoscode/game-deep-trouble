@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1lkgkrpbvqmt"]
+[gd_scene load_steps=6 format=3 uid="uid://c1lkgkrpbvqmt"]
 
 [ext_resource type="Script" uid="uid://b5nepycun41e4" path="res://sub/enemy_sub_agent.gd" id="1_8beoy"]
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="2_s5whb"]
@@ -18,10 +18,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8beoy"]
+radius = 5.0
+
 [node name="EnemySubAgent" type="Node2D"]
 script = ExtResource("1_8beoy")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 53
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-1, 2)
 sprite_frames = SubResource("SpriteFrames_uhnpv")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="VisionArea" type="Area2D" parent="Rotator"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="Polygon2D" type="Polygon2D" parent="Rotator/VisionArea"]
+position = Vector2(1, 1)
+polygon = PackedVector2Array(-1, -1, 37, -28, 46, -20, 50, -11, 52, -1, 50, 9, 46, 18, 45, 17, 49, 9, 51, -1, 49, -11, 45, -19, 37, -27, 1, -1, 37, 25, 45, 17, 46, 18, 37, 27)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rotator/VisionArea"]
+polygon = PackedVector2Array(52, 0, 50, 10, 46, 18, 38, 26, 3, 0, 38, -26, 46, -18, 50, -10)
+
+[node name="PlayerKillBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKillBox"]
+shape = SubResource("CircleShape2D_8beoy")

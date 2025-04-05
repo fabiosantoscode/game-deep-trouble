@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dum2btrk8qyos"]
+[gd_scene load_steps=6 format=3 uid="uid://dum2btrk8qyos"]
 
+[ext_resource type="Script" uid="uid://0jyklxb0ks0b" path="res://elements/algae.gd" id="1_byl7m"]
 [ext_resource type="Texture2D" uid="uid://crvvpbir6wj7q" path="res://sprites/algae1.png" id="1_y1pkx"]
 [ext_resource type="Texture2D" uid="uid://dc81jqa5yiidp" path="res://sprites/algae2.png" id="2_byl7m"]
 
@@ -21,6 +22,7 @@ animations = [{
 size = Vector2(68, 58)
 
 [node name="Algae" type="Node2D"]
+script = ExtResource("1_byl7m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l610t")
