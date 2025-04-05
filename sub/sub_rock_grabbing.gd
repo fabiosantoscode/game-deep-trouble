@@ -17,6 +17,10 @@ func try_grab_rock(sub: Sub):
 		sub.assimilate_rock(_rock_to_grab)
 		_rock_to_grab = null
 
+func try_drop_rock(sub: Sub):
+	if sub.has_rock and Input.is_action_just_pressed("shoot"):
+		sub.drop_rock()
+
 func _update_grab_rock(area):
 	if area is Rock:
 		_rock_to_grab = area

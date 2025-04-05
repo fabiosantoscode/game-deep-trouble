@@ -66,6 +66,8 @@ shoot={
 
 2d_physics/layer_1="world/obstacles"
 2d_physics/layer_2="rock & claw"
+2d_physics/layer_3="subs"
+2d_physics/layer_4="falling rock"
 
 [rendering]
 

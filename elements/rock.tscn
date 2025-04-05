@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://sub/rock.png" id="2_1n4mh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6g8e2"]
-size = Vector2(30, 12)
+size = Vector2(18, 12)
 
 [node name="Rock" type="Area2D"]
 collision_layer = 2

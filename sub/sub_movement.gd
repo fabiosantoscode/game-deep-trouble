@@ -2,13 +2,13 @@ extends Node2D
 class_name SubMovement
 
 ## Lower values mean more slippery movement
-var damping_factor = 0.2
+var damping_factor = 0.01
 
 ## (pixels per second)
-var speed = 30.0
+var speed = 100.0
 
 ## Increase in speed (pixels per second per second)
-var acceleration = 10.0
+var acceleration = 180.0
 
 ## Current speed, set into sub.velocity (CharacterBody3D.velocity)
 var _inertia = Vector2.ZERO
@@ -50,8 +50,8 @@ func move_sub_inner(player_input_normalized: Vector2, delta: float):
 		if acceleration_vector.length() > velocity_diff.length():
 			acceleration_vector = velocity_diff
 		_inertia += acceleration_vector
-
-	_inertia *= (1.0 - damping_factor * delta)
+	else:
+		_inertia *= (1.0 - damping_factor * delta)
 
 	return _inertia
 

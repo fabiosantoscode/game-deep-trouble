@@ -9,6 +9,10 @@ class_name SubVisuals
 	set(val): claw_is_out = val; _update_visuals()
 	get: return claw_is_out
 
+@export var is_enemy = false:
+	set(val): is_enemy = val; _update_visuals()
+	get: return is_enemy
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var claw: Sprite2D = $Claw
 
@@ -17,5 +21,8 @@ func _update_visuals():
 	claw.visible = claw_is_out
 	sprite.flip_h = self.is_facing_left
 	claw.flip_h = self.is_facing_left
+	sprite.modulate = Color.RED if is_enemy else Color.WHITE
 
-func _ready(): _update_visuals()
+func _ready():
+	sprite.play()
+	_update_visuals()

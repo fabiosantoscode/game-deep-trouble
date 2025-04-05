@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwpm0agmjftsk"]
+
+[ext_resource type="Script" uid="uid://bmnnaapjrugkx" path="res://elements/rock_dropped.gd" id="1_e2j48"]
+[ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://sub/rock.png" id="2_x68me"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g8e2"]
+size = Vector2(18, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2j48"]
+size = Vector2(30, 12)
+
+[node name="RockDropped" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_e2j48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6g8e2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_x68me")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_e2j48")
