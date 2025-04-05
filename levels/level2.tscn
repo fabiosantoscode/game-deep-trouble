@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c6qowiu56mcnx"]
+[gd_scene load_steps=9 format=4 uid="uid://c6qowiu56mcnx"]
 
 [ext_resource type="Texture2D" uid="uid://61ned4b2awpp" path="res://sprites/black-16.png" id="2_s1bpp"]
 [ext_resource type="PackedScene" uid="uid://c32ncac8n4yym" path="res://elements/rock.tscn" id="3_76ugp"]
@@ -23,6 +23,12 @@ physics_layer_0/collision_priority = 2.0
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_r4e4k")
 
+[sub_resource type="Curve2D" id="Curve2D_py88r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 137, 0, 0, 0, 0, 0, -50, -1, 0, 0, 0, 0, 0, -1)
+}
+point_count = 4
+
 [node name="Level2" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -34,6 +40,10 @@ position = Vector2(208, 217)
 
 [node name="EnemySub" parent="." instance=ExtResource("4_e8p81")]
 position = Vector2(183, 121)
+progress_ratio_per_second = 0.1
+
+[node name="Path2D" type="Path2D" parent="EnemySub"]
+curve = SubResource("Curve2D_py88r")
 
 [node name="Sub" parent="." instance=ExtResource("5_55gdq")]
 position = Vector2(31, 27)
