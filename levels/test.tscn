@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://v77hnftvr7s4"]
+[gd_scene load_steps=10 format=4 uid="uid://v77hnftvr7s4"]
 
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="1_72lju"]
 [ext_resource type="PackedScene" uid="uid://cwf30qh2q2g57" path="res://elements/bubble_spawner.tscn" id="2_lkjt4"]
@@ -24,6 +24,12 @@ physics_layer_0/collision_priority = 2.0
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_r4e4k")
 
+[sub_resource type="Curve2D" id="Curve2D_pnvjf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -187, -6, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -186, -6)
+}
+point_count = 3
+
 [node name="Test" type="Node2D"]
 
 [node name="BubbleSpawner" parent="." instance=ExtResource("2_lkjt4")]
@@ -40,11 +46,14 @@ position = Vector2(289, 217)
 
 [node name="EnemySub" parent="." instance=ExtResource("5_pnvjf")]
 position = Vector2(285, 133)
+progress_ratio_per_second = 0.1
+
+[node name="Path2D" type="Path2D" parent="EnemySub"]
+curve = SubResource("Curve2D_pnvjf")
 
 [node name="Sub" parent="." instance=ExtResource("1_72lju")]
 position = Vector2(109.499, 180.915)
 rotation = -1.55366
-scale = Vector2(1, 1)
 
 [node name="BubbleSpawner2" parent="." instance=ExtResource("2_lkjt4")]
 position = Vector2(26, 172)

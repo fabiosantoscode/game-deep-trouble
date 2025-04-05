@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6v3mktw5r5gy"]
+[gd_scene load_steps=3 format=3 uid="uid://c6v3mktw5r5gy"]
 
-[ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="1_038o7"]
+[ext_resource type="Script" uid="uid://dforowvldgqus" path="res://sub/enemy_sub.gd" id="1_jgrtg"]
+[ext_resource type="PackedScene" uid="uid://c1lkgkrpbvqmt" path="res://sub/enemy_sub_agent.tscn" id="2_jgrtg"]
 
 [node name="EnemySub" type="Node2D"]
+script = ExtResource("1_jgrtg")
 
-[node name="Sub" parent="." instance=ExtResource("1_038o7")]
-is_enemy = true
+[node name="EnemySubAgent" parent="." instance=ExtResource("2_jgrtg")]
