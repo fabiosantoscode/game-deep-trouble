@@ -25,7 +25,7 @@ sources/0 = SubResource("TileSetAtlasSource_r4e4k")
 
 [sub_resource type="Curve2D" id="Curve2D_py88r"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 137, 0, 0, 0, 0, 0, -50, -1, 0, 0, 0, 0, 0, -1)
+"points": PackedVector2Array(0, 0, 0, 0, 136.069, 1, 0, 0, 0, 0, -51, -1, 0, 0, 0, 0, 136.069, 1, 0, 0, 0, 0, 137, 1)
 }
 point_count = 4
 
@@ -43,6 +43,8 @@ position = Vector2(183, 121)
 progress_ratio_per_second = 0.1
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]
+position = Vector2(3.79787, 0)
+scale = Vector2(1.07447, 1)
 curve = SubResource("Curve2D_py88r")
 
 [node name="Sub" parent="." instance=ExtResource("5_55gdq")]
