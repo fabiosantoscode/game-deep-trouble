@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://tu7hmknf6nbj"]
+[gd_scene load_steps=12 format=4 uid="uid://tu7hmknf6nbj"]
 
 [ext_resource type="PackedScene" uid="uid://bx516lm8nikuw" path="res://elements/goal.tscn" id="1_1eeqx"]
 [ext_resource type="Texture2D" uid="uid://61ned4b2awpp" path="res://sprites/black-16.png" id="2_fsixi"]
 [ext_resource type="PackedScene" uid="uid://c32ncac8n4yym" path="res://elements/rock.tscn" id="3_8w3ei"]
 [ext_resource type="PackedScene" uid="uid://c6v3mktw5r5gy" path="res://sub/enemy_sub.tscn" id="4_dsknv"]
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="5_p3cgv"]
-[ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="6_xo8nd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_pnvjf"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -83,9 +82,3 @@ progress_ratio_per_second = 0.06
 
 [node name="Path2D" type="Path2D" parent="EnemySub3"]
 curve = SubResource("Curve2D_1eeqx")
-
-[node name="Algae" parent="." instance=ExtResource("6_xo8nd")]
-position = Vector2(-314, 239)
-
-[node name="Algae2" parent="." instance=ExtResource("6_xo8nd")]
-position = Vector2(-234, 349)

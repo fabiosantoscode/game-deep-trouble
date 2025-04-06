@@ -8,7 +8,7 @@ const LEVEL_END_SCREEN = preload("res://levels/level_end_screen.tscn")
 var level_scene_name_start = "res://levels/level"
 var level_scene_name_end = ".tscn"
 var current_level = 0
-var level_count = 8
+var level_count = 10
 
 static func find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
@@ -32,8 +32,8 @@ static func story_level(from_child: Node):
 		level_rot._start_level(0)
 
 func _ready():
-	_start_title_screen()
-	#_start_level(8)
+	#_start_title_screen()
+	_start_level(10)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_F6:
