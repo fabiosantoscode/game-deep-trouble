@@ -42,7 +42,7 @@ static func story_level(from_child: Node):
 
 func _ready():
 	_start_title_screen()
-	#_start_level(11)
+	# _start_level(10)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_F6:

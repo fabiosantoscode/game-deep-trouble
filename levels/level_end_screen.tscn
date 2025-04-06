@@ -14,8 +14,8 @@ func _ready():
 		await get_tree().create_timer(4.0).timeout
 		_show(-1)
 		await get_tree().create_timer(0.5).timeout
-	LevelRotator.title_screen(self)
 	GlobalMusicPlayer.stop_music()
+	LevelRotator.title_screen(self)
 
 func _show(child_i):
 	var cc = labels.get_children()
