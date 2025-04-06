@@ -1,57 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://v77hnftvr7s4"]
+[gd_scene load_steps=8 format=4 uid="uid://v77hnftvr7s4"]
 
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="1_72lju"]
+[ext_resource type="TileSet" uid="uid://d6cg2e2fg0l7" path="res://elements/tileset.tres" id="2_6g8e2"]
 [ext_resource type="PackedScene" uid="uid://cwf30qh2q2g57" path="res://elements/bubble_spawner.tscn" id="2_lkjt4"]
-[ext_resource type="Texture2D" uid="uid://cggv80svmcnl5" path="res://sprites/black-16-NE.png" id="3_kqvnf"]
-[ext_resource type="Texture2D" uid="uid://61ned4b2awpp" path="res://sprites/black-16.png" id="3_ny0t1"]
-[ext_resource type="Texture2D" uid="uid://bqg6y7bdjy1h5" path="res://sprites/black-16-NW.png" id="4_eudka"]
 [ext_resource type="PackedScene" uid="uid://c32ncac8n4yym" path="res://elements/rock.tscn" id="4_r4e4k"]
 [ext_resource type="PackedScene" uid="uid://c6v3mktw5r5gy" path="res://sub/enemy_sub.tscn" id="5_pnvjf"]
-[ext_resource type="Texture2D" uid="uid://c5ad513nbp5cm" path="res://sprites/black-16-SE.png" id="5_qtvpr"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="6_6g8e2"]
-[ext_resource type="Texture2D" uid="uid://dgm1htrim5tet" path="res://sprites/black-16-SW.png" id="6_drwxn"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_pnvjf"]
-vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
-agent_radius = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r4e4k"]
-texture = ExtResource("3_ny0t1")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pnvjf")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmkky"]
-texture = ExtResource("3_kqvnf")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_epu3l"]
-texture = ExtResource("4_eudka")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqn8c"]
-texture = ExtResource("5_qtvpr")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08uri"]
-texture = ExtResource("6_drwxn")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_pnvjf"]
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_priority = 2.0
-navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_r4e4k")
-sources/1 = SubResource("TileSetAtlasSource_rmkky")
-sources/2 = SubResource("TileSetAtlasSource_epu3l")
-sources/3 = SubResource("TileSetAtlasSource_lqn8c")
-sources/4 = SubResource("TileSetAtlasSource_08uri")
 
 [sub_resource type="Curve2D" id="Curve2D_pnvjf"]
 _data = {
@@ -68,7 +22,7 @@ sway_ang_speed = 0.3
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAAPAA4AAAAAAAAAAAAQAA4AAAAAAAAAAAARAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAATAA0AAAAAAAAAAAATAAwAAAAAAAAAAAATAAsAAAAAAAAAAAATAAoAAAAAAAAAAAATAAkAAAAAAAAAAAATAAgAAAAAAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAASAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAkAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAkAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAAQAAsAAAAAAAAAAAAQAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAAAAAAAAAALAA0AAAAAAAAAAAAOAA0AAAAAAAAAAAAPAA0AAAAAAAAAAAAQAA0AAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAADAAUAAQAAAAAAAAAFAAUAAgAAAAAAAAADAAMAAwAAAAAAAAAFAAMABAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_pnvjf")
+tile_set = ExtResource("2_6g8e2")
 
 [node name="Rock" parent="." instance=ExtResource("4_r4e4k")]
 position = Vector2(208, 73)
