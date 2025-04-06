@@ -7,7 +7,7 @@ const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
 var level_scene_name_start = "res://levels/level"
 var level_scene_name_end = ".tscn"
 var current_level = 0
-var level_count = 4
+var level_count = 6
 
 static func find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
