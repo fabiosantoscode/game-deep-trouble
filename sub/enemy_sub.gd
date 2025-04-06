@@ -1,6 +1,7 @@
 extends Node2D
 class_name EnemySub
 
+@export_range(0.0, 1.0, 0.1) var initial_progress = 0.0
 @export var progress_ratio_per_second = 1.0
 var path_follow: PathFollow2D
 @onready var enemy_sub_agent: EnemySubAgent = $EnemySubAgent
@@ -14,3 +15,4 @@ func _ready() -> void:
 	path_follow = PathFollow2D.new()
 	path.add_child(path_follow)
 	path_follow.owner = self
+	path_follow.progress_ratio = initial_progress
