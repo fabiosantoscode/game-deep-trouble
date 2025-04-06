@@ -13,7 +13,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r4e4k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4m8hb"]
 texture = ExtResource("2_4m8hb")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -23,7 +23,7 @@ texture = ExtResource("2_4m8hb")
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_priority = 2.0
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_r4e4k")
+sources/0 = SubResource("TileSetAtlasSource_4m8hb")
 
 [sub_resource type="Curve2D" id="Curve2D_6ilhl"]
 _data = {

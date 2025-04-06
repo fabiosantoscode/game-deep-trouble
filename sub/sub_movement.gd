@@ -6,6 +6,7 @@ var damping_factor = 0.01
 
 ## (pixels per second)
 var speed = 100.0
+var speed_with_rock = speed * 0.7
 
 ## Increase in speed (pixels per second per second)
 var acceleration = 180.0
@@ -24,7 +25,7 @@ func should_face_left(player_input_normalized: Vector2):
 	return _was_facing_left
 
 func move_sub(sub: Sub, player_input_normalized: Vector2, delta: float):
-	var new_velocity = move_sub_inner(player_input_normalized, delta)
+	var new_velocity = move_sub_inner(sub.has_rock != null, player_input_normalized, delta)
 
 	sub.velocity = new_velocity
 	var did_collide = sub.move_and_slide()
@@ -36,9 +37,12 @@ func move_sub(sub: Sub, player_input_normalized: Vector2, delta: float):
 		_inertia += coll.get_normal() * stagger_velocity
 
 ## Sub will call this in _process_physics
-func move_sub_inner(player_input_normalized: Vector2, delta: float):
+func move_sub_inner(is_carrying_rock: bool, player_input_normalized: Vector2, delta: float):
+	# accel and speed are derived from whether we are carrying the rock
+	var cur_speed = speed_with_rock if is_carrying_rock else speed
+
 	# Calculate desired movement direction from input
-	var desired_velocity = player_input_normalized * speed
+	var desired_velocity = player_input_normalized * cur_speed
 	
 	# Calculate the difference between current inertia and desired velocity
 	var velocity_diff = desired_velocity - _inertia
