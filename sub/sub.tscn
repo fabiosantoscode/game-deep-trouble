@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=17 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://c5uxnj06ygkxm" path="res://sub/sub_movement.gd" id="5_egpih"]
 [ext_resource type="Script" uid="uid://d4id2tllwyatg" path="res://sub/sub_input.gd" id="6_edyj4"]
 [ext_resource type="Script" uid="uid://biijowp4awwbt" path="res://sub/sub_rock_grabbing.gd" id="8_v8wm4"]
+[ext_resource type="Script" uid="uid://opxsuokcshbb" path="res://sub/sub_sound.gd" id="10_ghaol"]
+[ext_resource type="AudioStream" uid="uid://cnjbblb5pefdm" path="res://sfx/dock.mp3" id="11_c7c14"]
+[ext_resource type="AudioStream" uid="uid://c7ajqycovbge5" path="res://sfx/engine.mp3" id="12_nxarw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v8wm4"]
 animations = [{
@@ -80,6 +83,17 @@ collision_mask = 2
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_3ibi6")
 debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="SubSound" type="Node2D" parent="."]
+script = ExtResource("10_ghaol")
+
+[node name="AudioDock" type="AudioStreamPlayer2D" parent="SubSound"]
+stream = ExtResource("11_c7c14")
+volume_db = 16.545
+
+[node name="AudioEngine" type="AudioStreamPlayer2D" parent="SubSound"]
+stream = ExtResource("12_nxarw")
+volume_db = 12.409
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_edyj4")

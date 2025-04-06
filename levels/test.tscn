@@ -27,7 +27,7 @@ sources/0 = SubResource("TileSetAtlasSource_r4e4k")
 
 [sub_resource type="Curve2D" id="Curve2D_pnvjf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, -68, 1, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 39, 31, 0, 0, 0, 0, 37, -20, 0, 0, 0, 0, 0, 0)
 }
 point_count = 4
 
@@ -43,7 +43,7 @@ tile_map_data = PackedByteArray("AAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAA
 tile_set = SubResource("TileSet_pnvjf")
 
 [node name="Rock" parent="." instance=ExtResource("4_r4e4k")]
-position = Vector2(289, 217)
+position = Vector2(208, 73)
 
 [node name="EnemySub" parent="." instance=ExtResource("5_pnvjf")]
 position = Vector2(170, 129)
@@ -53,8 +53,7 @@ progress_ratio_per_second = 0.1
 curve = SubResource("Curve2D_pnvjf")
 
 [node name="Sub" parent="." instance=ExtResource("1_72lju")]
-position = Vector2(109.499, 180.915)
-rotation = -1.55366
+position = Vector2(207, 59)
 
 [node name="BubbleSpawner2" parent="." instance=ExtResource("2_lkjt4")]
 position = Vector2(26, 172)

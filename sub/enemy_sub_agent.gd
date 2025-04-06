@@ -12,7 +12,6 @@ func _ready():
 	visual.play("default")
 	vision_area.body_entered.connect(_on_player_seen)
 	player_kill_area.body_entered.connect(_on_player_kill)
-	receive_death_from_falling_rock.body_entered.connect(_on_receive_death)
 	receive_death_from_falling_rock.area_entered.connect(_on_receive_death)
 
 func _on_player_seen(sub: Node2D):
@@ -28,11 +27,10 @@ func _on_player_seen(sub: Node2D):
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
 	if result.get("collider", null) is Sub:
-		LevelRotator.restart_level.call_deferred(self)
+		_restart_level()
 
 func _on_player_kill(sub: Node2D):
-	if sub is Sub:
-		LevelRotator.restart_level.call_deferred(self)
+	if sub is Sub: _restart_level()
 
 func _physics_process(delta: float) -> void:
 	var enemy_sub: EnemySub = self.owner
@@ -77,4 +75,14 @@ func _rotate_finder(old_pos: Vector2, new_pos: Vector2):
 	rotator.rotation = ang
 
 func _on_receive_death(_rock):
+	if not GlobalMusicPlayer.is_muted:
+		var thud_sound = AudioStreamPlayer2D.new()
+		thud_sound.stream = preload("res://sfx/explode.mp3")
+		self.owner.add_child(thud_sound)
+		thud_sound.owner = self.owner
+		thud_sound.global_position = self.owner.global_position
+		thud_sound.play()
 	self.queue_free()
+
+func _restart_level():
+	LevelRotator.restart_level.call_deferred(self)

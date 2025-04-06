@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhs7gphacusog"]
+
+[ext_resource type="Texture2D" uid="uid://61ned4b2awpp" path="res://sprites/black-16.png" id="1_gs2gx"]
+[ext_resource type="AudioStream" uid="uid://meb3ek1xfsy" path="res://sfx/sighted.mp3" id="2_08d3w"]
+
+[sub_resource type="GDScript" id="GDScript_0mqnf"]
+script/source = "extends AudioStreamPlayer
+
+func _ready():
+	if not GlobalMusicPlayer.is_muted:
+		self.play()
+"
+
+[node name="OnDeath" type="Node2D"]
+
+[node name="Black-16" type="Sprite2D" parent="."]
+position = Vector2(-20, -18)
+scale = Vector2(9999, 9999)
+texture = ExtResource("1_gs2gx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_08d3w")
+script = SubResource("GDScript_0mqnf")

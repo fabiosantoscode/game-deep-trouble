@@ -4,6 +4,7 @@ class_name LevelRotator
 @onready var level_container: Node = $LevelContainer
 const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
 const LEVEL_END_SCREEN = preload("res://levels/level_end_screen.tscn")
+const ON_DEATH = preload("res://elements/on_death.tscn")
 
 var level_scene_name_start = "res://levels/level"
 var level_scene_name_end = ".tscn"
@@ -16,6 +17,8 @@ static func find_level_rotator(from_child: Node) -> LevelRotator:
 static func restart_level(from_child: Node):
 	var level_rot = find_level_rotator(from_child)
 	if level_rot != null:
+		level_rot._low_level_set_level(ON_DEATH)
+		await level_rot.get_tree().create_timer(0.5).timeout
 		level_rot._start_level(level_rot.current_level)
 
 static func title_screen(from_child: Node):

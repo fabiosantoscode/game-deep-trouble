@@ -26,19 +26,19 @@ sources/0 = SubResource("TileSetAtlasSource_r4e4k")
 
 [sub_resource type="Curve2D" id="Curve2D_f5oyx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 57.3709, 28.2076, 0, 0, 0, 0, 282, 352, 0, 0, 0, 0, -182, 354, 0, 0, 0, 0, 56.3644, 27.235)
+"points": PackedVector2Array(0, 0, 0, 0, 57.3709, 28.2076, 0, 0, 0, 0, 282, 352, 0, 0, 0, 0, -182, 354, 0, 0, 0, 0, 57.3709, 28.2076)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_jt2a3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2.36365, 7.44739, 0, 0, 0, 0, -458.723, 7.44739, 0, 0, 0, 0, -217.723, -355.079, 0, 0, 0, 0, 2.36365, 7.44739)
+"points": PackedVector2Array(0, 0, 0, 0, 2.36365, 7.44739, 0, 0, 0, 0, -455.735, 7.44739, 0, 0, 0, 0, -217.723, -355.079, 0, 0, 0, 0, 2.36365, 7.44739)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_1eeqx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 240, -334, 0, 0, 0, 0, 459, -4, 0, 0, 0, 0, 3, 1)
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 240, -334, 0, 0, 0, 0, 461, 0, 0, 0, 0, 0, 1, 0)
 }
 point_count = 4
 

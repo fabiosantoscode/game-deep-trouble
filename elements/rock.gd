@@ -20,3 +20,4 @@ static func create_rock(parent: Node2D, pos: Vector2):
 	parent.add_child(r)
 	r.owner = parent
 	r.global_position = pos
+	return r

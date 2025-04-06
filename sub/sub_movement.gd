@@ -12,7 +12,7 @@ var speed_with_rock = speed * 0.7
 var acceleration = 180.0
 
 ## Current speed, set into sub.velocity (CharacterBody3D.velocity)
-var _inertia = Vector2.ZERO
+var inertia = Vector2.ZERO
 
 var stagger_velocity = 20.0
 var pre_stagger_max_speed = 10.0
@@ -33,8 +33,8 @@ func move_sub(sub: Sub, player_input_normalized: Vector2, delta: float):
 	if did_collide:
 		var coll = sub.get_last_slide_collision()
 		# clamp inertia to a max length
-		_inertia = _inertia.limit_length(pre_stagger_max_speed)
-		_inertia += coll.get_normal() * stagger_velocity
+		inertia = inertia.limit_length(pre_stagger_max_speed)
+		inertia += coll.get_normal() * stagger_velocity
 
 ## Sub will call this in _process_physics
 func move_sub_inner(is_carrying_rock: bool, player_input_normalized: Vector2, delta: float):
@@ -45,7 +45,7 @@ func move_sub_inner(is_carrying_rock: bool, player_input_normalized: Vector2, de
 	var desired_velocity = player_input_normalized * cur_speed
 	
 	# Calculate the difference between current inertia and desired velocity
-	var velocity_diff = desired_velocity - _inertia
+	var velocity_diff = desired_velocity - inertia
 	
 	# Apply acceleration to gradually change the inertia
 	if velocity_diff.length_squared() > 0.001:
@@ -53,10 +53,10 @@ func move_sub_inner(is_carrying_rock: bool, player_input_normalized: Vector2, de
 		# Don't overshoot the desired velocity
 		if acceleration_vector.length() > velocity_diff.length():
 			acceleration_vector = velocity_diff
-		_inertia += acceleration_vector
+		inertia += acceleration_vector
 	else:
-		_inertia *= (1.0 - damping_factor * delta)
+		inertia *= (1.0 - damping_factor * delta)
 
-	return _inertia
+	return inertia
 
-func reset_inertia(): _inertia = Vector2.ZERO
+func reset_inertia(): inertia = Vector2.ZERO

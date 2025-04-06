@@ -4,7 +4,7 @@ class_name RockDropped
 const ROCK_DROPPED = preload("res://elements/rock_dropped.tscn")
 
 var sub: Sub
-var drop_speed = 140.0
+var drop_speed = 200.0
 var damping_factor = 0.2
 var _inertia = Vector2.ZERO
 static var initial_inertia = 200.0
@@ -40,5 +40,12 @@ func _physics_process(delta: float) -> void:
 		self.become_rock_plain(sub.owner)
 
 func become_rock_plain(parent: Node2D):
-	Rock.create_rock(parent, self.global_position)
+	var rock = Rock.create_rock(parent, self.global_position)
+	if not GlobalMusicPlayer.is_muted:
+		var thud_sound = AudioStreamPlayer2D.new()
+		thud_sound.stream = preload("res://sfx/thud.mp3")
+		self.owner.add_child(thud_sound)
+		thud_sound.owner = self.owner
+		thud_sound.global_position = self.owner.global_position
+		thud_sound.play()
 	self.queue_free()

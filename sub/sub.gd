@@ -25,3 +25,6 @@ func assimilate_rock(rock: Rock):
 func drop_rock():
 	assert(has_rock != null)
 	has_rock.become_dropped_rock(self)
+
+func get_inertia():
+	return sub_movement.inertia
