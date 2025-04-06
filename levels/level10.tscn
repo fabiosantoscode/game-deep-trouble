@@ -68,3 +68,13 @@ curve = SubResource("Curve2D_3qo2i")
 
 [node name="Algae" parent="." instance=ExtResource("6_mv8ey")]
 position = Vector2(326, 148)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 214.0
+offset_top = 134.0
+offset_right = 426.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 8
+text = "try pressing space
+or the action button
+on your gamepad"

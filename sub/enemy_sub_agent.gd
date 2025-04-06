@@ -13,6 +13,7 @@ func _ready():
 	vision_area.body_entered.connect(_on_player_seen)
 	player_kill_area.body_entered.connect(_on_player_kill)
 	receive_death_from_falling_rock.body_entered.connect(_on_receive_death)
+	receive_death_from_falling_rock.area_entered.connect(_on_receive_death)
 
 func _on_player_seen(sub: Node2D):
 	if sub == null or not (sub is Sub): return
@@ -75,5 +76,5 @@ func _rotate_finder(old_pos: Vector2, new_pos: Vector2):
 	var ang = old_pos.angle_to_point(new_pos)
 	rotator.rotation = ang
 
-func _on_receive_death(rock: RockDropped):
+func _on_receive_death(_rock):
 	self.queue_free()

@@ -53,3 +53,13 @@ curve = SubResource("Curve2D_py88r")
 
 [node name="Sub" parent="." instance=ExtResource("5_55gdq")]
 position = Vector2(31, 27)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 113.0
+offset_top = 45.0
+offset_right = 325.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 8
+text = "This news submarine is keeping
+the rock down here. Be sure it
+doesn't catch you!"
