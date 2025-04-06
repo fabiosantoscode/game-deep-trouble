@@ -40,7 +40,7 @@ tile_map_data = PackedByteArray("AAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAAQAA4AAAAAAAA
 tile_set = SubResource("TileSet_pnvjf")
 
 [node name="Rock" parent="." instance=ExtResource("2_cpie4")]
-position = Vector2(148, 265)
+position = Vector2(137, 265)
 
 [node name="EnemySub" parent="." instance=ExtResource("3_udvx3")]
 position = Vector2(137, 70)
