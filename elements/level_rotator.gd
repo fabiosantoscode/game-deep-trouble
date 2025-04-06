@@ -7,7 +7,7 @@ const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
 var level_scene_name_start = "res://levels/level"
 var level_scene_name_end = ".tscn"
 var current_level = 0
-var level_count = 6
+var level_count = 7
 
 static func find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
@@ -32,6 +32,7 @@ static func story_level(from_child: Node):
 
 func _ready():
 	_start_title_screen()
+	#_start_level(7)
 
 func _clear_current_level():
 	for prev_level in level_container.get_children():
@@ -46,6 +47,8 @@ func _start_level(level_num: int):
 	var level_file = level_scene_name_start + str(level_num) + level_scene_name_end
 	var level = load(level_file).instantiate()
 	level_container.add_child(level)
+	
+	get_window().title = "Deep Trouble - level " + str(level_num)
 
 func _start_title_screen():
 	_clear_current_level()
