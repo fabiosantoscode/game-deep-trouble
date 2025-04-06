@@ -25,11 +25,11 @@ func _on_player_seen(sub: Node2D):
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
 	if result.get("collider", null) is Sub:
-		LevelRotator.restart_level(self)
+		LevelRotator.restart_level.call_deferred(self)
 
 func _on_player_kill(sub: Node2D):
 	if sub is Sub:
-		LevelRotator.restart_level(self)
+		LevelRotator.restart_level.call_deferred(self)
 
 func _physics_process(delta: float) -> void:
 	var enemy_sub: EnemySub = self.owner

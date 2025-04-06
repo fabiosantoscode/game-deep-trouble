@@ -43,7 +43,7 @@ position = Vector2(1, 1)
 polygon = PackedVector2Array(-1, -1, 37, -28, 46, -20, 50, -11, 52, -1, 50, 9, 46, 18, 45, 17, 49, 9, 51, -1, 49, -11, 45, -19, 37, -27, 1, -1, 37, 25, 45, 17, 46, 18, 37, 27)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rotator/VisionArea"]
-polygon = PackedVector2Array(52, 0, 50, 10, 46, 18, 38, 26, 3, 0, 38, -26, 46, -18, 50, -10)
+polygon = PackedVector2Array(52, 0, 50, 10, 45, 17, 39, 22, -3, 0, 38, -23, 45, -17, 50, -10)
 
 [node name="PlayerKillBox" type="Area2D" parent="."]
 

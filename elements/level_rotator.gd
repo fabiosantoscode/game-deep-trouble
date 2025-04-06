@@ -3,6 +3,7 @@ class_name LevelRotator
 
 @onready var level_container: Node = $LevelContainer
 const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
+const LEVEL_END_SCREEN = preload("res://levels/level_end_screen.tscn")
 
 var level_scene_name_start = "res://levels/level"
 var level_scene_name_end = ".tscn"
@@ -33,6 +34,10 @@ static func story_level(from_child: Node):
 func _ready():
 	_start_title_screen()
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_F6:
+		self._start_level(self.current_level)
+
 func _clear_current_level():
 	for prev_level in level_container.get_children():
 		level_container.remove_child(prev_level)
@@ -48,10 +53,11 @@ func _start_level(level_num: int):
 	level_container.add_child(level)
 
 func _start_title_screen():
-	_clear_current_level()
-	level_container.add_child(LEVEL_TITLE_SCREEN.instantiate())
+	_low_level_set_level(LEVEL_TITLE_SCREEN)
 
 func _beat_game():
-	_clear_current_level()
+	_low_level_set_level(LEVEL_END_SCREEN)
 
-	print("TODO end screen")
+func _low_level_set_level(packed_scene):
+	_clear_current_level()
+	level_container.add_child(packed_scene.instantiate())

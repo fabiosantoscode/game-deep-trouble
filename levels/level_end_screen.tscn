@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvsdw7qm08kn2"]
+
+[ext_resource type="Texture2D" uid="uid://61ned4b2awpp" path="res://sprites/black-16.png" id="1_gbfyj"]
+[ext_resource type="PackedScene" uid="uid://dyqgqlakf1l05" path="res://elements/game_title.tscn" id="5_dkps8"]
+
+[sub_resource type="GDScript" id="GDScript_w4pj8"]
+script/source = "extends Node2D
+
+@onready var labels: Node2D = $Labels
+
+func _ready():
+	for i in range(labels.get_child_count()):
+		_show(i)
+		await get_tree().create_timer(4.0).timeout
+		_show(-1)
+		await get_tree().create_timer(0.5).timeout
+	LevelRotator.next_level(self)
+
+func _show(child_i):
+	var cc = labels.get_children()
+	for c in range(labels.get_child_count()):
+		cc[c].visible = c == child_i
+"
+
+[node name="LevelEndScreen" type="Node2D"]
+script = SubResource("GDScript_w4pj8")
+
+[node name="Black-16" type="Sprite2D" parent="."]
+scale = Vector2(17849, 10000)
+texture = ExtResource("1_gbfyj")
+
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = 7.0
+offset_top = 193.0
+offset_right = 319.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 14
+text = "Thank you for playing!"
+
+[node name="Label2" type="Label" parent="Labels"]
+offset_left = 7.0
+offset_top = 193.0
+offset_right = 198.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 14
+text = "CREDITS"
+
+[node name="Label3" type="Label" parent="Labels"]
+offset_left = 7.0
+offset_top = 193.0
+offset_right = 339.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 14
+text = "game design, code, music: Fábio Santos"
+
+[node name="Label6" type="Label" parent="Labels"]
+offset_left = 7.0
+offset_top = 193.0
+offset_right = 238.0
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 14
+text = "game+level design, SFX: José Pedro Dias"
+
+[node name="GameTitle" parent="." instance=ExtResource("5_dkps8")]

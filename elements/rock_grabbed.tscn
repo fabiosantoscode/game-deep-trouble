@@ -8,8 +8,8 @@ size = Vector2(30, 12)
 
 [node name="RockGrabbed" type="Area2D"]
 rotation = 0.383972
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_es30q")
 
 [node name="Sprite" type="Sprite2D" parent="."]
