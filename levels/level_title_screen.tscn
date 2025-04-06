@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwfgbugpynr7e"]
+[gd_scene load_steps=9 format=3 uid="uid://dwfgbugpynr7e"]
 
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="1_iersk"]
 [ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://elements/rock.png" id="2_1f1ub"]
 [ext_resource type="PackedScene" uid="uid://cwf30qh2q2g57" path="res://elements/bubble_spawner.tscn" id="3_nkytd"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="4_nkytd"]
+[ext_resource type="PackedScene" uid="uid://dyqgqlakf1l05" path="res://elements/game_title.tscn" id="5_kkmxp"]
 
 [sub_resource type="GDScript" id="GDScript_nkytd"]
 script/source = "extends Node2D
@@ -83,19 +84,6 @@ position = Vector2(0.400695, 9.53674e-07)
 scale = Vector2(2.98438, 2.98438)
 texture = ExtResource("1_iersk")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(300, 98.485)
-offset_left = 7.0
-offset_top = 26.0
-offset_right = 307.0
-offset_bottom = 124.485
-theme_override_colors/font_outline_color = Color(0.536807, 0.122628, 0, 0.988235)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
-bbcode_enabled = true
-text = "[b]deep[/b] trouble."
-
 [node name="BubbleSpawner" parent="." instance=ExtResource("3_nkytd")]
 position = Vector2(179.398, 220.199)
 scale = Vector2(0.7, 0.7)
@@ -126,14 +114,6 @@ texture = ExtResource("2_1f1ub")
 position = Vector2(247, 209)
 scale = Vector2(1.98753, 1.98753)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 56.0
-offset_right = 220.0
-offset_bottom = 79.0
-theme_override_font_sizes/font_size = 8
-text = "by Fábio Santos and José Pedro Dias"
-
 [node name="Label2" type="Label" parent="."]
 offset_left = 5.0
 offset_top = 211.0
@@ -141,3 +121,5 @@ offset_right = 217.0
 offset_bottom = 234.0
 theme_override_font_sizes/font_size = 8
 text = "press space or gamepad action button"
+
+[node name="GameTitle" parent="." instance=ExtResource("5_kkmxp")]

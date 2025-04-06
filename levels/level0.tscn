@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://qfla3tojx0w4"]
+[gd_scene load_steps=4 format=3 uid="uid://qfla3tojx0w4"]
 
 [ext_resource type="Texture2D" uid="uid://61ned4b2awpp" path="res://sprites/black-16.png" id="1_h6fn6"]
+[ext_resource type="PackedScene" uid="uid://dyqgqlakf1l05" path="res://elements/game_title.tscn" id="2_4lkc1"]
 
 [sub_resource type="GDScript" id="GDScript_w4pj8"]
 script/source = "extends Node2D
@@ -69,3 +70,5 @@ offset_right = 354.0
 offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "But watch out for the disaster news company"
+
+[node name="GameTitle" parent="." instance=ExtResource("2_4lkc1")]
