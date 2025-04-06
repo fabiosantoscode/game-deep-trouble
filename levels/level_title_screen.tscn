@@ -9,19 +9,18 @@
 [sub_resource type="GDScript" id="GDScript_nkytd"]
 script/source = "extends Node2D
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion: return
-	if event is InputEventScreenTouch: return
+@onready var start: Button = $VBoxContainer/Start
+@onready var music: CheckButton = $VBoxContainer/Music
+@onready var smartphone_mode: CheckButton = $VBoxContainer/SmartphoneMode
 
-	if event is InputEventAction: _start_game()
-	if event is InputEventFromWindow: _start_game()
-	if event is InputEventJoypadButton: _start_game()
-	if event is InputEventJoypadMotion: _start_game()
-	if event is InputEventMouseButton: _start_game()
-
-func _start_game():
-	GlobalMusicPlayer.start_music()
-	LevelRotator.story_level(self)
+func _ready():
+	smartphone_mode.toggled.connect(func(is_on):
+		VirtualJoystick.set_joystick_enabled(is_on))
+	music.toggled.connect(func(is_on):
+		if is_on: GlobalMusicPlayer.start_music()
+		else: GlobalMusicPlayer.stop_music())
+	start.pressed.connect(func():
+		LevelRotator.story_level(self))
 "
 
 [sub_resource type="Curve2D" id="Curve2D_kbpsx"]
@@ -118,12 +117,25 @@ texture = ExtResource("2_1f1ub")
 position = Vector2(247, 209)
 scale = Vector2(1.98753, 1.98753)
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 5.0
-offset_top = 211.0
-offset_right = 217.0
-offset_bottom = 234.0
-theme_override_font_sizes/font_size = 8
-text = "press space or gamepad action button"
-
 [node name="GameTitle" parent="." instance=ExtResource("5_kkmxp")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 183.0
+offset_top = 25.0
+offset_right = 304.0
+offset_bottom = 126.0
+
+[node name="SmartphoneMode" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Smartphone mode"
+
+[node name="Music" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Music"
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "start"

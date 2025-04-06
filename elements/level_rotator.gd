@@ -5,6 +5,7 @@ class_name LevelRotator
 const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
 const LEVEL_END_SCREEN = preload("res://levels/level_end_screen.tscn")
 const ON_DEATH = preload("res://elements/on_death.tscn")
+const ON_LEVEL_COMPLETE = preload("res://elements/on_level_complete.tscn")
 
 var level_scene_name_start = "res://levels/level"
 var level_scene_name_end = ".tscn"

@@ -28,7 +28,6 @@ func _on_enemy_entered(enemy):
 func _ready():
 	#rock_dropped.body_entered.connect(_on_ground_entered)
 	hitbox.body_entered.connect(_on_enemy_entered)
-	await get_tree().create_timer(0.3).timeout
 	hitbox.set_collision_layer_value(4, 1)
 
 func _physics_process(delta: float) -> void:
