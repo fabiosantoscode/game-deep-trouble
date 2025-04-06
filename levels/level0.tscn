@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id="GDScript_w4pj8"]
 script/source = "extends Node2D
 
-@onready var labels: Node2D = $Labels
+@onready var labels: Node2D = $Canvas/Labels
 
 func _ready():
 	for i in range(labels.get_child_count()):
@@ -26,13 +26,16 @@ func _show(child_i):
 z_index = 1000
 script = SubResource("GDScript_w4pj8")
 
-[node name="Black-16" type="Sprite2D" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Black-16" type="Sprite2D" parent="Canvas"]
 scale = Vector2(17849, 10000)
 texture = ExtResource("1_h6fn6")
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="Labels" type="Node2D" parent="Canvas"]
 
-[node name="Label" type="Label" parent="Labels"]
+[node name="Label" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 319.0
@@ -40,7 +43,7 @@ offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "You work for a flood insurance company"
 
-[node name="Label2" type="Label" parent="Labels"]
+[node name="Label2" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 198.0
@@ -48,7 +51,7 @@ offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "But the sea level is rising"
 
-[node name="Label3" type="Label" parent="Labels"]
+[node name="Label3" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 339.0
@@ -56,7 +59,7 @@ offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "Collect rocks from the bottom of the ocean"
 
-[node name="Label6" type="Label" parent="Labels"]
+[node name="Label6" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 238.0
@@ -64,7 +67,7 @@ offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "In order to lower the sea level"
 
-[node name="Label4" type="Label" parent="Labels"]
+[node name="Label4" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 354.0
@@ -72,4 +75,4 @@ offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "But watch out for the disaster news company"
 
-[node name="GameTitle" parent="." instance=ExtResource("2_4lkc1")]
+[node name="GameTitle" parent="Canvas" instance=ExtResource("2_4lkc1")]

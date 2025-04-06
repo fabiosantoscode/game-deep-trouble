@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id="GDScript_w4pj8"]
 script/source = "extends Node2D
 
-@onready var labels: Node2D = $Labels
+@onready var labels: Node2D = $Canvas/Labels
 
 func _ready():
 	for i in range(labels.get_child_count()):
@@ -27,50 +27,58 @@ func _show(child_i):
 z_index = 1000
 script = SubResource("GDScript_w4pj8")
 
-[node name="Black-16" type="Sprite2D" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Black-16" type="Sprite2D" parent="Canvas"]
 scale = Vector2(17849, 10000)
 texture = ExtResource("1_gbfyj")
 
-[node name="Labels" type="Node2D" parent="."]
+[node name="Labels" type="Node2D" parent="Canvas"]
 
-[node name="Label" type="Label" parent="Labels"]
+[node name="Label" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 319.0
 offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "Thank you for playing!"
+metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Labels"]
+[node name="Label2" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 198.0
 offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "CREDITS"
+metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="Labels"]
+[node name="Label3" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 339.0
 offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "game design, code, music: Fábio Santos"
+metadata/_edit_use_anchors_ = true
 
-[node name="Label6" type="Label" parent="Labels"]
+[node name="Label6" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 238.0
 offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "game+level design, SFX: José Pedro Dias"
+metadata/_edit_use_anchors_ = true
 
-[node name="Label7" type="Label" parent="Labels"]
+[node name="Label7" type="Label" parent="Canvas/Labels"]
 offset_left = 7.0
 offset_top = 193.0
 offset_right = 238.0
 offset_bottom = 216.0
 theme_override_font_sizes/font_size = 14
 text = "onscreen joystick (lib): mcunha-br on Github"
+metadata/_edit_use_anchors_ = true
 
-[node name="GameTitle" parent="." instance=ExtResource("5_dkps8")]
+[node name="GameTitle" parent="Canvas" instance=ExtResource("5_dkps8")]
