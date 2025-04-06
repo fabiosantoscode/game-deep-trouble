@@ -23,6 +23,7 @@ func _show(child_i):
 "
 
 [node name="Level0" type="Node2D"]
+z_index = 1000
 script = SubResource("GDScript_w4pj8")
 
 [node name="Black-16" type="Sprite2D" parent="."]

@@ -8,7 +8,9 @@
 [node name="VirtualJoystick" type="Node2D"]
 script = ExtResource("1_wv27o")
 
-[node name="VirtualJoystick" type="Node2D" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="VirtualJoystick" type="Node2D" parent="Canvas"]
 z_index = 999
 z_as_relative = false
 position = Vector2(42, 197)
@@ -17,7 +19,7 @@ script = ExtResource("1_envj2")
 stick_pressed = ExtResource("2_0iplr")
 metadata/_custom_type_script = "uid://o7rcprnwoqwd"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Canvas"]
 modulate = Color(1, 1, 1, 0)
 z_index = 999
 custom_minimum_size = Vector2(60, 60)
@@ -27,7 +29,7 @@ offset_right = 368.0
 offset_bottom = 296.0
 scale = Vector2(0.625336, 0.59593)
 
-[node name="Stick" type="Sprite2D" parent="."]
+[node name="Stick" type="Sprite2D" parent="Canvas"]
 z_index = 999
 position = Vector2(277, 198)
 scale = Vector2(0.444216, 0.444216)
