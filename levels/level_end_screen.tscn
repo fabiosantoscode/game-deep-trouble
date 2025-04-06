@@ -14,7 +14,7 @@ func _ready():
 		await get_tree().create_timer(4.0).timeout
 		_show(-1)
 		await get_tree().create_timer(0.5).timeout
-	LevelRotator.next_level(self)
+	LevelRotator.title_screen(self)
 	GlobalMusicPlayer.stop_music()
 
 func _show(child_i):

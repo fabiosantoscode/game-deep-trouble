@@ -18,6 +18,12 @@ static func restart_level(from_child: Node):
 	if level_rot != null:
 		level_rot._start_level(level_rot.current_level)
 
+static func title_screen(from_child: Node):
+	var level_rot = find_level_rotator(from_child)
+	if level_rot != null:
+		level_rot._start_title_screen()
+
+
 static func next_level(from_child: Node):
 	var level_rot = find_level_rotator(from_child)
 	if level_rot != null:
