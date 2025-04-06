@@ -7,7 +7,7 @@
 size = Vector2(18, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2j48"]
-size = Vector2(30, 12)
+size = Vector2(30, 2)
 
 [node name="RockDropped" type="CharacterBody2D"]
 collision_layer = 0
@@ -20,8 +20,9 @@ shape = SubResource("RectangleShape2D_6g8e2")
 texture = ExtResource("2_x68me")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_e2j48")

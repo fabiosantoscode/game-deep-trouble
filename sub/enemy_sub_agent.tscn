@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1lkgkrpbvqmt"]
+[gd_scene load_steps=7 format=3 uid="uid://c1lkgkrpbvqmt"]
 
 [ext_resource type="Script" uid="uid://b5nepycun41e4" path="res://sub/enemy_sub_agent.gd" id="1_8beoy"]
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="2_s5whb"]
@@ -18,8 +18,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8beoy"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5whb"]
 radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8beoy"]
+radius = 9.0
 
 [node name="EnemySubAgent" type="Node2D"]
 script = ExtResource("1_8beoy")
@@ -34,6 +37,13 @@ sprite_frames = SubResource("SpriteFrames_uhnpv")
 
 [node name="Rotator" type="Node2D" parent="."]
 
+[node name="ReceiveDeathFromFallingRock" type="Area2D" parent="Rotator"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotator/ReceiveDeathFromFallingRock"]
+shape = SubResource("CircleShape2D_s5whb")
+
 [node name="VisionArea" type="Area2D" parent="Rotator"]
 collision_layer = 0
 collision_mask = 32
@@ -46,6 +56,8 @@ polygon = PackedVector2Array(-1, -1, 37, -28, 46, -20, 50, -11, 52, -1, 50, 9, 4
 polygon = PackedVector2Array(52, 0, 50, 10, 45, 17, 39, 22, -3, 0, 38, -23, 45, -17, 50, -10)
 
 [node name="PlayerKillBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKillBox"]
 shape = SubResource("CircleShape2D_8beoy")

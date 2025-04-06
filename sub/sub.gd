@@ -8,9 +8,6 @@ class_name Sub
 
 var has_rock: RockGrabbed = null
 
-func get_last_movement_input():
-	return sub_input.last_movement_input
-
 func _physics_process(delta: float) -> void:
 	var mov = sub_input.get_movement_input(self)
 	sub_movement.move_sub(self, mov, delta)
