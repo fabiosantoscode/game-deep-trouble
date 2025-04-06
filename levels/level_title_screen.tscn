@@ -13,11 +13,15 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: return
 	if event is InputEventScreenTouch: return
 
-	if event is InputEventAction: LevelRotator.story_level(self)
-	if event is InputEventFromWindow: LevelRotator.story_level(self)
-	if event is InputEventJoypadButton: LevelRotator.story_level(self)
-	if event is InputEventJoypadMotion: LevelRotator.story_level(self)
-	if event is InputEventMouseButton: LevelRotator.story_level(self)
+	if event is InputEventAction: _start_game()
+	if event is InputEventFromWindow: _start_game()
+	if event is InputEventJoypadButton: _start_game()
+	if event is InputEventJoypadMotion: _start_game()
+	if event is InputEventMouseButton: _start_game()
+
+func _start_game():
+	GlobalMusicPlayer.start_music()
+	LevelRotator.story_level(self)
 "
 
 [sub_resource type="Curve2D" id="Curve2D_kbpsx"]
