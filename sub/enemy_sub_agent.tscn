@@ -48,9 +48,15 @@ shape = SubResource("CircleShape2D_s5whb")
 collision_layer = 0
 collision_mask = 32
 
-[node name="Polygon2D" type="Polygon2D" parent="Rotator/VisionArea"]
+[node name="Polygon2DOutline" type="Polygon2D" parent="Rotator/VisionArea"]
 position = Vector2(1, 1)
-polygon = PackedVector2Array(-1, -1, 37, -28, 46, -20, 50, -11, 52, -1, 50, 9, 46, 18, 45, 17, 49, 9, 51, -1, 49, -11, 45, -19, 37, -27, 1, -1, 37, 25, 45, 17, 46, 18, 37, 27)
+color = Color(0, 0, 0, 0.537255)
+polygon = PackedVector2Array(-1, -1, 37, -28, 38, -27, 1, -1, 38, 26, 37, 27)
+
+[node name="Polygon2D" type="Polygon2D" parent="Rotator/VisionArea"]
+modulate = Color(1, 0.47451, 1, 0.239216)
+position = Vector2(1, 1)
+polygon = PackedVector2Array(-1, -1, 37, -28, 46, -20, 50, -11, 52, -1, 50, 9, 46, 18, 37, 27)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rotator/VisionArea"]
 polygon = PackedVector2Array(52, 0, 50, 10, 45, 17, 39, 22, -3, 0, 38, -23, 45, -17, 50, -10)
