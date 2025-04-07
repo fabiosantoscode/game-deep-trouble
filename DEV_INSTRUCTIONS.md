@@ -21,9 +21,9 @@ to start the game in a level instead of the title, toggle commenting of these ca
 
 # folder structure
 
-`sub/` stuff related to the submarine, and enemy subs. The sub (the `Sub` class) has many children whose names start by `Sub*` and manage several aspects of the submarine. The enemy sub used to be cut from the same class, so it ended up here as well.
-`elements/` a bunch of scenes that are functional elements or fragments of other elements
-`levels/level#.tscn` this is loaded by LevelRotator
+- `sub/` stuff related to the submarine, and enemy subs. The sub (the `Sub` class) has many children whose names start by `Sub*` and manage several aspects of the submarine. The enemy sub used to be cut from the same class, so it ended up here as well.
+- `elements/` a bunch of scenes that are functional elements or fragments of other elements
+- `levels/level#.tscn` this is loaded by LevelRotator
 
 # BUILDING
 
