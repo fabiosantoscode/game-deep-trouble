@@ -1,7 +1,7 @@
 extends Node2D
 
 signal is_enabled_change()
-var is_enabled = true
+var is_enabled = false
 
 var virtual_joystick_position = Vector2.ZERO
 
@@ -15,7 +15,7 @@ func set_joystick_enabled(enabled = true):
 	is_enabled_change.emit()
 
 func _ready() -> void:
-	set_joystick_enabled(false)
+	set_joystick_enabled(is_enabled)
 	$Canvas/VirtualJoystick.analogic_change.connect(func(xy):
 		if not is_enabled: return
 		virtual_joystick_position = xy)

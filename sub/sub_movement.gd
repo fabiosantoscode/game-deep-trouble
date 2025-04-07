@@ -9,7 +9,7 @@ var speed = 100.0
 var speed_with_rock = speed * 0.7
 
 ## Increase in speed (pixels per second per second)
-var acceleration = 180.0
+var acceleration = 900.0
 
 ## Current speed, set into sub.velocity (CharacterBody3D.velocity)
 var inertia = Vector2.ZERO

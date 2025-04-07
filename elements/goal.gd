@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _on_sub(sub: Sub):
 	if sub.has_rock != null:
-		LevelRotator.next_level(self)
+		LevelRotator.next_level.call_deferred(self)
