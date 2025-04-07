@@ -31,8 +31,9 @@ static func title_screen(from_child: Node):
 static func next_level(from_child: Node):
 	var level_rot = find_level_rotator(from_child)
 	if level_rot != null:
-		level_rot._low_level_set_level(ON_LEVEL_COMPLETE)
-		await level_rot.get_tree().create_timer(1.5).timeout
+		if level_rot.current_level > 0:
+			level_rot._low_level_set_level(ON_LEVEL_COMPLETE)
+			await level_rot.get_tree().create_timer(1.5).timeout
 		if level_rot.current_level == level_rot.level_count:
 			level_rot._beat_game.call_deferred()
 		else:
