@@ -25,4 +25,7 @@ to start the game in a level instead of the title, toggle commenting of these ca
 `elements/` a bunch of scenes that are functional elements or fragments of other elements
 `levels/level#.tscn` this is loaded by LevelRotator
 
+# BUILDING
+
+Use the godot Export window to export to the web/ folder. Then run deploy.sh. It should work with linux, mac and bash-for-windows as long as git is installed
 
