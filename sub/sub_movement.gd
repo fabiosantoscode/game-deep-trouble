@@ -14,8 +14,11 @@ var acceleration = 900.0
 ## Current speed, set into sub.velocity (CharacterBody3D.velocity)
 var inertia = Vector2.ZERO
 
-var stagger_velocity = 20.0
-var pre_stagger_max_speed = 10.0
+var speed_percent: float:
+	get(): return inertia.length() / speed
+
+var collide_speed = 20.0
+var collide_max_speed = 10.0
 
 var _was_facing_left = false
 
@@ -33,8 +36,8 @@ func move_sub(sub: Sub, player_input_normalized: Vector2, delta: float):
 	if did_collide:
 		var coll = sub.get_last_slide_collision()
 		# clamp inertia to a max length
-		inertia = inertia.limit_length(pre_stagger_max_speed)
-		inertia += coll.get_normal() * stagger_velocity
+		inertia = inertia.limit_length(collide_max_speed)
+		inertia += coll.get_normal() * collide_speed
 
 ## Sub will call this in _process_physics
 func move_sub_inner(is_carrying_rock: bool, player_input_normalized: Vector2, delta: float):

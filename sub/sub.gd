@@ -28,3 +28,6 @@ func drop_rock():
 
 func get_inertia():
 	return sub_movement.inertia
+
+func get_speed_percent():
+	return sub_movement.speed_percent

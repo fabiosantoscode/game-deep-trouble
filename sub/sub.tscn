@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=19 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
 [ext_resource type="Texture2D" uid="uid://gy3ya5ojcnul" path="res://sub/claw.png" id="2_egpih"]
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="3_edyj4"]
 [ext_resource type="Texture2D" uid="uid://clu652pcwt7wp" path="res://sub/sub2.png" id="4_8nxnj"]
+[ext_resource type="Script" uid="uid://bcvoooibyot4u" path="res://sub/sub_bubble_trail.gd" id="4_c7c14"]
 [ext_resource type="Script" uid="uid://eoihi0qptjyp" path="res://sub/sub_visuals.gd" id="4_v8wm4"]
 [ext_resource type="Script" uid="uid://c5uxnj06ygkxm" path="res://sub/sub_movement.gd" id="5_egpih"]
 [ext_resource type="Script" uid="uid://d4id2tllwyatg" path="res://sub/sub_input.gd" id="6_edyj4"]
@@ -26,6 +27,19 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nxarw"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(2, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(-0.912011, -0.410165, 0)
+spread = 16.807
+gravity = Vector3(0, -99, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+damping_min = 32.759
+damping_max = 43.678
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8wm4"]
 radius = 2.0
@@ -63,6 +77,15 @@ texture = ExtResource("2_egpih")
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_v8wm4")
 frame_progress = 0.994834
+
+[node name="SubBubbleTrail" type="Node2D" parent="SubVisuals"]
+position = Vector2(-7, 0)
+script = ExtResource("4_c7c14")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="SubVisuals/SubBubbleTrail"]
+position = Vector2(-1, -1)
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_nxarw")
 
 [node name="SubRockGrabbing" type="Node2D" parent="."]
 script = ExtResource("8_v8wm4")
