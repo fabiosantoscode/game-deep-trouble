@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=20 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://d4id2tllwyatg" path="res://sub/sub_input.gd" id="6_edyj4"]
 [ext_resource type="Script" uid="uid://biijowp4awwbt" path="res://sub/sub_rock_grabbing.gd" id="8_v8wm4"]
 [ext_resource type="Script" uid="uid://opxsuokcshbb" path="res://sub/sub_sound.gd" id="10_ghaol"]
+[ext_resource type="Texture2D" uid="uid://ckfrme2wkollo" path="res://sprites/bubble-small.png" id="10_nxarw"]
 [ext_resource type="AudioStream" uid="uid://cnjbblb5pefdm" path="res://sfx/dock.mp3" id="11_c7c14"]
 [ext_resource type="AudioStream" uid="uid://c7ajqycovbge5" path="res://sfx/engine.mp3" id="12_nxarw"]
 
@@ -84,6 +85,7 @@ script = ExtResource("4_c7c14")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SubVisuals/SubBubbleTrail"]
 position = Vector2(-1, -1)
+texture = ExtResource("10_nxarw")
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_nxarw")
 
