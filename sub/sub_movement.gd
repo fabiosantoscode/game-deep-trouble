@@ -5,8 +5,8 @@ class_name SubMovement
 var damping_factor = 0.01
 
 ## (pixels per second)
-var speed = 100.0
-var speed_with_rock = speed * 0.7
+var speed = 110.0
+var speed_with_rock = speed * 0.8
 
 ## Increase in speed (pixels per second per second)
 var acceleration = 900.0
@@ -17,9 +17,6 @@ var inertia = Vector2.ZERO
 var speed_percent: float:
 	get(): return inertia.length() / speed
 
-var collide_speed = 20.0
-var collide_max_speed = 10.0
-
 var _was_facing_left = false
 
 func should_face_left(player_input_normalized: Vector2):
@@ -28,16 +25,8 @@ func should_face_left(player_input_normalized: Vector2):
 	return _was_facing_left
 
 func move_sub(sub: Sub, player_input_normalized: Vector2, delta: float):
-	var new_velocity = move_sub_inner(sub.has_rock != null, player_input_normalized, delta)
-
-	sub.velocity = new_velocity
-	var did_collide = sub.move_and_slide()
-
-	if did_collide:
-		var coll = sub.get_last_slide_collision()
-		# clamp inertia to a max length
-		inertia = inertia.limit_length(collide_max_speed)
-		inertia += coll.get_normal() * collide_speed
+	sub.velocity = move_sub_inner(sub.has_rock != null, player_input_normalized, delta)
+	sub.move_and_slide()
 
 ## Sub will call this in _process_physics
 func move_sub_inner(is_carrying_rock: bool, player_input_normalized: Vector2, delta: float):

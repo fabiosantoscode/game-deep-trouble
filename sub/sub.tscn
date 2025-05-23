@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=19 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
@@ -44,9 +44,6 @@ damping_max = 43.678
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8wm4"]
 radius = 2.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3ibi6"]
-radius = 62.0081
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_edyj4"]
 radius = 4.5
@@ -99,15 +96,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubRockGrabbing/GrabRock"]
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_v8wm4")
-
-[node name="CanGrabRock" type="Area2D" parent="SubRockGrabbing"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubRockGrabbing/CanGrabRock"]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_3ibi6")
-debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="SubSound" type="Node2D" parent="."]
 script = ExtResource("10_ghaol")
