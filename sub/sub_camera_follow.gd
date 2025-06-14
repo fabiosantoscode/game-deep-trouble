@@ -4,7 +4,7 @@ class_name CameraFollowsSub
 @onready var sub: Sub = $".."
 #@onready var camera_2d: Camera2D = $Camera2D
 var tilemap: TileMapLayer
-var camera_2d
+var camera_2d: Camera2D
 
 func _ready():
 	if sub.owner == null: return # when we press F6 on the sub and not a level
