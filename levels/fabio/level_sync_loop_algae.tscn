@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://0tdwr6gftmnh"]
+[gd_scene load_steps=10 format=4 uid="uid://0tdwr6gftmnh"]
 
 [ext_resource type="PackedScene" uid="uid://c32ncac8n4yym" path="res://elements/rock.tscn" id="1_oepya"]
 [ext_resource type="PackedScene" uid="uid://bx516lm8nikuw" path="res://elements/goal.tscn" id="2_tjs6i"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="4_rruu6"]
 [ext_resource type="PackedScene" uid="uid://c6v3mktw5r5gy" path="res://sub/enemy_sub.tscn" id="5_w1nxb"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="6_kgrny"]
+[ext_resource type="PackedScene" uid="uid://c5brongnhcuac" path="res://elements/out_of_bounds_wall.tscn" id="7_tjs6i"]
 
 [sub_resource type="Curve2D" id="Curve2D_3qo2i"]
 _data = {
@@ -19,7 +20,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Level9" type="Node2D"]
+[node name="LevelSyncLoopAlgae" type="Node2D"]
 
 [node name="Rock" parent="." instance=ExtResource("1_oepya")]
 position = Vector2(104, 217)
@@ -58,7 +59,7 @@ curve = SubResource("Curve2D_3qo2i")
 [node name="EnemySub3" parent="." instance=ExtResource("5_w1nxb")]
 position = Vector2(221, 110)
 initial_progress = 0.15
-progress_ratio_per_second = 0.075
+progress_ratio_per_second = 0.15
 
 [node name="Path2D" type="Path2D" parent="EnemySub3"]
 position = Vector2(24, 16)
@@ -69,14 +70,14 @@ curve = SubResource("Curve2D_pvaha")
 position = Vector2(102, 208)
 
 [node name="Algae3" parent="." instance=ExtResource("6_kgrny")]
-position = Vector2(226, 113)
+position = Vector2(208, 112)
 
 [node name="Algae4" parent="." instance=ExtResource("6_kgrny")]
 position = Vector2(175, 64)
 rotation = -3.14159
 
 [node name="Algae2" parent="." instance=ExtResource("6_kgrny")]
-position = Vector2(32, 81)
+position = Vector2(32, 80)
 rotation = 1.5708
 
 [node name="Label2" type="Label" parent="."]
@@ -88,3 +89,9 @@ theme_override_font_sizes/font_size = 8
 text = "to drop the rock
 press space
 or the bottom gamepad button"
+
+[node name="OutOfBoundsWall" parent="." instance=ExtResource("7_tjs6i")]
+position = Vector2(368, 16)
+
+[node name="OutOfBoundsWall2" parent="." instance=ExtResource("7_tjs6i")]
+position = Vector2(304, -48)
