@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1y30a67bhfp1"]
+
+[ext_resource type="Script" uid="uid://bgqx4w7agq10l" path="res://sub/enemy_sub_rot.gd" id="1_yixuv"]
+[ext_resource type="PackedScene" uid="uid://c1lkgkrpbvqmt" path="res://sub/enemy_sub_agent.tscn" id="2_71477"]
+
+[node name="EnemySubRot" type="Node2D"]
+script = ExtResource("1_yixuv")
+
+[node name="EnemySubAgent" parent="." instance=ExtResource("2_71477")]
