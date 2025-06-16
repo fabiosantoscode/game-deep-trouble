@@ -36,6 +36,7 @@ curve = SubResource("Curve2D_pnvjf")
 
 [node name="Sub" parent="." instance=ExtResource("1_72lju")]
 position = Vector2(140, 115)
+y_distance_to_rock = 14
 
 [node name="BubbleSpawner2" parent="." instance=ExtResource("2_lkjt4")]
 position = Vector2(26, 172)

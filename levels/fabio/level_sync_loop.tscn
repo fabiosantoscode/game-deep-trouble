@@ -38,7 +38,7 @@ position = Vector2(34, 39)
 [node name="EnemySub" parent="." instance=ExtResource("5_xfcmq")]
 position = Vector2(88, 112)
 initial_progress = 0.25
-progress_ratio_per_second = 0.075
+progress_ratio_per_second = 0.0625
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]
 position = Vector2(24, 16)
@@ -48,7 +48,7 @@ curve = SubResource("Curve2D_1elic")
 [node name="EnemySub2" parent="." instance=ExtResource("5_xfcmq")]
 position = Vector2(88, 112)
 initial_progress = 0.75
-progress_ratio_per_second = 0.075
+progress_ratio_per_second = 0.0625
 
 [node name="Path2D" type="Path2D" parent="EnemySub2"]
 position = Vector2(24, 16)
@@ -56,9 +56,9 @@ scale = Vector2(1, 0.9625)
 curve = SubResource("Curve2D_1elic")
 
 [node name="EnemySub3" parent="." instance=ExtResource("5_xfcmq")]
-position = Vector2(216, 112)
+position = Vector2(184, 112)
 initial_progress = 0.15
-progress_ratio_per_second = 0.15
+progress_ratio_per_second = 0.125
 
 [node name="Path2D" type="Path2D" parent="EnemySub3"]
 position = Vector2(24, 16)

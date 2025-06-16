@@ -7,6 +7,7 @@ class_name Sub
 @onready var sub_rock_grabbing: SubRockGrabbing = $SubRockGrabbing
 
 var has_rock: RockGrabbed = null
+@export var y_distance_to_rock = 13
 
 func _physics_process(delta: float) -> void:
 	var mov = sub_input.get_movement_input(self)
