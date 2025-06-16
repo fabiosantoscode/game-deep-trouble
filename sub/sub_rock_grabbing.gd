@@ -19,5 +19,5 @@ func try_drop_rock(sub: Sub):
 		sub.drop_rock()
 
 func _update_grab_rock(area):
-	if area is Rock:
+	if area is Rock and not area.was_just_spawned: # was_just_spawned check to prevent a drop-loop
 		_rock_to_grab = area

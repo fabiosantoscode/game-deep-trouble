@@ -4,6 +4,12 @@ class_name Rock
 @onready var sprite = $Sprite
 
 const ROCK = preload("res://elements/rock.tscn")
+var was_just_spawned = true
+
+func _ready():
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	was_just_spawned = false
 
 func become_grabbed(sub: Sub) -> RockGrabbed:
 	var pos = self.sprite.global_position

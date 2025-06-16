@@ -10,13 +10,18 @@ var _inertia = Vector2.ZERO
 static var initial_inertia = 200.0
 
 @onready var hitbox: Area2D = $Hitbox
+var initial_collision_check = false
 
 static func create_dropped_rock(sub: Sub, new_parent: Node2D, pos: Vector2):
-	var rock = ROCK_DROPPED.instantiate()
+	var rock: RockDropped = ROCK_DROPPED.instantiate()
 	rock.sub = sub
 	new_parent.add_child(rock)
 	rock.owner = new_parent
 	rock.global_position = pos
+	
+	var coll = rock.move_and_collide(Vector2.ZERO, true, 0.1, true)
+	if coll != null:
+		rock.global_position = sub.global_position
 
 func _on_ground_entered(ground):
 	self.become_rock_plain(ground.owner)
