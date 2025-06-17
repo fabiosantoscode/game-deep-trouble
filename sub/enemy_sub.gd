@@ -43,10 +43,8 @@ func _update_visuals(old_pos, new_pos):
 			else:
 				pass
 		else:
-			if y_delta < 0.0:
-				rotate = -(TAU/4.0) # face up
-			else:
-				rotate = TAU / 4.0
+			if y_delta < 0.0: rotate = -(TAU/4.0) # face up
+			else:             rotate = TAU/4.0
 
 	enemy_sub_agent.visual.rotation = rotate
 	enemy_sub_agent.visual.flip_h = do_hflip
