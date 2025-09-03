@@ -87,4 +87,4 @@ position = Vector2(160, 128)
 position = Vector2(824, -48)
 
 [node name="OutOfBoundsWall6" parent="." instance=ExtResource("6_eg230")]
-position = Vector2(936, 128)
+position = Vector2(896, 128)
