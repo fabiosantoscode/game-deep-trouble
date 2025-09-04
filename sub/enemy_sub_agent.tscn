@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="2_s5whb"]
 [ext_resource type="Texture2D" uid="uid://clu652pcwt7wp" path="res://sub/sub2.png" id="3_lxhae"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s5whb"]
+radius = 5.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_uhnpv"]
 animations = [{
 "frames": [{
@@ -18,9 +21,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s5whb"]
-radius = 5.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_8beoy"]
 radius = 9.0
 
@@ -29,11 +29,6 @@ script = ExtResource("1_8beoy")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 53
-
-[node name="Visual" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-1, 2)
-sprite_frames = SubResource("SpriteFrames_uhnpv")
 
 [node name="Rotator" type="Node2D" parent="."]
 
@@ -60,6 +55,11 @@ polygon = PackedVector2Array(-1, -1, 37, -28, 46, -20, 50, -11, 52, -1, 50, 9, 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rotator/VisionArea"]
 polygon = PackedVector2Array(52, 0, 50, 10, 45, 17, 39, 22, -3, 0, 38, -23, 45, -17, 50, -10)
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-1, 2)
+sprite_frames = SubResource("SpriteFrames_uhnpv")
 
 [node name="PlayerKillBox" type="Area2D" parent="."]
 collision_layer = 0

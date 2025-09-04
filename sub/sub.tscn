@@ -73,14 +73,14 @@ claw_is_out = true
 position = Vector2(0, 3)
 texture = ExtResource("2_egpih")
 
+[node name="PlayerSubGlow" type="Sprite2D" parent="SubVisuals"]
+modulate = Color(1, 1, 1, 0.301961)
+texture = ExtResource("7_tffbf")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubVisuals"]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_v8wm4")
 frame_progress = 0.994834
-
-[node name="PlayerSubGlow" type="Sprite2D" parent="SubVisuals"]
-modulate = Color(0.538, 1, 0.00999999, 0.341176)
-texture = ExtResource("7_tffbf")
 
 [node name="SubBubbleTrail" type="Node2D" parent="SubVisuals"]
 position = Vector2(-7, 0)
