@@ -6,27 +6,21 @@
 [sub_resource type="GDScript" id="GDScript_w4pj8"]
 script/source = "extends Node2D
 
-@onready var labels: Node2D = $Canvas/Labels
 @onready var button: Button = $Canvas/Button
 
 func _ready():
+	var sig: Signal
 	button.pressed.connect(func():
 		LevelRotator.next_level(self))
-	for i in range(labels.get_child_count()):
-		_show(i)
-		await get_tree().create_timer(4.0).timeout
-		_show(-1)
-		await get_tree().create_timer(0.5).timeout
-	LevelRotator.next_level(self)
+	wait_then_move_on()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed(\"shoot\"):
 		LevelRotator.next_level(self)
 
-func _show(child_i):
-	var cc = labels.get_children()
-	for c in range(labels.get_child_count()):
-		cc[c].visible = c == child_i
+func wait_then_move_on():
+	await get_tree().create_timer(5.0).timeout
+	LevelRotator.next_level(self)
 "
 
 [node name="Level0" type="Node2D"]
@@ -40,49 +34,17 @@ layer = 2
 scale = Vector2(17849, 10000)
 texture = ExtResource("1_h6fn6")
 
-[node name="Labels" type="Node2D" parent="Canvas"]
-
-[node name="Label" type="Label" parent="Canvas/Labels"]
-offset_left = 7.0
-offset_top = 193.0
-offset_right = 319.0
-offset_bottom = 216.0
+[node name="GameIntroText" type="Label" parent="Canvas"]
+offset_left = 8.0
+offset_top = 169.0
+offset_right = 320.0
+offset_bottom = 212.0
 theme_override_font_sizes/font_size = 14
-text = "You work for a flood insurance company"
-
-[node name="Label2" type="Label" parent="Canvas/Labels"]
-offset_left = 7.0
-offset_top = 193.0
-offset_right = 198.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 14
-text = "But the sea level is rising"
-
-[node name="Label3" type="Label" parent="Canvas/Labels"]
-offset_left = 7.0
-offset_top = 193.0
-offset_right = 339.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 14
-text = "Collect rocks from the bottom of the ocean"
-
-[node name="Label6" type="Label" parent="Canvas/Labels"]
-offset_left = 7.0
-offset_top = 193.0
-offset_right = 238.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 14
-text = "In order to lower the sea level"
-
-[node name="Label4" type="Label" parent="Canvas/Labels"]
-offset_left = 7.0
-offset_top = 193.0
-offset_right = 354.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 14
-text = "But watch out for the disaster news company"
+text = "You work for a flood insurance company.
+Collect rocks from the bottom of the ocean"
 
 [node name="GameTitle" parent="Canvas" instance=ExtResource("2_4lkc1")]
+modulate = Color(0.106311, 0.14407, 0.261466, 1)
 
 [node name="Button" type="Button" parent="Canvas"]
 modulate = Color(1, 1, 1, 0)

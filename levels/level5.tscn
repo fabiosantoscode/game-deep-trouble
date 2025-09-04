@@ -52,7 +52,8 @@ curve = SubResource("Curve2D_jt2a3")
 position = Vector2(367, 33)
 
 [node name="Algae" parent="." instance=ExtResource("6_ln8rm")]
-position = Vector2(303, 382)
+position = Vector2(314, 375)
+rotation = -3.14159
 
 [node name="Algae2" parent="." instance=ExtResource("6_ln8rm")]
-position = Vector2(304, 406)
+position = Vector2(293, 408)

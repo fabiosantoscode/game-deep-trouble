@@ -36,25 +36,30 @@ scale = Vector2(1.00048, 0.980545)
 curve = SubResource("Curve2D_6ilhl")
 
 [node name="Sub" parent="." instance=ExtResource("5_rv0x7")]
-position = Vector2(189, 25)
+position = Vector2(189, 98)
 
 [node name="Algae" parent="." instance=ExtResource("6_4m8hb")]
 position = Vector2(68, 391)
 
 [node name="Algae2" parent="." instance=ExtResource("6_4m8hb")]
-position = Vector2(69, 362)
+position = Vector2(73, 359)
+rotation = -3.14159
 
 [node name="Algae3" parent="." instance=ExtResource("6_4m8hb")]
-position = Vector2(503, 712)
+position = Vector2(495, 692)
+rotation = 1.57079
 
 [node name="Algae4" parent="." instance=ExtResource("6_4m8hb")]
-position = Vector2(524, 712)
+position = Vector2(527, 699)
+rotation = -1.57079
 
 [node name="Algae5" parent="." instance=ExtResource("6_4m8hb")]
-position = Vector2(503, 321)
+position = Vector2(495, 316)
+rotation = 1.57079
 
 [node name="Algae6" parent="." instance=ExtResource("6_4m8hb")]
-position = Vector2(524, 321)
+position = Vector2(527, 321)
+rotation = -1.57079
 
 [node name="Algae7" parent="." instance=ExtResource("6_4m8hb")]
-position = Vector2(555, 505)
+position = Vector2(558, 503)

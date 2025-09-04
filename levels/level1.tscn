@@ -30,4 +30,4 @@ offset_top = 33.0
 offset_right = 377.0
 offset_bottom = 56.0
 theme_override_font_sizes/font_size = 8
-text = "Use arrow keys or your gamepad"
+text = "Bring the rock"
