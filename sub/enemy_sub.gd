@@ -29,12 +29,11 @@ func _physics_process(delta: float) -> void:
 	var old_pos = enemy_sub_agent.global_position
 	enemy_sub_agent.global_position = self.path_follow.global_position
 
-	_update_visuals(old_pos, enemy_sub_agent.global_position)
-	_rotate_finder(old_pos, enemy_sub_agent.global_position)
+	_update_visuals(old_pos, enemy_sub_agent.global_position, self.path_follow.global_rotation)
 	for in_vision in enemy_sub_agent.vision_area.get_overlapping_areas():
 		enemy_sub_agent._on_player_seen(in_vision)
 
-func _update_visuals(old_pos, new_pos):
+func _update_visuals(old_pos, new_pos, ang):
 	var x_delta = new_pos.x - old_pos.x
 	var y_delta = new_pos.y - old_pos.y
 
@@ -53,8 +52,4 @@ func _update_visuals(old_pos, new_pos):
 	enemy_sub_agent.visual.rotation = rotate
 	enemy_sub_agent.visual.flip_h = do_hflip
 
-func _rotate_finder(old_pos: Vector2, new_pos: Vector2):
-	if old_pos.distance_to(new_pos) < 0.1: return
-
-	var ang = old_pos.angle_to_point(new_pos)
-	enemy_sub_agent.rotator.rotation = ang
+	enemy_sub_agent.vision_cone_rotator.rotation = ang

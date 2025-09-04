@@ -7,11 +7,9 @@ class_name SubVisuals
 
 @export var is_facing_left = false:
 	set(val): is_facing_left = val; _update_visuals()
-	get: return is_facing_left
 
 @export var claw_is_out = false:
 	set(val): claw_is_out = val; _update_visuals()
-	get: return claw_is_out
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var claw: Sprite2D = $Claw

@@ -1,11 +1,12 @@
 extends Node2D
 class_name EnemySubAgent
 
-@onready var rotator: Node2D = $Rotator
-@onready var vision_area: Area2D = $Rotator/VisionArea
-@onready var visual: AnimatedSprite2D = $Visual
-@onready var player_kill_area: Area2D = $PlayerKillBox
-@onready var receive_death_from_falling_rock: Area2D = $Rotator/ReceiveDeathFromFallingRock
+@onready var vision_cone_rotator: Node2D = $VisionConeRotator
+@onready var vision_area: Area2D = $VisionConeRotator/VisionArea
+@onready var visual: AnimatedSprite2D = $SubSprite
+@onready var player_kill_area: Area2D = $PlayerKillArea
+@onready var receive_death_from_falling_rock: Area2D = $ReceiveDeathFromFallingRock
+@onready var vision_ray_template: RayCast2D = $VisionRayTemplate
 
 
 func _ready():
@@ -20,20 +21,19 @@ func _on_player_seen(sub: Node2D):
 		LevelRotator.restart_level.call_deferred(self)
 
 func _on_player_kill(sub: Node2D):
-	if sub is Sub:
+	if sub is Sub and not sub.is_stealthy:
 		print("EnemySubAgent: Player touched!")
 		LevelRotator.restart_level.call_deferred(self)
 
 func _check_vision_ray(sub: Sub):
-	var ray_from = self.global_position
-	var ray_to = sub.global_position
-	var space_state = get_world_2d().direct_space_state
-	var layer_1_or_5_or_6 = $RayCast2D.collision_mask
-	var query = PhysicsRayQueryParameters2D.create(ray_from, ray_to, layer_1_or_5_or_6)
-	query.exclude = [self]
+	var query = PhysicsRayQueryParameters2D.create(
+		self.global_position,
+		sub.global_position,
+		vision_ray_template.collision_mask
+	)
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
-	var result = space_state.intersect_ray(query)
+	var result = get_world_2d().direct_space_state.intersect_ray(query)
 	return result.get("collider", null) is Sub
 
 func _on_receive_death(_rock):
