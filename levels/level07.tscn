@@ -42,4 +42,4 @@ position = Vector2(-122, 7)
 curve = SubResource("Curve2D_lpgdq")
 
 [node name="Sub" parent="." instance=ExtResource("4_cc5tm")]
-position = Vector2(330, 24)
+position = Vector2(330, 82)

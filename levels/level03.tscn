@@ -34,4 +34,4 @@ scale = Vector2(1, 1.02182)
 curve = SubResource("Curve2D_0fm5q")
 
 [node name="Sub" parent="." instance=ExtResource("4_1xfnq")]
-position = Vector2(312, 26)
+position = Vector2(313, 76)
