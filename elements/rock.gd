@@ -13,7 +13,7 @@ func _ready():
 
 func become_grabbed(sub: Sub) -> RockGrabbed:
 	var pos = self.sprite.global_position
-	var new_rock = RockGrabbed.create_grabbed_rock()
+	var new_rock = RockGrabbed.create_grabbed_rock(sub)
 	sub.add_child(new_rock)
 	new_rock.owner = sub
 	new_rock.global_position = pos

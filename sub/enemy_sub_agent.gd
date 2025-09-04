@@ -15,10 +15,11 @@ func _ready():
 	receive_death_from_falling_rock.area_entered.connect(_on_receive_death)
 
 func _on_player_seen(sub: Node2D):
-	if sub == null or not (sub is Sub): return
-	
-	print("EnemySubAgent: Player seen!")
+	if sub != null and sub is Sub and _check_vision_ray(sub):
+		print("EnemySubAgent: Player seen!")
+		_restart_level()
 
+func _check_vision_ray(sub: Sub):
 	var ray_from = self.global_position
 	var ray_to = sub.global_position
 	var space_state = get_world_2d().direct_space_state
@@ -28,8 +29,7 @@ func _on_player_seen(sub: Node2D):
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
 	var result = space_state.intersect_ray(query)
-	if result.get("collider", null) is Sub:
-		_restart_level()
+	return result.get("collider", null) is Sub
 
 func _on_player_kill(sub: Node2D):
 	if sub is Sub:

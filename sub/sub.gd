@@ -9,6 +9,14 @@ class_name Sub
 var has_rock: RockGrabbed = null
 @export var y_distance_to_rock = 13
 
+## Stealth system. When hidden, stealth_changed(true)
+signal stealth_changed(is_stealthy: bool)
+var is_stealthy: bool = false
+
+func _ready():
+	self.stealth_changed.connect(func(is_s):
+		self.is_stealthy = is_s)
+
 func _physics_process(delta: float) -> void:
 	var mov = sub_input.get_movement_input(self)
 	sub_movement.move_sub(self, mov, delta)

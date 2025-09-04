@@ -11,6 +11,7 @@ rotation = 0.383972
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_es30q")
+stealth_modulate = Color(0.439216, 0.501961, 0.439216, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_v5mnh")

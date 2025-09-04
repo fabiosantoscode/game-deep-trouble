@@ -1,6 +1,10 @@
 extends Node2D
 class_name SubVisuals
 
+@onready var sub: Sub = $".."
+
+@export var stealth_modulate = Color.WHITE
+
 @export var is_facing_left = false:
 	set(val): is_facing_left = val; _update_visuals()
 	get: return is_facing_left
@@ -16,6 +20,7 @@ class_name SubVisuals
 
 func _update_visuals():
 	if sprite == null: return # this is null before _ready()
+	sprite.modulate = self.stealth_modulate if sub.is_stealthy else Color.WHITE
 	claw.visible = claw_is_out
 	sprite.flip_h = self.is_facing_left
 	claw.flip_h = self.is_facing_left
@@ -25,4 +30,5 @@ func _update_visuals():
 
 func _ready():
 	sprite.play()
+	sub.stealth_changed.connect(func(_s): _update_visuals())
 	_update_visuals()

@@ -2,9 +2,18 @@ extends Area2D
 class_name RockGrabbed
 
 const ROCK_GRABBED = preload("res://elements/rock_grabbed.tscn")
+var sub: Sub
+@export var stealth_modulate = Color.WHITE
 
-static func create_grabbed_rock():
-	return ROCK_GRABBED.instantiate()
+static func create_grabbed_rock(sub: Sub):
+	var rock = ROCK_GRABBED.instantiate()
+	rock.sub = sub
+	return rock
+
+func _ready() -> void:
+	if sub != null:
+		sub.stealth_changed.connect(func(is_stealthy):
+			self.modulate = stealth_modulate if is_stealthy else Color.WHITE)
 
 func become_dropped_rock(sub: Sub):
 	self.queue_free()
