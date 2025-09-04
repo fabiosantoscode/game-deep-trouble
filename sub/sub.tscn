@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=20 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://eoihi0qptjyp" path="res://sub/sub_visuals.gd" id="4_v8wm4"]
 [ext_resource type="Script" uid="uid://c5uxnj06ygkxm" path="res://sub/sub_movement.gd" id="5_egpih"]
 [ext_resource type="Script" uid="uid://d4id2tllwyatg" path="res://sub/sub_input.gd" id="6_edyj4"]
+[ext_resource type="Texture2D" uid="uid://d3c2m33dafov6" path="res://sub/player_sub_glow.png" id="7_tffbf"]
 [ext_resource type="Script" uid="uid://biijowp4awwbt" path="res://sub/sub_rock_grabbing.gd" id="8_v8wm4"]
 [ext_resource type="Script" uid="uid://opxsuokcshbb" path="res://sub/sub_sound.gd" id="10_ghaol"]
 [ext_resource type="Texture2D" uid="uid://ckfrme2wkollo" path="res://sprites/bubble-small.png" id="10_nxarw"]
@@ -75,6 +76,10 @@ texture = ExtResource("2_egpih")
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_v8wm4")
 frame_progress = 0.994834
+
+[node name="PlayerSubGlow" type="Sprite2D" parent="SubVisuals"]
+modulate = Color(0.538, 1, 0.00999999, 0.341176)
+texture = ExtResource("7_tffbf")
 
 [node name="SubBubbleTrail" type="Node2D" parent="SubVisuals"]
 position = Vector2(-7, 0)

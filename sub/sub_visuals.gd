@@ -12,12 +12,14 @@ class_name SubVisuals
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var claw: Sprite2D = $Claw
 @onready var sub_bubble_trail: SubBubbleTrail = $SubBubbleTrail
+@onready var player_sub_glow: Sprite2D = $PlayerSubGlow
 
 func _update_visuals():
 	if sprite == null: return # this is null before _ready()
 	claw.visible = claw_is_out
 	sprite.flip_h = self.is_facing_left
 	claw.flip_h = self.is_facing_left
+	player_sub_glow.flip_h = self.is_facing_left
 	var tail_sign = 1 if self.is_facing_left else -1
 	sub_bubble_trail.position.x = tail_sign * abs(sub_bubble_trail.position.x)
 
