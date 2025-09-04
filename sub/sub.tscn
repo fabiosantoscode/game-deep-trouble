@@ -67,7 +67,6 @@ script = ExtResource("6_edyj4")
 [node name="SubVisuals" type="Node2D" parent="."]
 script = ExtResource("4_v8wm4")
 stealth_modulate = Color(0.34902, 0.6, 0.34902, 1)
-claw_is_out = true
 
 [node name="Claw" type="Sprite2D" parent="SubVisuals"]
 position = Vector2(0, 3)

@@ -15,9 +15,14 @@ func _ready():
 	receive_death_from_falling_rock.area_entered.connect(_on_receive_death)
 
 func _on_player_seen(sub: Node2D):
-	if sub != null and sub is Sub and _check_vision_ray(sub):
+	if sub != null and sub is Sub and not sub.is_stealthy and _check_vision_ray(sub):
 		print("EnemySubAgent: Player seen!")
-		_restart_level()
+		LevelRotator.restart_level.call_deferred(self)
+
+func _on_player_kill(sub: Node2D):
+	if sub is Sub:
+		print("EnemySubAgent: Player touched!")
+		LevelRotator.restart_level.call_deferred(self)
 
 func _check_vision_ray(sub: Sub):
 	var ray_from = self.global_position
@@ -31,11 +36,6 @@ func _check_vision_ray(sub: Sub):
 	var result = space_state.intersect_ray(query)
 	return result.get("collider", null) is Sub
 
-func _on_player_kill(sub: Node2D):
-	if sub is Sub:
-		print("EnemySubAgent: Player touched!")
-		_restart_level()
-
 func _on_receive_death(_rock):
 	if not GlobalMusicPlayer.is_muted:
 		var thud_sound = AudioStreamPlayer2D.new()
@@ -47,6 +47,3 @@ func _on_receive_death(_rock):
 	print("EnemySubAgent: died!")
 	self.owner.queue_free()
 	self.queue_free()
-
-func _restart_level():
-	LevelRotator.restart_level.call_deferred(self)

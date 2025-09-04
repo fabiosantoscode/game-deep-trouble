@@ -9,7 +9,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_f5oyx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -36, -161, 0, 0, 0, 0, 68, 141, 0, 0, 0, 0, -36, -161)
+"points": PackedVector2Array(0, 0, 0, 0, -36, -161, 0, 0, 0, 0, 69, 124, 0, 0, 0, 0, -36, -161)
 }
 point_count = 3
 
@@ -34,13 +34,16 @@ position = Vector2(222, 447)
 
 [node name="EnemySub" parent="." instance=ExtResource("4_njina")]
 position = Vector2(386, 575)
+initial_progress = 0.2
 progress_ratio_per_second = 0.06
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]
+position = Vector2(-9, 1)
 curve = SubResource("Curve2D_f5oyx")
 
 [node name="EnemySub2" parent="." instance=ExtResource("4_njina")]
 position = Vector2(520, 301)
+initial_progress = 0.2
 progress_ratio_per_second = 0.06
 
 [node name="Path2D" type="Path2D" parent="EnemySub2"]
@@ -49,7 +52,7 @@ scale = Vector2(1.00415, 0.926829)
 curve = SubResource("Curve2D_jt2a3")
 
 [node name="Sub" parent="." instance=ExtResource("5_mub31")]
-position = Vector2(367, 33)
+position = Vector2(368, 82)
 
 [node name="Algae" parent="." instance=ExtResource("6_ln8rm")]
 position = Vector2(314, 375)

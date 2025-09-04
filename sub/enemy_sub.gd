@@ -17,6 +17,10 @@ func _ready() -> void:
 	path_follow.owner = self
 	path_follow.progress_ratio = initial_progress
 
+	# Kick it off
+	_physics_process(0.01)
+	_physics_process(0.01)
+
 func _physics_process(delta: float) -> void:
 	assert(self.progress_ratio_per_second != null)
 

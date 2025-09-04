@@ -11,7 +11,7 @@ script/source = "extends Node2D
 
 func _ready():
 	button.pressed.connect(func():
-		LevelRotator.title_screen(self))
+		LevelRotator.title_screen.call_deferred(self))
 	for i in range(labels.get_child_count()):
 		_show(i)
 		await get_tree().create_timer(4.0).timeout
