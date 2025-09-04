@@ -18,9 +18,9 @@ func _ready():
 		self.is_stealthy = is_s)
 
 func _physics_process(delta: float) -> void:
-	var mov = sub_input.get_movement_input(self)
-	sub_movement.move_sub(self, mov, delta)
-	sub_visuals.is_facing_left = sub_movement.should_face_left(mov)
+	var player_input = sub_input.get_movement_input(self)
+	sub_movement.move_sub(self, player_input, delta)
+	sub_visuals.is_facing_left = sub_movement.should_face_left(player_input)
 	sub_visuals.claw_is_out = has_rock != null
 	sub_rock_grabbing.try_grab_rock(self)
 	sub_rock_grabbing.try_drop_rock(self)
@@ -35,8 +35,8 @@ func drop_rock():
 	assert(has_rock != null)
 	has_rock.become_dropped_rock(self)
 
-func get_inertia():
-	return sub_movement.inertia
-
 func get_speed_percent():
 	return sub_movement.speed_percent
+
+func get_desired_speed_percent():
+	return sub_input.last_input

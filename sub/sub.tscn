@@ -86,7 +86,7 @@ position = Vector2(-7, 0)
 script = ExtResource("4_c7c14")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SubVisuals/SubBubbleTrail"]
-position = Vector2(-1, -1)
+position = Vector2(-1, 0)
 texture = ExtResource("10_nxarw")
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_nxarw")
@@ -111,7 +111,8 @@ volume_db = 16.545
 
 [node name="AudioEngine" type="AudioStreamPlayer2D" parent="SubSound"]
 stream = ExtResource("12_nxarw")
-volume_db = -3.438
+volume_db = -8.39
+pitch_scale = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_edyj4")
