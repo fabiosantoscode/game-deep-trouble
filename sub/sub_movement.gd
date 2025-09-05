@@ -95,11 +95,8 @@ func _reversal_detect(new_direction: Vector2):
 		if diff > 0.0:
 			diff = avg_vec.normalized().distance_squared_to(new_direction)
 			var max_joystick_sq_dist = 4.0 # 2.0 ** 2
-			diff = inverse_lerp(0.0, max_joystick_sq_dist, diff)
-			print("diff! ", diff)
-		return diff
-	else:
-		return 0.0
+			return inverse_lerp(0.0, max_joystick_sq_dist, diff)
+	return 0.0
 
 func get_inertia(): return inertia
 func reset_inertia(): inertia = Vector2.ZERO
