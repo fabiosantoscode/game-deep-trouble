@@ -23,7 +23,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if GlobalMusicPlayer.is_muted: return
 
-	var should_have_engine_sound = sub.get_desired_speed_percent().length() > 0.1
+	var should_have_engine_sound = sub.get_last_input().length_squared() > 0.1
 	if should_have_engine_sound:
 		if not audio_engine.playing:
 			audio_engine.volume_linear = 0.0

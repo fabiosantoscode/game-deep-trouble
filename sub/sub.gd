@@ -9,6 +9,9 @@ class_name Sub
 var has_rock: RockGrabbed = null
 @export var y_distance_to_rock = 13
 
+signal movement_started(direction: Vector2)
+signal movement_reversed(direction: Vector2)
+
 ## Stealth system. When hidden, stealth_changed(true)
 signal stealth_changed(is_stealthy: bool)
 var is_stealthy: bool = false
@@ -38,5 +41,5 @@ func drop_rock():
 func get_speed_percent():
 	return sub_movement.speed_percent
 
-func get_desired_speed_percent():
+func get_last_input() -> Vector2:
 	return sub_input.last_input
