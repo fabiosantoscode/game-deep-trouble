@@ -43,7 +43,7 @@ func move_sub_inner(is_carrying_rock: bool, player_input: Vector2, delta: float)
 	# NO MOVEMENT DESIRED
 	if _no_input:
 		last_input_age += delta # expire the last input
-		inertia = frame_independent_lerp(inertia, Vector2.ZERO, stop_speed, delta)
+		inertia = Utils.frame_independent_lerp(inertia, Vector2.ZERO, stop_speed, delta)
 		return inertia
 
 	var just_had_input = last_input_age < last_input_duration
@@ -63,7 +63,7 @@ func move_sub_inner(is_carrying_rock: bool, player_input: Vector2, delta: float)
 		sub.movement_started.emit(player_input)
 		_reversal_reset()
 	else:
-		inertia = frame_independent_lerp(inertia, desired_velocity, change_direction_speed, delta)
+		inertia = Utils.frame_independent_lerp(inertia, desired_velocity, change_direction_speed, delta)
 		_reversal_detect(player_input)
 
 	return inertia
@@ -73,7 +73,7 @@ func move_sub_inner(is_carrying_rock: bool, player_input: Vector2, delta: float)
 # The sub will emit some bubbles
 var _movement_average
 func _ready_reversal():
-	_movement_average = AverageVector.new(0.4)
+	_movement_average = Utils.AverageVector.new(0.4)
 
 func _reversal_detect(new_direction: Vector2):
 	_movement_average.push(new_direction)
@@ -88,45 +88,3 @@ func _reversal_reset():
 
 func get_inertia(): return inertia
 func reset_inertia(): inertia = Vector2.ZERO
-
-static func frame_independent_lerp(from, to, amount: float, delta: float):
-	var e = 2.718281828459045
-	return lerp(from, to, 1 - pow(e, -amount * delta))
-
-class AverageVector:
-	var arr = [Vector2.ZERO]
-	var index = 0
-	var sum = Vector2.ZERO
-	var length = 1
-	var half_length = 0
-	var pushes = 0
-	var is_new = true
-
-	func _init(seconds: float):
-		length = floori(Engine.physics_ticks_per_second * seconds)
-		half_length = length / 2
-		for i in range(length):
-			arr.push_back(Vector2.ZERO)
-
-	func reset():
-		if is_new: return
-		is_new = true
-		for i in range(length):
-			arr[i] = Vector2.ZERO
-		sum = Vector2.ZERO
-		index = 0
-		pushes = 0
-
-	func push(new_vec: Vector2):
-		is_new = false
-		sum -= arr[index]
-		sum += new_vec
-		arr[index] = new_vec
-		index = (index + 1) % length
-		pushes += 1
-
-	func is_filled():
-		return pushes > half_length
-
-	func average():
-		return sum / float(length)
