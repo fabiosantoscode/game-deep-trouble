@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjl8ihkmumuwu"]
+
+[ext_resource type="Script" uid="uid://c2f2vqcn8wblr" path="res://elements/particle_preload.gd" id="1_sy6fj"]
+
+[node name="ParticlePreload" type="Node2D"]
+top_level = true
+position = Vector2(-9999, -9999)
+script = ExtResource("1_sy6fj")

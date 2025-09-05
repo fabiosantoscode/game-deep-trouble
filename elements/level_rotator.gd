@@ -31,6 +31,8 @@ static func title_screen(from_child: Node):
 static func next_level(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
+		await ParticlePreload.preload_particles()
+
 		# Jingle does not apply to level -1 which is the lore dump
 		if level_rot.current_level > -1:
 			level_rot._low_level_set_level(ON_LEVEL_COMPLETE)

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalMusicPlayer="*res://music/GlobalMusicPlayer.tscn"
 VirtualJoystick="*res://elements/virtual_joystick.tscn"
+ParticlePreload="*res://elements/particle_preload.tscn"
 
 [display]
 
