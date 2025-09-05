@@ -15,11 +15,15 @@ func preload_particles():
 		particle.process_material = material
 
 		particle.one_shot = true
-		particle.lifetime = 0.25
+		particle.lifetime = 0.1
 		particle.amount = 1
+		particle.amount_ratio = 1.0
 
 		self.add_child(particle)
 		await get_tree().process_frame
 		particle.emitting = true
+		await get_tree().process_frame
 
+	await get_tree().create_timer(0.1).timeout
 	await get_tree().process_frame
+	await get_tree().physics_frame
