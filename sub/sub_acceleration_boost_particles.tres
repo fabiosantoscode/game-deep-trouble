@@ -10,11 +10,10 @@ curve = SubResource("Curve_5x3bp")
 
 [resource]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(4, 4, 4)
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(8, 8, 8)
 emission_shape = 1
 emission_sphere_radius = 1.0
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
 direction = Vector3(-1, 0, 0)
 spread = 44.568
 initial_velocity_min = 17.03
@@ -26,9 +25,7 @@ radial_accel_min = -4.38
 radial_accel_max = 4.38
 tangential_accel_min = -10.71
 tangential_accel_max = 15.57
-damping_min = 74.783
-damping_max = 85.702
+damping_min = 1.075
+damping_max = 6.618
 color = Color(1, 1, 1, 0.768627)
 alpha_curve = SubResource("CurveTexture_tcdut")
-hue_variation_min = -2.23517e-08
-hue_variation_max = -2.23517e-08

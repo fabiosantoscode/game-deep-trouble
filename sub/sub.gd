@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 	var player_input = sub_input.get_movement_input(self)
 	sub_movement.move_sub(self, player_input, delta)
 	sub_visuals.is_facing_left = sub_movement.should_face_left(player_input)
+	sub_visuals.is_facing_updown = sub_movement.should_face_updown(player_input)
 	sub_visuals.claw_is_out = has_rock != null
 	sub_rock_grabbing.try_grab_rock(self)
 	sub_rock_grabbing.try_drop_rock(self)

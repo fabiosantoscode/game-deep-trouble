@@ -6,15 +6,15 @@ extends Node2D
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var boost_particles: GPUParticles2D = $AccelerationBoostParticles
 
-var flip_h: bool:
-	set(new_fl):
-		flip_h = new_fl
-		var sign = 1 if flip_h else -1
-		gpu_particles_2d.position.x = sign * abs(gpu_particles_2d.position.x)
-		boost_particles.position.x = -1 * sign * abs(boost_particles.position.x)
-
-var sub_speed_delayed = 0.0
+const updown_shift_emitters = 4
 var particle_boost_duration = 0.2
+var sub_speed_delayed = 0.0
+
+var flip_h: bool:
+	set(new_fl): flip_h = new_fl; _update_positions()
+
+var is_facing_updown: int:
+	set(new_updown): is_facing_updown = new_updown; _update_positions()
 
 func _ready() -> void:
 	_ready_boost()
@@ -22,6 +22,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_bubbles(delta)
 	_boost(delta)
+
+func _update_positions():
+	var sign = 1 if flip_h else -1
+	var b_sign = -sign
+	gpu_particles_2d.position.x = sign * abs(gpu_particles_2d.position.x)
+	boost_particles.position.x = b_sign * abs(boost_particles.position.x)
+
+	gpu_particles_2d.position.y = is_facing_updown * updown_shift_emitters
+	boost_particles.position.y = is_facing_updown * -1 * updown_shift_emitters
 
 func _bubbles(delta: float):
 	var speed = sub.get_speed_percent()
