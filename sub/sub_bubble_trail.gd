@@ -38,9 +38,10 @@ func _ready_boost():
 	sub.movement_started.connect(_boost_start)
 	sub.movement_reversed.connect(_boost_start)
 
-func _boost_start(inertia: Vector2):
+func _boost_start(inertia: Vector2, intensity = 1.0):
 	particle_boost_age = 0.0
 	boost_particles.emitting = true
+	boost_particles.amount_ratio = intensity
 	_boost_set_direction(inertia)
 
 func _boost(delta: float):

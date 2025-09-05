@@ -5,7 +5,9 @@ class_name SubMovement
 
 ## Fingers don't key-travel instantly, bridge the gap
 var last_input_duration = 0.2
-var last_input_age = 0.0
+
+## in joystick-position-squared-distance between rolling average and current
+var movement_reversal_bubbles_threshold = 0.7 ** 2
 
 ## percentage towards 0m/s per second
 var stop_speed = 10.0
@@ -22,7 +24,7 @@ var speed_percent: float:
 	get(): return inertia.length() / speed
 
 func _ready() -> void:
-	_ready_reversal()
+	_ready_bubbles()
 
 var _was_facing_left = false
 func should_face_left(player_input: Vector2):
@@ -32,22 +34,25 @@ func should_face_left(player_input: Vector2):
 
 ## Sub will call this in _process_physics
 func move_sub(sub: Sub, player_input: Vector2, delta: float):
-	sub.velocity = move_sub_inner(sub.has_rock != null, player_input, delta)
+	inertia = move_sub_inner(sub.has_rock != null, player_input, delta)
+	sub.velocity = inertia
 	sub.move_and_slide()
 
-var _no_input = true
 func move_sub_inner(is_carrying_rock: bool, player_input: Vector2, delta: float):
-	var no_input_before = _no_input
-	_no_input = player_input.length_squared() < 0.1
+	var pushing_joystick = player_input.length_squared() > 0.1
+
+	# Bridge over small finger rises
+	var just_had_input = last_input_age < last_input_duration
+	if pushing_joystick:
+		last_input_age = 0.0
+	else:
+		last_input_age += delta # expire the last input
+
+	_compute_bubbles(pushing_joystick, just_had_input, player_input)
 
 	# NO MOVEMENT DESIRED
-	if _no_input:
-		last_input_age += delta # expire the last input
-		inertia = Utils.frame_independent_lerp(inertia, Vector2.ZERO, stop_speed, delta)
-		return inertia
-
-	var just_had_input = last_input_age < last_input_duration
-	last_input_age = 0.0
+	if not pushing_joystick:
+		return Utils.frame_independent_lerp(inertia, Vector2.ZERO, stop_speed, delta)
 
 	# PLAYER WANTS TO MOVE
 
@@ -59,32 +64,42 @@ func move_sub_inner(is_carrying_rock: bool, player_input: Vector2, delta: float)
 
 	# No interpolation when first accelerating
 	if not just_had_input:
-		inertia = desired_velocity
-		sub.movement_started.emit(player_input)
-		_reversal_reset()
+		return desired_velocity
 	else:
-		inertia = Utils.frame_independent_lerp(inertia, desired_velocity, change_direction_speed, delta)
-		_reversal_detect(player_input)
+		return Utils.frame_independent_lerp(inertia, desired_velocity, change_direction_speed, delta)
 
-	return inertia
-
-# MOVEMENT REVERSAL
-# When sonic stops and we press the opposite direction, he screeches to a halt
-# The sub will emit some bubbles
+# Bubbles
+# Bubbles are launched for 2 reasons:
+# - the sub just started moving (we emit sub.movement_started)
+# - the sub swiftly changed direction (we emit sub.movement_reversed)
+var last_input_age = 0.0
 var _movement_average
-func _ready_reversal():
-	_movement_average = Utils.AverageVector.new(0.4)
+func _ready_bubbles():
+	_movement_average = Utils.AverageVector.new(0.7)
 
-func _reversal_detect(new_direction: Vector2):
-	_movement_average.push(new_direction)
-	if _movement_average.is_filled() and new_direction.length_squared() > 0.1:
-		var avg_vec: Vector2 = _movement_average.average()
-		if avg_vec.distance_squared_to(new_direction) > 0.8:
-			sub.movement_reversed.emit(new_direction)
+func _compute_bubbles(pushing_joystick, just_had_input, player_input):
+	if pushing_joystick and not just_had_input:
+		sub.movement_started.emit(player_input)
+		_movement_average.reset()
+	else:
+		_movement_average.push(player_input)
+		var reversal = _reversal_detect(player_input)
+		if reversal > 0.0:
+			sub.movement_reversed.emit(player_input, reversal)
 			_movement_average.reset()
 
-func _reversal_reset():
-	_movement_average.reset()
+func _reversal_detect(new_direction: Vector2):
+	if _movement_average.is_filled() and new_direction.length_squared() > 0.1:
+		var avg_vec: Vector2 = _movement_average.average()
+		var diff = avg_vec.distance_squared_to(new_direction) - movement_reversal_bubbles_threshold
+		if diff > 0.0:
+			diff = avg_vec.normalized().distance_squared_to(new_direction)
+			var max_joystick_sq_dist = 4.0 # 2.0 ** 2
+			diff = inverse_lerp(0.0, max_joystick_sq_dist, diff)
+			print("diff! ", diff)
+		return diff
+	else:
+		return 0.0
 
 func get_inertia(): return inertia
 func reset_inertia(): inertia = Vector2.ZERO

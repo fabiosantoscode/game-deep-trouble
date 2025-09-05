@@ -10,7 +10,7 @@ var has_rock: RockGrabbed = null
 @export var y_distance_to_rock = 13
 
 signal movement_started(direction: Vector2)
-signal movement_reversed(direction: Vector2)
+signal movement_reversed(direction: Vector2, intensity_01: float)
 
 ## Stealth system. When hidden, stealth_changed(true)
 signal stealth_changed(is_stealthy: bool)
