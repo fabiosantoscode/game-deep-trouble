@@ -84,7 +84,7 @@ func _low_level_set_level(packed_scene):
 
 static func _find_all_levels():
 	var ret = []
-	for file in DirAccess.open("res://levels/").get_files():
+	for file in ResourceLoader.list_directory("res://levels/"):
 		if file.begins_with("level") and file.ends_with(".tscn"):
 			var digit = file[len("level")]
 			if "0123456789".contains(digit):

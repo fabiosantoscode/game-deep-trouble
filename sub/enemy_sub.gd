@@ -41,10 +41,7 @@ func _update_visuals(old_pos, new_pos, ang):
 	var do_hflip = false
 	if absf(x_delta) > 0.01 or absf(y_delta) > 0.01:
 		if absf(x_delta) > absf(y_delta):
-			if x_delta < 0.0:
-				do_hflip = true
-			else:
-				pass
+			do_hflip = x_delta < 0.0
 		else:
 			if y_delta < 0.0: rotate = -(TAU/4.0) # face up
 			else:             rotate = TAU/4.0
