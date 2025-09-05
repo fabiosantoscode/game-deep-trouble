@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=22 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://cnjbblb5pefdm" path="res://sfx/dock.mp3" id="11_c7c14"]
 [ext_resource type="Texture2D" uid="uid://cyrdc454dg6d0" path="res://sprites/bubble-boost.png" id="12_6c8vj"]
 [ext_resource type="AudioStream" uid="uid://c7ajqycovbge5" path="res://sfx/engine.mp3" id="12_nxarw"]
+[ext_resource type="Material" uid="uid://oquscto5dkyc" path="res://sub/sub_idle_particles.tres" id="12_tcdut"]
+[ext_resource type="Material" uid="uid://byowjdofldtvl" path="res://sub/sub_acceleration_boost_particles.tres" id="14_ogrk5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v8wm4"]
 animations = [{
@@ -30,52 +32,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nxarw"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(2, 2, 1)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(-0.912011, -0.410165, 0)
-spread = 16.807
-gravity = Vector3(0, -99, 0)
-radial_accel_min = -2.23517e-06
-radial_accel_max = -2.23517e-06
-damping_min = 32.759
-damping_max = 43.678
-
-[sub_resource type="Curve" id="Curve_5x3bp"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.319559, 1), 0.0, 0.0, 0, 0, Vector2(0.534435, 0.534155), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.101624, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_tcdut"]
-width = 64
-curve = SubResource("Curve_5x3bp")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ogrk5"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(4, 4, 4)
-emission_shape = 1
-emission_sphere_radius = 1.0
-angle_min = 1.07288e-05
-angle_max = 1.07288e-05
-direction = Vector3(-1, 0, 0)
-spread = 44.568
-initial_velocity_min = 17.03
-initial_velocity_max = 61.92
-gravity = Vector3(0, -44, 0)
-linear_accel_min = -2.23517e-06
-linear_accel_max = 2.43
-radial_accel_min = -4.38
-radial_accel_max = 4.38
-tangential_accel_min = -10.71
-tangential_accel_max = 15.57
-damping_min = 74.783
-damping_max = 85.702
-color = Color(1, 1, 1, 0.768627)
-alpha_curve = SubResource("CurveTexture_tcdut")
-hue_variation_min = -2.23517e-08
-hue_variation_max = -2.23517e-08
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8wm4"]
 radius = 2.0
@@ -123,14 +79,14 @@ position = Vector2(-8, 0)
 amount_ratio = 0.0583
 texture = ExtResource("10_nxarw")
 lifetime = 0.7
-process_material = SubResource("ParticleProcessMaterial_nxarw")
+process_material = ExtResource("12_tcdut")
 
 [node name="AccelerationBoostParticles" type="GPUParticles2D" parent="SubVisuals/SubBubbleTrail"]
 emitting = false
 amount = 64
 texture = ExtResource("12_6c8vj")
 lifetime = 0.4
-process_material = SubResource("ParticleProcessMaterial_ogrk5")
+process_material = ExtResource("14_ogrk5")
 
 [node name="SubRockGrabbing" type="Node2D" parent="."]
 script = ExtResource("8_v8wm4")
