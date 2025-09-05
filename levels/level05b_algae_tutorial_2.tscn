@@ -34,7 +34,7 @@ position = Vector2(222, 447)
 
 [node name="EnemySub" parent="." instance=ExtResource("4_h618x")]
 position = Vector2(386, 575)
-initial_progress = 0.2
+initial_progress = 0.5
 progress_ratio_per_second = 0.06
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]
@@ -43,7 +43,7 @@ curve = SubResource("Curve2D_f5oyx")
 
 [node name="EnemySub2" parent="." instance=ExtResource("4_h618x")]
 position = Vector2(520, 301)
-initial_progress = 0.2
+initial_progress = 0.5
 progress_ratio_per_second = 0.06
 
 [node name="Path2D" type="Path2D" parent="EnemySub2"]
@@ -60,3 +60,7 @@ rotation = -3.14159
 
 [node name="Algae2" parent="." instance=ExtResource("6_h07jq")]
 position = Vector2(293, 408)
+
+[node name="Algae3" parent="." instance=ExtResource("6_h07jq")]
+position = Vector2(367, 561)
+rotation = 1.57079
