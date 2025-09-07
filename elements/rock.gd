@@ -19,7 +19,7 @@ func become_grabbed(sub: Sub) -> RockGrabbed:
 	new_rock.global_position = pos
 
 	# Ensure the rock doesn't cover the sub, when grabbed.
-	new_rock.global_position.y = sub.global_position.y + sub.y_distance_to_rock
+	new_rock.global_position.y = sub.global_position.y + Sub.y_distance_to_rock
 
 	self.queue_free()
 	return new_rock

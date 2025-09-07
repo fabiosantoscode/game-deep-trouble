@@ -11,15 +11,12 @@ script/source = "extends Node2D
 
 @onready var start: Button = $VBoxContainer/Start
 @onready var music: CheckButton = $VBoxContainer/Music
-@onready var smartphone_mode: CheckButton = $VBoxContainer/SmartphoneMode
 @onready var full_screen: CheckButton = $VBoxContainer/FullScreen
 
 func _ready():
 	full_screen.toggled.connect(func(is_on):
 		get_window().mode = Window.MODE_FULLSCREEN if is_on else Window.MODE_WINDOWED
 		)
-	smartphone_mode.toggled.connect(func(is_on):
-		VirtualJoystick.set_joystick_enabled(is_on))
 	music.toggled.connect(func(is_on):
 		if is_on: GlobalMusicPlayer.start_music()
 		else: GlobalMusicPlayer.stop_music())
@@ -133,11 +130,6 @@ offset_bottom = 108.0
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Full screen"
-
-[node name="SmartphoneMode" type="CheckButton" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Smartphone mode"
 
 [node name="Music" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2

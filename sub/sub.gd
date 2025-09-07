@@ -7,7 +7,7 @@ class_name Sub
 @onready var sub_rock_grabbing: SubRockGrabbing = $SubRockGrabbing
 
 var has_rock: RockGrabbed = null
-@export var y_distance_to_rock = 13
+static var y_distance_to_rock = 13
 
 signal movement_started(direction: Vector2)
 signal movement_reversed(direction: Vector2, intensity_01: float)
@@ -21,7 +21,7 @@ func _ready():
 		self.is_stealthy = is_s)
 
 func _physics_process(delta: float) -> void:
-	var player_input = sub_input.get_movement_input(self)
+	var player_input = sub_input.get_movement_input()
 	sub_movement.move_sub(self, player_input, delta)
 	sub_visuals.is_facing_left = sub_movement.should_face_left(player_input)
 	sub_visuals.is_facing_updown = sub_movement.should_face_updown(player_input)

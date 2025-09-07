@@ -78,15 +78,6 @@ theme_override_font_sizes/font_size = 14
 text = "game+level design, SFX: José Pedro Dias"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label7" type="Label" parent="Canvas/Labels"]
-offset_left = 7.0
-offset_top = 193.0
-offset_right = 238.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 14
-text = "onscreen joystick (lib): mcunha-br on Github"
-metadata/_edit_use_anchors_ = true
-
 [node name="GameTitle" parent="Canvas" instance=ExtResource("5_dkps8")]
 
 [node name="Button" type="Button" parent="Canvas"]
