@@ -14,9 +14,10 @@ func preload_particles():
 		var particle = GPUParticles2D.new()
 		particle.process_material = material
 
+		particle.preprocess = 1.0
 		particle.one_shot = true
-		particle.lifetime = 0.1
-		particle.amount = 1
+		particle.lifetime = 0.5
+		#particle.amount = 1
 		particle.amount_ratio = 1.0
 
 		self.add_child(particle)

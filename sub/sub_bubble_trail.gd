@@ -35,7 +35,7 @@ func _update_positions():
 func _bubbles(delta: float):
 	var speed = sub.get_speed_percent()
 	self.sub_speed_delayed = (
-		frame_independent_lerp(sub_speed_delayed, speed, 0.2, delta)
+		Utils.frame_independent_lerp(sub_speed_delayed, speed, 0.2, delta)
 		if speed < 0.1
 		else speed
 	)
@@ -64,7 +64,3 @@ func _boost_set_direction(new_dir: Vector2):
 	if new_dir.length_squared() > 0.1:
 		var v3_dir = Vector3(new_dir.x, new_dir.y, 0.0)
 		boost_particles.process_material.direction = v3_dir.normalized()
-
-static func frame_independent_lerp(from, to, amount: float, delta: float):
-	var e = 2.71828
-	return lerp(from, to, 1 - pow(e, -amount * delta))

@@ -32,9 +32,11 @@ func should_face_left(player_input: Vector2):
 		_was_facing_left = player_input.x < 0
 	return _was_facing_left
 func should_face_updown(player_input: Vector2):
-	if absf(player_input.y) > 0.1:
-		return 1 if player_input.y < 0.0 else -1
-	return 0
+	return (
+		1 if player_input.y < -0.3
+		else -1 if player_input.y > 0.3
+		else 0
+	)
 
 ## Sub will call this in _process_physics
 func move_sub(sub: Sub, player_input: Vector2, delta: float):

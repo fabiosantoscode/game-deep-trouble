@@ -73,9 +73,12 @@ script = ExtResource("4_c7c14")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="SubVisuals/SubBubbleTrail"]
 position = Vector2(-8, 0)
+amount = 4
 amount_ratio = 0.0583
 texture = ExtResource("10_nxarw")
 lifetime = 0.7
+randomness = 0.56
+fixed_fps = 10
 process_material = ExtResource("12_tcdut")
 
 [node name="AccelerationBoostParticles" type="GPUParticles2D" parent="SubVisuals/SubBubbleTrail"]

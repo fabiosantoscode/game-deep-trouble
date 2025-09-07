@@ -5,6 +5,22 @@ static func frame_independent_lerp(from, to, amount: float, delta: float):
 	var e = 2.718281828459045
 	return lerp(from, to, 1 - pow(e, -amount * delta))
 
+static func spawn(parent: Node2D, child, position = null):
+	if child is String and (child.begins_with("res://") or child.begins_with("uid://")):
+		child = load(child)
+	if child is PackedScene:
+		child = child.instantiate()
+	parent.add_child(child)
+	child.owner = parent
+	if position != null:
+		child.global_position = position
+	return child
+
+static func clear_children(node: Node):
+	for child in node.get_children():
+		child.queue_free()
+		node.remove_child(child)
+
 class AverageVector:
 	var arr = [Vector2.ZERO]
 	var index = 0

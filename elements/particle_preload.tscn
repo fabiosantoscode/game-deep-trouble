@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2f2vqcn8wblr" path="res://elements/particle_preload.gd" id="1_sy6fj"]
 
 [node name="ParticlePreload" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 top_level = true
-position = Vector2(-9999, -9999)
+position = Vector2(99, 99)
 script = ExtResource("1_sy6fj")
