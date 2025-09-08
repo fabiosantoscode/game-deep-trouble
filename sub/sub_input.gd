@@ -21,10 +21,10 @@ func get_movement_input() -> Vector2:
 
 func _ready_touch_input():
 	touch_input_panel.gui_input.connect(func(event: InputEvent):
-		if event is InputEventScreenTouch:
+		if event is InputEventMouseButton:
 			_set_touch_pos(event.position, event.pressed)
-		elif event is InputEventScreenDrag:
-			_set_touch_pos(event.position, true)
+		elif event is InputEventMouseMotion:
+			_set_touch_pos(event.position)
 		)
 
 var _is_touching = false
@@ -46,7 +46,7 @@ func _get_touch_input():
 	else:
 		return touch_input.limit_length(1.0)
 
-func _set_touch_pos(touch_pos, is_pressed):
+func _set_touch_pos(touch_pos, is_pressed = _is_touching):
 	_finger_position = touch_input_panel.global_position + touch_pos
 	_is_touching = is_pressed
 	
