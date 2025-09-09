@@ -12,19 +12,25 @@ func _ready():
 	var tilemaps = level.find_children("", "TileMapLayer", true, false)
 	if len(tilemaps) == 0: print("warning: TileMapLayer not found in the level")
 	elif len(tilemaps) > 1: print("warning: Many TileMapLayer found in the level")
-	else: _prepare_camera(tilemaps[0])
+	else:
+		_prepare_camera(tilemaps[0])
+		get_viewport().size_changed.connect(func():
+			_prepare_camera(tilemaps[0]))
 
 func _process(delta: float) -> void:
 	if camera_2d is Camera2D and sub is Sub:
 		camera_2d.global_position = sub.global_position
 
 func _prepare_camera(t_map: TileMapLayer):
+	var viewport_size = get_viewport().size
+	var is_landscape = viewport_size.x > viewport_size.y
 	var cell = t_map.tile_set.tile_size.x
 	var rect = t_map.get_used_rect()
-	camera_2d = Camera2D.new()
-	self.add_child(camera_2d)
-	camera_2d.owner = self
-	camera_2d.make_current()
+	if camera_2d == null:
+		camera_2d = Camera2D.new()
+		self.add_child(camera_2d)
+		camera_2d.owner = self
+		camera_2d.make_current()
 
 	var limit_top = int(t_map.global_position.y) + rect.position.y * cell
 	var limit_bottom = int(t_map.global_position.y) + rect.position.y * cell + rect.size.y * cell
@@ -33,21 +39,23 @@ func _prepare_camera(t_map: TileMapLayer):
 
 	# Find ScrollLimitVertical and ScrollLimitHorizontal
 	var level = sub.owner
-	var horiz_limit = get_only_or_warn(
-		level.find_children("", "ScrollLimitHorizontal", true, false),
-		"found more than one ScrollLimitHorizontal"
-	)
-	if horiz_limit is ScrollLimitHorizontal:
-		limit_left = horiz_limit.min_x()
-		limit_right = horiz_limit.max_x()
+	if not is_landscape:
+		var horiz_limit = get_only_or_warn(
+			level.find_children("", "ScrollLimitHorizontal", true, false),
+			"found more than one ScrollLimitHorizontal"
+		)
+		if horiz_limit is ScrollLimitHorizontal:
+			limit_left = horiz_limit.min_x()
+			limit_right = horiz_limit.max_x()
 
-	var vert_limit = get_only_or_warn(
-		level.find_children("", "ScrollLimitVertical", true, false),
-		"found more than one ScrollLimitVertical"
-	)
-	if vert_limit is ScrollLimitVertical:
-		limit_top = vert_limit.min_y()
-		limit_bottom = vert_limit.max_y()
+	if is_landscape:
+		var vert_limit = get_only_or_warn(
+			level.find_children("", "ScrollLimitVertical", true, false),
+			"found more than one ScrollLimitVertical"
+		)
+		if vert_limit is ScrollLimitVertical:
+			limit_top = vert_limit.min_y()
+			limit_bottom = vert_limit.max_y()
 
 	camera_2d.limit_top = limit_top
 	camera_2d.limit_bottom = limit_bottom
