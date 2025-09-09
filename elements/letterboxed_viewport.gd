@@ -1,23 +1,28 @@
 extends Node2D
 class_name LetterboxedViewport
 
-# 320x240 at time of writing, will be scaled up.
-@onready var viewport_size = Vector2(
+# 320x240 at time of writing. will be scaled up and re-oriented dynamically.
+@onready var landscape_viewport = Vector2(
 	ProjectSettings.get_setting("display/window/size/viewport_width"),
 	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
+@onready var portrait_viewport = Vector2(landscape_viewport.y, landscape_viewport.x)
 
 @onready var sub_viewport_container: SubViewportContainer = $Parent/SubViewportContainer
 @onready var inner_viewport: SubViewport = $Parent/SubViewportContainer/LetterboxInner
 @onready var parent: Node2D = $Parent
 
 func _ready():
-	inner_viewport.size = Vector2i(viewport_size)
 	get_window().size_changed.connect(_layout)
 	_layout()
 
 func _layout():
 	var window_size = Vector2(get_window().size)
+
+	# portrait/landscape orientation
+	var viewport_size = landscape_viewport if window_size.x > window_size.y else portrait_viewport
+
+	inner_viewport.size = Vector2i(viewport_size)
 
 	var scale_needed = window_size / viewport_size
 	var scale_factor = min(scale_needed.x, scale_needed.y)

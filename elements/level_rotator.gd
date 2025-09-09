@@ -42,9 +42,7 @@ static func next_level(from_child: Node):
 			level_rot.current_level = -1
 			level_rot._beat_game()
 		else:
-			level_rot.current_level += 1
-			print("Starting level ", all_level_files[level_rot.current_level])
-			level_rot._start_level(level_rot.current_level)
+			level_rot._start_level(level_rot.current_level + 1)
 
 static func story_level(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)
@@ -73,6 +71,9 @@ func _clear_current_level():
 
 func _start_level(level_num: int):
 	_clear_current_level()
+
+	current_level = level_num
+	print("Starting level ", all_level_files[level_num])
 
 	assert(_current_level_node == null)
 	_current_level_node = load(all_level_files[level_num]).instantiate()
