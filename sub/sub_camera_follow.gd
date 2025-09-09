@@ -26,7 +26,37 @@ func _prepare_camera(t_map: TileMapLayer):
 	camera_2d.owner = self
 	camera_2d.make_current()
 
-	camera_2d.limit_top = int(t_map.global_position.y) + rect.position.y * cell
-	camera_2d.limit_bottom = int(t_map.global_position.y) + rect.position.y * cell + rect.size.y * cell
-	camera_2d.limit_left = int(t_map.global_position.x) + rect.position.x * cell
-	camera_2d.limit_right = int(t_map.global_position.x) + rect.position.x * cell + rect.size.x * cell
+	var limit_top = int(t_map.global_position.y) + rect.position.y * cell
+	var limit_bottom = int(t_map.global_position.y) + rect.position.y * cell + rect.size.y * cell
+	var limit_left = int(t_map.global_position.x) + rect.position.x * cell
+	var limit_right = int(t_map.global_position.x) + rect.position.x * cell + rect.size.x * cell
+
+	# Find ScrollLimitVertical and ScrollLimitHorizontal
+	var level = sub.owner
+	var horiz_limit = get_only_or_warn(
+		level.find_children("", "ScrollLimitHorizontal", true, false),
+		"found more than one ScrollLimitHorizontal"
+	)
+	if horiz_limit is ScrollLimitHorizontal:
+		limit_left = horiz_limit.min_x()
+		limit_right = horiz_limit.max_x()
+
+	var vert_limit = get_only_or_warn(
+		level.find_children("", "ScrollLimitVertical", true, false),
+		"found more than one ScrollLimitVertical"
+	)
+	if vert_limit is ScrollLimitVertical:
+		limit_top = vert_limit.min_y()
+		limit_bottom = vert_limit.max_y()
+
+	camera_2d.limit_top = limit_top
+	camera_2d.limit_bottom = limit_bottom
+	camera_2d.limit_left = limit_left
+	camera_2d.limit_right = limit_right
+
+func get_only_or_warn(arr, warning):
+	if len(arr) >= 1:
+		if len(arr) > 1:
+			print(warning)
+		return arr[0]
+	return null

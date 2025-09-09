@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://8qx8a44rbkgt"]
+
+[ext_resource type="Script" uid="uid://qtglkkcsdjop" path="res://elements/scroll_limit_vertical.gd" id="1_62fqv"]
+
+[node name="ScrollLimitVertical" type="Node2D"]
+script = ExtResource("1_62fqv")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.67451)
+rotation = -1.5708
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 0, 0, 320, 2, 320, 2, 0)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.67451)
+position = Vector2(0, 242)
+rotation = -1.5708
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 0, 0, 320, 2, 320, 2, 0)
