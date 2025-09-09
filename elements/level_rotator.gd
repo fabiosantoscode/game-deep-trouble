@@ -1,7 +1,8 @@
 extends Node2D
 class_name LevelRotator
 
-@onready var level_container: Node = $LevelContainer
+@onready var level_container: LetterboxedViewport = $LetterboxedViewport
+var _current_level_node: Node
 
 const LEVEL_LORE_DUMP = preload("res://levels/level_lore_dump.tscn")
 const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
@@ -55,6 +56,8 @@ static func _find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
 
 func _ready():
+	# To test a level when you press F5: comment the next line
+	# and uncomment the one after
 	_low_level_set_level(LEVEL_TITLE_SCREEN)
 	# _start_level(10)
 
@@ -63,15 +66,17 @@ func _input(event: InputEvent) -> void:
 		self._start_level(self.current_level)
 
 func _clear_current_level():
-	for prev_level in level_container.get_children():
-		level_container.remove_child(prev_level)
-		prev_level.queue_free()
+	if _current_level_node != null:
+		level_container.inner_viewport.remove_child(_current_level_node)
+		_current_level_node.queue_free()
+		_current_level_node = null
 
 func _start_level(level_num: int):
 	_clear_current_level()
 
-	var level = load(all_level_files[level_num]).instantiate()
-	level_container.add_child(level)
+	assert(_current_level_node == null)
+	_current_level_node = load(all_level_files[level_num]).instantiate()
+	level_container.inner_viewport.add_child(_current_level_node)
 
 func _start_title_screen():
 	_low_level_set_level(LEVEL_TITLE_SCREEN)
@@ -81,7 +86,9 @@ func _beat_game():
 
 func _low_level_set_level(packed_scene):
 	_clear_current_level()
-	level_container.add_child(packed_scene.instantiate())
+	assert(_current_level_node == null)
+	_current_level_node = packed_scene.instantiate()
+	level_container.inner_viewport.add_child(_current_level_node)
 
 static func _find_all_levels():
 	var ret = []

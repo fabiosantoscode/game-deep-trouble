@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c83v780m3vnan"]
+
+[ext_resource type="Script" uid="uid://di7pa4jlm7lvh" path="res://elements/letterboxed_viewport.gd" id="1_goehh"]
+[ext_resource type="Texture2D" uid="uid://6caabnjpweep" path="res://sprites/letterbox_stripes.png" id="2_xbe4t"]
+
+[node name="LetterboxedViewport" type="Node2D"]
+script = ExtResource("1_goehh")
+
+[node name="Parent" type="Node2D" parent="."]
+
+[node name="Letterbox" type="Polygon2D" parent="Parent"]
+texture_repeat = 2
+position = Vector2(-320, -240)
+scale = Vector2(15, 11.25)
+texture = ExtResource("2_xbe4t")
+texture_scale = Vector2(30, 22.5)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+uv = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Parent"]
+offset_right = 512.0
+offset_bottom = 512.0
+
+[node name="LetterboxInner" type="SubViewport" parent="Parent/SubViewportContainer"]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+size = Vector2i(320, 240)
+render_target_update_mode = 4

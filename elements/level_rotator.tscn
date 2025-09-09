@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://y3einsiqv77u"]
+[gd_scene load_steps=3 format=3 uid="uid://y3einsiqv77u"]
 
 [ext_resource type="Script" uid="uid://c0q4qefnx4dil" path="res://elements/level_rotator.gd" id="1_ef28p"]
+[ext_resource type="PackedScene" uid="uid://c83v780m3vnan" path="res://elements/letterboxed_viewport.tscn" id="2_cgnwa"]
 
 [node name="LevelRotator" type="Node2D"]
 script = ExtResource("1_ef28p")
 
-[node name="LevelContainer" type="Node" parent="."]
+[node name="LetterboxedViewport" parent="." instance=ExtResource("2_cgnwa")]
