@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://l6tk3pq046w0"]
+[gd_scene load_steps=9 format=4 uid="uid://l6tk3pq046w0"]
 
 [ext_resource type="PackedScene" uid="uid://c32ncac8n4yym" path="res://elements/rock.tscn" id="1_3qo2i"]
 [ext_resource type="PackedScene" uid="uid://bx516lm8nikuw" path="res://elements/goal.tscn" id="2_okowm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="4_i18um"]
 [ext_resource type="PackedScene" uid="uid://c6v3mktw5r5gy" path="res://sub/enemy_sub.tscn" id="5_8bhgk"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="6_mv8ey"]
+[ext_resource type="PackedScene" uid="uid://cmhamebdrnu3k" path="res://elements/text_small.tscn" id="7_okowm"]
 
 [sub_resource type="Curve2D" id="Curve2D_3qo2i"]
 _data = {
@@ -52,12 +53,11 @@ curve = SubResource("Curve2D_3qo2i")
 position = Vector2(327, 148)
 rotation = 1.57079
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 166.0
-offset_top = 137.0
-offset_right = 378.0
-offset_bottom = 194.0
-theme_override_font_sizes/font_size = 8
+[node name="TextSmall" parent="." instance=ExtResource("7_okowm")]
+offset_left = 168.0
+offset_top = 141.0
+offset_right = 380.0
+offset_bottom = 198.0
 text = "to drop the rock
 press space
 or the bottom gamepad button"

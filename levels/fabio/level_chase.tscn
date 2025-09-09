@@ -64,16 +64,6 @@ rotation = -1.5708
 scale = Vector2(1, 0.9625)
 curve = SubResource("Curve2D_liwco")
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 473.0
-offset_top = 506.0
-offset_right = 685.0
-offset_bottom = 563.0
-theme_override_font_sizes/font_size = 8
-text = "to drop the rock
-press space
-or the bottom gamepad button"
-
 [node name="OutOfBoundsWall7" parent="." instance=ExtResource("6_eg230")]
 position = Vector2(240, -48)
 

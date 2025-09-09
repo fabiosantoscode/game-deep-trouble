@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://dyqgqlakf1l05"]
+[gd_scene load_steps=2 format=3 uid="uid://dyqgqlakf1l05"]
+
+[ext_resource type="PackedScene" uid="uid://cmhamebdrnu3k" path="res://elements/text_small.tscn" id="1_ol1oj"]
 
 [node name="GameTitle" type="Node2D"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 4
 custom_minimum_size = Vector2(300, 98.485)
 offset_left = 7.0
 offset_top = 26.0
@@ -15,10 +18,9 @@ theme_override_font_sizes/bold_font_size = 22
 bbcode_enabled = true
 text = "[b]deep[/b] trouble."
 
-[node name="Label" type="Label" parent="."]
+[node name="TextSmall" parent="." instance=ExtResource("1_ol1oj")]
 offset_left = 8.0
 offset_top = 56.0
 offset_right = 220.0
-offset_bottom = 79.0
-theme_override_font_sizes/font_size = 8
+offset_bottom = 113.0
 text = "by Fábio Santos and José Pedro Dias"

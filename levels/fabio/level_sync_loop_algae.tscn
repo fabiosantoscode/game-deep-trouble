@@ -80,16 +80,6 @@ rotation = -3.14159
 position = Vector2(32, 80)
 rotation = 1.5708
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 734.0
-offset_top = 197.0
-offset_right = 946.0
-offset_bottom = 254.0
-theme_override_font_sizes/font_size = 8
-text = "to drop the rock
-press space
-or the bottom gamepad button"
-
 [node name="OutOfBoundsWall" parent="." instance=ExtResource("7_tjs6i")]
 position = Vector2(368, 16)
 

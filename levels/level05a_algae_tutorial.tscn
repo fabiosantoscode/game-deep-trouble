@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://g65ms7aochgo"]
+[gd_scene load_steps=9 format=4 uid="uid://g65ms7aochgo"]
 
 [ext_resource type="PackedScene" uid="uid://bx516lm8nikuw" path="res://elements/goal.tscn" id="1_vnl5n"]
 [ext_resource type="TileSet" uid="uid://d6cg2e2fg0l7" path="res://elements/tileset.tres" id="2_oyllw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="5_l8k4o"]
 [ext_resource type="PackedScene" uid="uid://c5brongnhcuac" path="res://elements/out_of_bounds_wall.tscn" id="6_c000v"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="6_pup17"]
+[ext_resource type="PackedScene" uid="uid://cmhamebdrnu3k" path="res://elements/text_small.tscn" id="7_c000v"]
 
 [sub_resource type="Curve2D" id="Curve2D_f5oyx"]
 _data = {
@@ -58,10 +59,9 @@ rotation = -3.14159
 position = Vector2(183, 96)
 rotation = -3.14159
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 96.0
-offset_top = 49.0
-offset_right = 308.0
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 8
+[node name="TextSmall" parent="." instance=ExtResource("7_c000v")]
+offset_left = 97.0
+offset_top = 50.0
+offset_right = 309.0
+offset_bottom = 107.0
 text = "Hide behind this!"
