@@ -10,9 +10,9 @@ var _already_preloaded = false
 func preload_particles():
 	if _already_preloaded: return
 	_already_preloaded = true
-	for material in self.materials_to_preload:
+	for mat in self.materials_to_preload:
 		var particle = GPUParticles2D.new()
-		particle.process_material = material
+		particle.process_material = mat
 
 		particle.preprocess = 1.0
 		particle.one_shot = true

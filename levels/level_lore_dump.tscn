@@ -10,12 +10,11 @@ script/source = "extends Node2D
 @onready var button: Button = $Canvas/Button
 
 func _ready():
-	var sig: Signal
 	button.pressed.connect(func():
 		LevelRotator.next_level.call_deferred(self))
 	wait_then_move_on()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed(\"shoot\"):
 		LevelRotator.next_level(self)
 

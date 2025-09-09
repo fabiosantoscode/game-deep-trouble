@@ -12,16 +12,16 @@ static var initial_inertia = 200.0
 @onready var hitbox: Area2D = $Hitbox
 var initial_collision_check = false
 
-static func create_dropped_rock(sub: Sub, new_parent: Node2D, pos: Vector2):
+static func create_dropped_rock(sub_: Sub, new_parent: Node2D, pos: Vector2):
 	var rock: RockDropped = ROCK_DROPPED.instantiate()
-	rock.sub = sub
+	rock.sub = sub_
 	new_parent.add_child(rock)
 	rock.owner = new_parent
 	rock.global_position = pos
 	
 	var coll = rock.move_and_collide(Vector2.ZERO, true, 0.1, true)
 	if coll != null:
-		rock.global_position = sub.global_position
+		rock.global_position = rock.sub.global_position
 
 func _on_ground_entered(ground):
 	self.become_rock_plain(ground.owner)
@@ -44,7 +44,8 @@ func _physics_process(delta: float) -> void:
 		self.become_rock_plain(sub.owner)
 
 func become_rock_plain(parent: Node2D):
-	var rock = Rock.create_rock(parent, self.global_position)
+	self.queue_free()
+	Rock.create_rock(parent, self.global_position)
 	if not GlobalMusicPlayer.is_muted:
 		var thud_sound = AudioStreamPlayer2D.new()
 		thud_sound.stream = preload("res://sfx/thud.mp3")
@@ -52,4 +53,3 @@ func become_rock_plain(parent: Node2D):
 		thud_sound.owner = self.owner
 		thud_sound.global_position = self.owner.global_position
 		thud_sound.play()
-	self.queue_free()

@@ -46,5 +46,5 @@ func _ready():
 	sprite.play()
 	sprite_up.play()
 	sprite_down.play()
-	sub.stealth_changed.connect(func(_s): _update_visuals())
+	sub.stealth_changed.connect(func(): _update_visuals())
 	_update_visuals()

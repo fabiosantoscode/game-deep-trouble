@@ -85,13 +85,13 @@ func _ready_bubbles():
 
 func _compute_bubbles(pushing_joystick, just_had_input, player_input):
 	if pushing_joystick and not just_had_input:
-		sub.movement_started.emit(player_input)
+		sub.emit_movement_started(player_input, 1.0)
 		_movement_average.reset()
 	else:
 		_movement_average.push(player_input)
-		var reversal = _reversal_detect(player_input)
-		if reversal > 0.0:
-			sub.movement_reversed.emit(player_input, reversal)
+		var reversal_rate = _reversal_detect(player_input)
+		if reversal_rate > 0.0:
+			sub.emit_movement_started(player_input, reversal_rate)
 			_movement_average.reset()
 
 func _reversal_detect(new_direction: Vector2):

@@ -24,9 +24,9 @@ func _physics_process(delta: float) -> void:
 	_boost(delta)
 
 func _update_positions():
-	var sign = 1 if flip_h else -1
-	var b_sign = -sign
-	gpu_particles_2d.position.x = sign * abs(gpu_particles_2d.position.x)
+	var sign_ = 1 if flip_h else -1
+	var b_sign = -sign_
+	gpu_particles_2d.position.x = sign_ * abs(gpu_particles_2d.position.x)
 	boost_particles.position.x = b_sign * abs(boost_particles.position.x)
 
 	gpu_particles_2d.position.y = is_facing_updown * updown_shift_emitters
@@ -45,7 +45,6 @@ func _bubbles(delta: float):
 var particle_boost_age = 0.0
 func _ready_boost():
 	sub.movement_started.connect(_boost_start)
-	sub.movement_reversed.connect(_boost_start)
 
 func _boost_start(inertia: Vector2, intensity = 1.0):
 	particle_boost_age = 0.0

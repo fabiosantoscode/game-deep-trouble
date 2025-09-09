@@ -21,7 +21,7 @@ func _on_sub_exit(bod):
 
 	global_hidden_sub_count -= 1
 	if global_hidden_sub_count == 0:
-		bod.stealth_changed.emit(global_hidden_sub_count == 1)
+		bod.update_is_stealthy(global_hidden_sub_count == 1)
 		_play_sound()
 
 func _on_sub_enter(bod):
@@ -31,7 +31,7 @@ func _on_sub_enter(bod):
 
 	global_hidden_sub_count += 1
 	if global_hidden_sub_count == 1:
-		bod.stealth_changed.emit(global_hidden_sub_count == 1)
+		bod.update_is_stealthy(global_hidden_sub_count == 1)
 		_play_sound()
 
 func _play_sound():

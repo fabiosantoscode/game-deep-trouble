@@ -9,16 +9,11 @@ class_name Sub
 var has_rock: RockGrabbed = null
 static var y_distance_to_rock = 13
 
-signal movement_started(direction: Vector2)
-signal movement_reversed(direction: Vector2, intensity_01: float)
+signal movement_started(direction: Vector2, intensity_01: float)
 
 ## Stealth system. When hidden, stealth_changed(true)
-signal stealth_changed(is_stealthy: bool)
+signal stealth_changed()
 var is_stealthy: bool = false
-
-func _ready():
-	self.stealth_changed.connect(func(is_s):
-		self.is_stealthy = is_s)
 
 func _physics_process(delta: float) -> void:
 	var player_input = sub_input.get_movement_input()
@@ -29,6 +24,13 @@ func _physics_process(delta: float) -> void:
 	sub_rock_grabbing.try_grab_rock(self)
 	sub_rock_grabbing.try_drop_rock(self)
 
+func emit_movement_started(movement, rate):
+	self.movement_started.emit(movement, rate)
+
+func update_is_stealthy(new_is_stealthy: bool):
+	is_stealthy = new_is_stealthy
+	self.stealth_changed.emit()
+
 func assimilate_rock(rock: Rock):
 	sub_movement.reset_inertia()
 
@@ -37,7 +39,7 @@ func assimilate_rock(rock: Rock):
 
 func drop_rock():
 	assert(has_rock != null)
-	has_rock.become_dropped_rock(self)
+	has_rock.become_dropped_rock()
 
 func get_speed_percent():
 	return sub_movement.speed_percent
