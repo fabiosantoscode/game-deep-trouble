@@ -17,13 +17,13 @@ func _ready():
 		get_viewport().size_changed.connect(func():
 			_prepare_camera(tilemaps[0]))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if camera_2d is Camera2D and sub is Sub:
 		camera_2d.global_position = sub.global_position
 
 func _prepare_camera(t_map: TileMapLayer):
 	var viewport_size = Vector2(get_viewport().size)
-	var is_landscape = viewport_size.x > viewport_size.y
+
 	var cell = t_map.tile_set.tile_size.x
 	var rect = t_map.get_used_rect()
 	if camera_2d == null:

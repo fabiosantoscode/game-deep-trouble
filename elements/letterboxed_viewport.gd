@@ -14,11 +14,9 @@ const min_aspect_ratio = 9.0 / 21.0
 @onready var stretched_viewport: CanvasItem = $StretchedViewport
 @onready var inner_viewport: SubViewport = $StretchedViewport/LetterboxInner
 
+# remap input xy coordinates and put event into the inner viewport
 func _unhandled_input(event: InputEvent) -> void:
-	var window_size = Vector2(get_window().size)
 	if event is InputEventMouse:
-		# remap xy coordinates and put event into the inner viewport
-
 		var pos_01 = (event.global_position - self.position) / stretched_viewport.scale
 
 		event.position = pos_01 * Vector2(inner_viewport.size)

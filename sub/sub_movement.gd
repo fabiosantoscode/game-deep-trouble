@@ -39,7 +39,7 @@ func should_face_updown(player_input: Vector2):
 	)
 
 ## Sub will call this in _process_physics
-func move_sub(sub: Sub, player_input: Vector2, delta: float):
+func move_sub(player_input: Vector2, delta: float):
 	inertia = move_sub_inner(sub.has_rock != null, player_input, delta)
 	sub.velocity = inertia
 	sub.move_and_slide()
