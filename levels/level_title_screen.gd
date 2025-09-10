@@ -19,4 +19,6 @@ func _ready():
 	get_window().size_changed.connect(_layout)
 
 func _layout():
-	self.size = get_viewport().size
+	var vp = get_viewport()
+	if vp:
+		self.size = vp.size

@@ -1,16 +1,30 @@
 extends Node2D
 class_name LetterboxedViewport
 
-# 320x240 at time of writing. will be scaled up and re-oriented dynamically.
-@onready var landscape_viewport = Vector2(
+# 240x180 at time of writing. will be scaled up and re-oriented dynamically.
+@onready var default_viewport = Vector2(
 	ProjectSettings.get_setting("display/window/size/viewport_width"),
 	ProjectSettings.get_setting("display/window/size/viewport_height")
 )
-@onready var portrait_viewport = Vector2(landscape_viewport.y, landscape_viewport.x)
+@onready var viewport_small_measure = minf(default_viewport.x, default_viewport.y)
 
-@onready var sub_viewport_container: SubViewportContainer = $Parent/SubViewportContainer
-@onready var inner_viewport: SubViewport = $Parent/SubViewportContainer/LetterboxInner
-@onready var parent: Node2D = $Parent
+const max_aspect_ratio = 21.0 / 9.0
+const min_aspect_ratio = 9.0 / 21.0
+
+@onready var stretched_viewport: CanvasItem = $StretchedViewport
+@onready var inner_viewport: SubViewport = $StretchedViewport/LetterboxInner
+
+func _unhandled_input(event: InputEvent) -> void:
+	var window_size = Vector2(get_window().size)
+	if event is InputEventMouse:
+		# remap xy coordinates and put event into the inner viewport
+
+		var pos_01 = (event.global_position - self.position) / stretched_viewport.scale
+
+		event.position = pos_01 * Vector2(inner_viewport.size)
+		event.global_position = event.position
+
+		inner_viewport.push_input(event, true)
 
 func _ready():
 	get_window().size_changed.connect(_layout)
@@ -18,20 +32,24 @@ func _ready():
 
 func _layout():
 	var window_size = Vector2(get_window().size)
+	var size_after_scale = _restrict_aspect_ratio(window_size)
 
-	# portrait/landscape orientation
-	var viewport_size = landscape_viewport if window_size.x > window_size.y else portrait_viewport
-
-	inner_viewport.size = Vector2i(viewport_size)
-
-	var scale_needed = window_size / viewport_size
-	var scale_factor = min(scale_needed.x, scale_needed.y)
-
-	# round down to closest integer
-	scale_factor = maxf(1, floori(scale_factor))
-
-	var size_after_scale = scale_factor * viewport_size
+	var scale_v = size_after_scale / viewport_small_measure
+	var scale_factor = minf(scale_v.x, scale_v.y)
 	var letterbox_size = window_size - size_after_scale
 
-	parent.scale = scale_factor * Vector2.ONE
+	inner_viewport.size = Vector2i(size_after_scale / scale_factor)
+	stretched_viewport.scale = size_after_scale
 	self.position = letterbox_size / 2.0
+
+# When too wide (or tall), recompute the width (or height) to get
+# the widest (or tallest) possible ratio
+func _restrict_aspect_ratio(window_size: Vector2):
+	var real_ratio = window_size.x / window_size.y
+
+	if real_ratio < min_aspect_ratio: # too tall
+		return Vector2(window_size.x, window_size.x / min_aspect_ratio)
+	elif real_ratio > max_aspect_ratio: # too wide
+		return Vector2(window_size.y * max_aspect_ratio, window_size.y)
+	else:
+		return window_size

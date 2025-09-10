@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpywvbkje77tg"]
+
+[ext_resource type="Script" uid="uid://b5g6nhkcxprvh" path="res://elements/end_of_content.gd" id="1_txge0"]
+
+[node name="EndOfContent" type="Node2D"]
+z_index = 99
+z_as_relative = false
+script = ExtResource("1_txge0")
+
+[node name="Tool" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -8, 8, -4, 0, 0, 8, 4, 0, 8)

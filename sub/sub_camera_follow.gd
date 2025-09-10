@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		camera_2d.global_position = sub.global_position
 
 func _prepare_camera(t_map: TileMapLayer):
-	var viewport_size = get_viewport().size
+	var viewport_size = Vector2(get_viewport().size)
 	var is_landscape = viewport_size.x > viewport_size.y
 	var cell = t_map.tile_set.tile_size.x
 	var rect = t_map.get_used_rect()
@@ -37,25 +37,31 @@ func _prepare_camera(t_map: TileMapLayer):
 	var limit_left = int(t_map.global_position.x) + rect.position.x * cell
 	var limit_right = int(t_map.global_position.x) + rect.position.x * cell + rect.size.x * cell
 
-	# Find ScrollLimitVertical and ScrollLimitHorizontal
+	# Limit movement of the camera
 	var level = sub.owner
-	if not is_landscape:
-		var horiz_limit = get_only_or_warn(
-			level.find_children("", "ScrollLimitHorizontal", true, false),
-			"found more than one ScrollLimitHorizontal"
-		)
-		if horiz_limit is ScrollLimitHorizontal:
-			limit_left = horiz_limit.min_x()
-			limit_right = horiz_limit.max_x()
+	for bound: EndOfContent in level.find_children("", "EndOfContent", true, false):
+		var bound_pos = bound.global_position
+		match bound.direction:
+			EndOfContent.Direction.TOP: limit_top = bound_pos.y
+			EndOfContent.Direction.BOTTOM: limit_bottom = bound_pos.y
+			EndOfContent.Direction.LEFT: limit_left = bound_pos.x
+			EndOfContent.Direction.RIGHT: limit_right = bound_pos.x
 
-	if is_landscape:
-		var vert_limit = get_only_or_warn(
-			level.find_children("", "ScrollLimitVertical", true, false),
-			"found more than one ScrollLimitVertical"
-		)
-		if vert_limit is ScrollLimitVertical:
-			limit_top = vert_limit.min_y()
-			limit_bottom = vert_limit.max_y()
+	assert(limit_right > limit_left)
+	assert(limit_bottom > limit_top)
+
+	# we need more screen space
+	var bounded_width = limit_right - limit_left
+	if bounded_width < viewport_size.x:
+		var remaining = (viewport_size.x - bounded_width) / 2.0
+		limit_left = limit_left - remaining
+		limit_right = limit_right + remaining
+
+	var bounded_height = limit_bottom - limit_top
+	if bounded_height < viewport_size.y:
+		var remaining = (viewport_size.y - bounded_height) / 2.0
+		limit_top = limit_top - remaining
+		limit_bottom = limit_bottom + remaining
 
 	camera_2d.limit_top = limit_top
 	camera_2d.limit_bottom = limit_bottom

@@ -4,15 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://df7hnv525jqsf" path="res://elements/text_common.tscn" id="2_he0vu"]
 [ext_resource type="PackedScene" uid="uid://dyqgqlakf1l05" path="res://elements/game_title.tscn" id="5_dkps8"]
 
-[sub_resource type="GDScript" id="GDScript_w4pj8"]
-script/source = "extends Node2D
+[sub_resource type="GDScript" id="GDScript_he0vu"]
+script/source = "extends Control
 
-@onready var labels: Node2D = $Canvas/Labels
-@onready var button: Button = $Canvas/Button
+@onready var labels: Control = $VBoxContainer/Labels
 
 func _ready():
-	button.pressed.connect(func():
-		LevelRotator.title_screen.call_deferred(self))
+	_layout()
+	get_window().size_changed.connect(_layout)
+
 	for i in range(labels.get_child_count()):
 		_show(i)
 		await get_tree().create_timer(4.0).timeout
@@ -28,59 +28,101 @@ func _show(child_i):
 	var cc = labels.get_children()
 	for c in range(labels.get_child_count()):
 		cc[c].visible = c == child_i
+
+func _layout():
+	self.size = get_viewport().size
 "
 
-[node name="LevelEndScreen" type="Node2D"]
-z_index = 1000
-script = SubResource("GDScript_w4pj8")
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 328.0
+offset_bottom = 189.0
+script = SubResource("GDScript_he0vu")
 
-[node name="Canvas" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Black-16" type="Sprite2D" parent="Canvas"]
+[node name="Black-16" type="Sprite2D" parent="."]
 scale = Vector2(17849, 10000)
 texture = ExtResource("1_gbfyj")
 
-[node name="Labels" type="Node2D" parent="Canvas"]
-
-[node name="TextCommon" parent="Canvas/Labels" instance=ExtResource("2_he0vu")]
-offset_top = 196.0
-offset_bottom = 245.0
-text = "Thank you for playing!"
-
-[node name="TextCommon2" parent="Canvas/Labels" instance=ExtResource("2_he0vu")]
-visible = false
-offset_top = 196.0
-offset_bottom = 245.0
-text = "CREDITS"
-
-[node name="TextCommon3" parent="Canvas/Labels" instance=ExtResource("2_he0vu")]
-visible = false
-offset_top = 196.0
-offset_right = 274.0
-offset_bottom = 245.0
-text = "game design, code, music: Fábio Santos"
-
-[node name="TextCommon4" parent="Canvas/Labels" instance=ExtResource("2_he0vu")]
-visible = false
-offset_top = 196.0
-offset_right = 278.0
-offset_bottom = 245.0
-text = "game&level design, SFX: José Pedro Dias"
-
-[node name="GameTitle" parent="Canvas" instance=ExtResource("5_dkps8")]
-
-[node name="Button" type="Button" parent="Canvas"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(999, 999)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -339.5
-offset_top = -379.5
-offset_right = 339.5
-offset_bottom = 379.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1000, 1000)
-text = "xxxx"
+
+[node name="GameTitle" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="GameTitle2" parent="VBoxContainer/GameTitle" instance=ExtResource("5_dkps8")]
+position = Vector2(0, -15)
+
+[node name="Labels" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="TextCommon" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -10.0
+offset_right = 75.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thank you for playing!"
+
+[node name="TextCommon2" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CREDITS"
+
+[node name="TextCommon3" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -21.5
+offset_right = 88.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "game design, code, music:
+Fábio Santos"
+
+[node name="TextCommon4" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.5
+offset_top = -21.5
+offset_right = 81.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "game&level design, SFX:
+José Pedro Dias"

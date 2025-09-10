@@ -22,8 +22,8 @@ ParticlePreload="*res://elements/particle_preload.tscn"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=240
+window/size/viewport_width=240
+window/size/viewport_height=180
 
 [input]
 
