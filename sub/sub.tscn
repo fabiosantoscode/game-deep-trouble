@@ -43,6 +43,7 @@ script = ExtResource("5_egpih")
 script = ExtResource("6_edyj4")
 
 [node name="TouchInputPanel" type="Panel" parent="SubInput"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = -500.0
 offset_top = -500.0

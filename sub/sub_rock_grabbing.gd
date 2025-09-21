@@ -2,22 +2,14 @@ extends Node2D
 class_name SubRockGrabbing
 
 @onready var grab_rock_detector: Area2D = $GrabRock
-
-## Set to a Rock when we can grab it
-var _rock_to_grab: Rock = null
+@onready var sub: Sub = $".."
 
 func _ready():
-	grab_rock_detector.area_entered.connect(_update_grab_rock)
+	grab_rock_detector.area_entered.connect(_grab_rock)
 
-func try_grab_rock(sub: Sub):
-	if _rock_to_grab != null and not sub.has_rock:
-		sub.assimilate_rock(_rock_to_grab)
-		_rock_to_grab = null
-
-func try_drop_rock(sub: Sub):
-	if sub.has_rock and Input.is_action_just_pressed("shoot"):
-		sub.drop_rock()
-
-func _update_grab_rock(area):
-	if area is Rock and not area.was_just_spawned: # was_just_spawned check to prevent a drop-loop
-		_rock_to_grab = area
+func _grab_rock(area):
+	if area is Rock:
+		if not sub.has_rock:
+			sub.assimilate_rock(area)
+		else:
+			print("warning: Sub already has a rock!")

@@ -21,8 +21,6 @@ func _physics_process(delta: float) -> void:
 	sub_visuals.is_facing_left = sub_movement.should_face_left(player_input)
 	sub_visuals.is_facing_updown = sub_movement.should_face_updown(player_input)
 	sub_visuals.claw_is_out = has_rock != null
-	sub_rock_grabbing.try_grab_rock(self)
-	sub_rock_grabbing.try_drop_rock(self)
 
 func emit_movement_started(movement, rate):
 	self.movement_started.emit(movement, rate)
@@ -36,10 +34,6 @@ func assimilate_rock(rock: Rock):
 
 	assert(has_rock == null)
 	has_rock = rock.become_grabbed(self)
-
-func drop_rock():
-	assert(has_rock != null)
-	has_rock.become_dropped_rock()
 
 func get_speed_percent():
 	return sub_movement.speed_percent

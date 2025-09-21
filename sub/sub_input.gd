@@ -20,6 +20,7 @@ func get_movement_input() -> Vector2:
 	return (_get_joy_input() + _get_touch_input()).limit_length(1.0)
 
 func _ready_touch_input():
+	touch_input_panel.visible = true
 	touch_input_panel.gui_input.connect(func(event: InputEvent):
 		if event is InputEventMouseButton:
 			_set_touch_pos(event.position, event.pressed)

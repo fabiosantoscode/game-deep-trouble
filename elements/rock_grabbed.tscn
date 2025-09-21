@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cle0it6qub3pa"]
+[gd_scene load_steps=3 format=3 uid="uid://cle0it6qub3pa"]
 
 [ext_resource type="Script" uid="uid://caigiyduxtyb8" path="res://elements/rock_grabbed.gd" id="1_es30q"]
 [ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://elements/rock.png" id="2_v5mnh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6g8e2"]
-size = Vector2(30, 12)
 
 [node name="RockGrabbed" type="Area2D"]
 rotation = 0.383972
@@ -15,6 +12,3 @@ stealth_modulate = Color(0.439216, 0.501961, 0.439216, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_v5mnh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6g8e2")
