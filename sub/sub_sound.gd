@@ -5,7 +5,7 @@ extends Node2D
 @onready var audio_engine: AudioStreamPlayer2D = $AudioEngine
 
 @onready var initial_engine_volume = audio_engine.volume_linear
-@onready var initial_engine_pitch = audio_engine.volume_linear
+@onready var initial_engine_pitch = audio_engine.pitch_scale
 
 var engine_volume_change_rate = 10.0
 var engine_volume_stop_rate = 4.0

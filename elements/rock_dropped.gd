@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name RockDropped
 
 const ROCK_DROPPED = preload("res://elements/rock_dropped.tscn")
+const ROCK_THUD_SOUND = preload("res://sfx/thud.mp3")
 
 var sub: Sub
 var drop_speed = 200.0
@@ -48,8 +49,9 @@ func become_rock_plain(parent: Node2D):
 	Rock.create_rock(parent, self.global_position)
 	if not GlobalMusicPlayer.is_muted:
 		var thud_sound = AudioStreamPlayer2D.new()
-		thud_sound.stream = preload("res://sfx/thud.mp3")
+		thud_sound.stream = ROCK_THUD_SOUND
 		self.owner.add_child(thud_sound)
 		thud_sound.owner = self.owner
+		thud_sound.volume_db = -10.0
 		thud_sound.global_position = self.owner.global_position
 		thud_sound.play()

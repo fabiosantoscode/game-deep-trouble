@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ckfrme2wkollo" path="res://sprites/bubble-small.png" id="10_nxarw"]
 [ext_resource type="AudioStream" uid="uid://cnjbblb5pefdm" path="res://sfx/dock.mp3" id="11_c7c14"]
 [ext_resource type="Texture2D" uid="uid://cyrdc454dg6d0" path="res://sprites/bubble-boost.png" id="12_6c8vj"]
-[ext_resource type="AudioStream" uid="uid://c7ajqycovbge5" path="res://sfx/engine.mp3" id="12_nxarw"]
+[ext_resource type="AudioStream" uid="uid://jv2pnhjrjuqq" path="res://sfx/engine.wav" id="12_nxarw"]
 [ext_resource type="Material" uid="uid://oquscto5dkyc" path="res://sub/sub_idle_particles.tres" id="12_tcdut"]
 [ext_resource type="Material" uid="uid://byowjdofldtvl" path="res://sub/sub_acceleration_boost_particles.tres" id="14_ogrk5"]
 
@@ -113,12 +113,12 @@ script = ExtResource("10_ghaol")
 
 [node name="AudioDock" type="AudioStreamPlayer2D" parent="SubSound"]
 stream = ExtResource("11_c7c14")
-volume_db = 16.545
+volume_db = 6.64
 
 [node name="AudioEngine" type="AudioStreamPlayer2D" parent="SubSound"]
 stream = ExtResource("12_nxarw")
 volume_db = -18.0
-pitch_scale = 0.6
+pitch_scale = 0.78
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_edyj4")
