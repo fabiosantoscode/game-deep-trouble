@@ -21,7 +21,7 @@ func _ready():
 	LevelRotator.title_screen(self)
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed(\"shoot\"):
+	if Input.is_action_just_pressed(\"skip\"):
 		LevelRotator.title_screen(self)
 
 func _show(child_i):

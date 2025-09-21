@@ -6,7 +6,7 @@ func _ready():
 	wait_then_move_on()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("skip"):
 		LevelRotator.next_level(self)
 
 func wait_then_move_on():
