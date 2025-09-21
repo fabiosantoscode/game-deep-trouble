@@ -36,8 +36,8 @@ func _layout():
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 328.0
-offset_bottom = 189.0
+offset_right = 291.0
+offset_bottom = 208.0
 script = SubResource("GDScript_he0vu")
 
 [node name="Black-16" type="Sprite2D" parent="."]
@@ -53,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameTitle" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 
