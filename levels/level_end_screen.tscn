@@ -36,8 +36,8 @@ func _layout():
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 291.0
-offset_bottom = 208.0
+offset_right = 241.0
+offset_bottom = 179.0
 script = SubResource("GDScript_he0vu")
 
 [node name="Black-16" type="Sprite2D" parent="."]
@@ -66,6 +66,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 
 [node name="TextCommon" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -81,6 +82,7 @@ grow_vertical = 2
 text = "Thank you for playing!"
 
 [node name="TextCommon2" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,6 +98,7 @@ grow_vertical = 2
 text = "CREDITS:"
 
 [node name="TextCommon3" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,6 +115,7 @@ text = "game design, code, music:
 Fa'bio Santos"
 
 [node name="TextCommon4" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -128,6 +132,7 @@ text = "game+level design, SFX:
 Jose' Pedro Dias"
 
 [node name="TextCommon5" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
