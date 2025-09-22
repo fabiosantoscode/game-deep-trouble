@@ -162,5 +162,5 @@ text = "Music"
 
 [node name="Start" type="Button" parent="Menu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 14
 text = "start"

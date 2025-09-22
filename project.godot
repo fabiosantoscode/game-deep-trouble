@@ -25,6 +25,10 @@ ParticlePreload="*res://elements/particle_preload.tscn"
 window/size/viewport_width=240
 window/size/viewport_height=180
 
+[gui]
+
+theme/custom="uid://cl0hh3l5xwi4b"
+
 [input]
 
 up={

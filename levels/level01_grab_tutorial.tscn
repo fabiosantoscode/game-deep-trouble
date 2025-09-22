@@ -32,9 +32,14 @@ offset_left = 61.0
 offset_top = 33.0
 offset_right = 273.0
 offset_bottom = 90.0
-text = "Bring the rock to the surface
-To lower the sea level
-And save on insurance claims"
+text = "Bring the rock
+to the surface
+
+It lowers the
+sea level
+
+So we get fewer
+insurance claims"
 
 [node name="EndOfContentTop" parent="." instance=ExtResource("8_8vmnd")]
 position = Vector2(80, 0)

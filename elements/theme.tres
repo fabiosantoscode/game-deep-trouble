@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cl0hh3l5xwi4b"]
+
+[ext_resource type="FontFile" uid="uid://cf34ng3bxcb0j" path="res://elements/font.png" id="1_28heq"]
+
+[resource]
+default_font = ExtResource("1_28heq")
+default_font_size = 7
+Label/fonts/font = ExtResource("1_28heq")
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
