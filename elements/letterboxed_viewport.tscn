@@ -13,6 +13,7 @@ shader = ExtResource("3_x4ctm")
 shader_parameter/scaled_subviewport = SubResource("ViewportTexture_fejjy")
 
 [node name="LetterboxedViewport" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_goehh")
 
 [node name="Letterbox" type="Polygon2D" parent="."]
@@ -31,6 +32,7 @@ polygon = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
 uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
 
 [node name="LetterboxInner" type="SubViewport" parent="StretchedViewport"]
+process_mode = 1
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0

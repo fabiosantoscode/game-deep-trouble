@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwfgbugpynr7e"]
+[gd_scene load_steps=10 format=3 uid="uid://dwfgbugpynr7e"]
 
 [ext_resource type="Script" uid="uid://cjq2gogseu8on" path="res://levels/level_title_screen.gd" id="1_0kro2"]
 [ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="1_iersk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cwf30qh2q2g57" path="res://elements/bubble_spawner.tscn" id="3_nkytd"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="4_nkytd"]
 [ext_resource type="PackedScene" uid="uid://dyqgqlakf1l05" path="res://elements/game_title.tscn" id="5_kkmxp"]
+[ext_resource type="PackedScene" uid="uid://bkswdv104118w" path="res://elements/settings_menu.tscn" id="7_7yong"]
 
 [sub_resource type="Curve2D" id="Curve2D_kbpsx"]
 _data = {
@@ -25,13 +26,14 @@ func _process(delta: float) -> void:
 
 [node name="LevelTitleScreen" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 180.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_0kro2")
-metadata/_edit_vertical_guides_ = [21.0, 222.0]
 
 [node name="GameTitle" parent="." instance=ExtResource("5_kkmxp")]
 position = Vector2(-1, -15)
@@ -138,29 +140,19 @@ sway_width = 10
 position = Vector2(-33, -19)
 scale = Vector2(2, 2)
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="SettingsMenu" parent="." instance=ExtResource("7_7yong")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
 offset_left = 5.0
 offset_top = -107.0
 offset_right = 95.0
 offset_bottom = -5.0
+grow_horizontal = 1
 grow_vertical = 0
-alignment = 2
 
-[node name="FullScreen" type="CheckButton" parent="Menu"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Full screen"
-
-[node name="Music" type="CheckButton" parent="Menu"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Music"
-
-[node name="Start" type="Button" parent="Menu"]
+[node name="Start" type="Button" parent="SettingsMenu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "start"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkswdv104118w"]
+
+[ext_resource type="Script" uid="uid://bte5giqviioo5" path="res://elements/settings_menu.gd" id="1_gxexh"]
+
+[node name="SettingsMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+script = ExtResource("1_gxexh")
+
+[node name="FullScreen" type="CheckButton" parent="."]
+layout_mode = 2
+text = "Full screen"
+
+[node name="Music" type="CheckButton" parent="."]
+layout_mode = 2
+text = "Music"

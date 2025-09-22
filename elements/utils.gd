@@ -5,7 +5,7 @@ static func frame_independent_lerp(from, to, amount: float, delta: float):
 	var e = 2.718281828459045
 	return lerp(from, to, 1 - pow(e, -amount * delta))
 
-static func spawn(parent: Node2D, child, position = null):
+static func spawn(parent: Node, child, position = null):
 	if child is String and (child.begins_with("res://") or child.begins_with("uid://")):
 		child = load(child)
 	if child is PackedScene:
@@ -32,8 +32,8 @@ class AverageVector:
 
 	func _init(seconds: float):
 		length = floori(Engine.physics_ticks_per_second * seconds)
-		half_length = length / 2
-		for i in range(length):
+		half_length = length / 2.0
+		for i in range(floori(length)):
 			arr.push_back(Vector2.ZERO)
 
 	func reset():

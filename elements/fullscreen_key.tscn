@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://jd1h22qfhh7i"]
+
+[ext_resource type="Script" uid="uid://v6t50sqxcsp" path="res://elements/fullscreen_key.gd" id="1_gmoc4"]
+
+[node name="FullscreenKey" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_gmoc4")

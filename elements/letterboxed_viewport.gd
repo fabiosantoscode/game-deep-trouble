@@ -23,6 +23,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		event.global_position = event.position
 
 		inner_viewport.push_input(event, true)
+	else:
+		inner_viewport.push_input(event, true)
 
 func _ready():
 	get_window().size_changed.connect(_layout)

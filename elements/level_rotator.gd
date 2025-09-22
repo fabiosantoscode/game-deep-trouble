@@ -9,11 +9,19 @@ const LEVEL_TITLE_SCREEN = preload("res://levels/level_title_screen.tscn")
 const LEVEL_END_SCREEN = preload("res://levels/level_end_screen.tscn")
 const ON_DEATH = preload("res://elements/on_death.tscn")
 const ON_LEVEL_COMPLETE = preload("res://elements/on_level_complete.tscn")
+const PAUSE_MENU = preload("res://elements/pause_menu.tscn")
 
 ## level files are "res://levels/level" {any digit} {anything} ".tscn"
 static var all_level_files = _find_all_levels()
 ## Index into all_level_files
 var current_level = -1
+
+func _ready():
+	_ready_pause_menu()
+	# To test a level when you press F5: comment the next line
+	# and uncomment the one after
+	_low_level_set_level(LEVEL_TITLE_SCREEN)
+	# _start_level(10)
 
 static func restart_level(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)
@@ -44,6 +52,12 @@ static func next_level(from_child: Node):
 		else:
 			level_rot._start_level(level_rot.current_level + 1)
 
+## Used for developer menu
+static func dev_change_level(from_child: Node, level_idx: int):
+	var level_rot = _find_level_rotator(from_child)
+	if level_rot != null:
+		level_rot._start_level(level_idx)
+
 static func story_level(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
@@ -52,12 +66,6 @@ static func story_level(from_child: Node):
 
 static func _find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
-
-func _ready():
-	# To test a level when you press F5: comment the next line
-	# and uncomment the one after
-	_low_level_set_level(LEVEL_TITLE_SCREEN)
-	# _start_level(10)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_F6:
@@ -99,3 +107,7 @@ static func _find_all_levels():
 			if "0123456789".contains(digit):
 				ret.push_back("res://levels/" + file)
 	return ret
+
+func _ready_pause_menu():
+	await get_tree().physics_frame
+	Utils.spawn(level_container.inner_viewport, PAUSE_MENU.instantiate())
