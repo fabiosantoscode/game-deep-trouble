@@ -6,8 +6,8 @@ func _ready():
 	start.pressed.connect(func():
 		LevelRotator.story_level(self))
 
-	_layout()
 	get_window().size_changed.connect(_layout)
+	_layout.call_deferred()
 
 	_dev_auto_skip.call_deferred()
 
