@@ -37,16 +37,16 @@ func _update_visuals(old_pos, new_pos, ang):
 	var x_delta = new_pos.x - old_pos.x
 	var y_delta = new_pos.y - old_pos.y
 
-	var rotate = 0.0 # radians from Vector2.RIGHT, because the sprite faces right
+	var rot = 0.0 # radians from Vector2.RIGHT, because the sprite faces right
 	var do_hflip = false
 	if absf(x_delta) > 0.01 or absf(y_delta) > 0.01:
 		if absf(x_delta) > absf(y_delta):
 			do_hflip = x_delta < 0.0
 		else:
-			if y_delta < 0.0: rotate = -(TAU/4.0) # face up
-			else:             rotate = TAU/4.0
+			if y_delta < 0.0: rot = -(TAU/4.0) # face up
+			else:             rot = TAU/4.0
 
-	enemy_sub_agent.visual.rotation = rotate
+	enemy_sub_agent.visual.rotation = rot
 	enemy_sub_agent.visual.flip_h = do_hflip
 
 	enemy_sub_agent.vision_cone_rotator.rotation = ang
