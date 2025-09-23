@@ -1,46 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyqgqlakf1l05"]
+[gd_scene load_steps=4 format=3 uid="uid://dyqgqlakf1l05"]
 
 [ext_resource type="Script" uid="uid://b3q2iblj4utsr" path="res://elements/game_title.gd" id="1_ffodl"]
 [ext_resource type="PackedScene" uid="uid://cmhamebdrnu3k" path="res://elements/text_small.tscn" id="1_ol1oj"]
+[ext_resource type="PackedScene" uid="uid://df7hnv525jqsf" path="res://elements/text_common.tscn" id="2_hgs7e"]
 
 [node name="GameTitle" type="Node2D"]
 script = ExtResource("1_ffodl")
 
-[node name="TitleLarge" type="RichTextLabel" parent="."]
+[node name="TitleLarge" parent="." instance=ExtResource("2_hgs7e")]
+visible = false
 modulate = Color(0.940362, 5.34251e-06, 3.85046e-07, 1)
-custom_minimum_size = Vector2(244, 48)
 offset_left = 4.0
 offset_top = 26.0
-offset_right = 248.0
-offset_bottom = 74.0
-theme_override_font_sizes/normal_font_size = 21
-bbcode_enabled = true
+offset_right = 244.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 21
 text = "deep trouble․"
 
 [node name="SubtitleLarge" parent="." instance=ExtResource("1_ol1oj")]
-offset_left = 8.0
-offset_top = 56.0
-offset_right = 231.0
-offset_bottom = 113.0
+visible = false
+offset_left = 6.0
+offset_top = 53.0
+offset_right = 229.0
+offset_bottom = 110.0
 text = "by Fa'bio Santos and Jose' Pedro Dias"
 
-[node name="TitleSmall" type="RichTextLabel" parent="."]
-visible = false
+[node name="TitleSmall" parent="." instance=ExtResource("2_hgs7e")]
 modulate = Color(0.940362, 5.34251e-06, 3.85046e-07, 1)
-custom_minimum_size = Vector2(244, 48)
-offset_left = 7.0
-offset_top = 26.0
-offset_right = 251.0
-offset_bottom = 74.0
-theme_override_font_sizes/normal_font_size = 14
-bbcode_enabled = true
-text = "deep trouble․"
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 208.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 14
+text = "deep trouble․
+"
 
 [node name="SubtitleSmall" parent="." instance=ExtResource("1_ol1oj")]
-visible = false
-offset_left = 8.0
-offset_top = 45.0
-offset_right = 231.0
-offset_bottom = 102.0
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 228.0
+offset_bottom = 104.0
 text = "by Fa'bio Santos
 and Jose' Pedro Dias"

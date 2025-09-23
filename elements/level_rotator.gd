@@ -17,6 +17,7 @@ static var all_level_files = _find_all_levels()
 var current_level = -1
 
 func _ready():
+	_load_game_file()
 	_ready_pause_menu()
 	# To test a level when you press F5: comment the next line
 	# and uncomment the one after
@@ -51,21 +52,38 @@ static func next_level(from_child: Node):
 			level_rot._beat_game()
 		else:
 			level_rot._start_level(level_rot.current_level + 1)
+		level_rot._save_game_file()
 
 ## Used for developer menu
 static func dev_change_level(from_child: Node, level_idx: int):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
 		level_rot._start_level(level_idx)
+		level_rot._save_game_file()
 
 static func story_level(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
-		level_rot._low_level_set_level(LEVEL_LORE_DUMP)
+		if level_rot.current_level == -1:
+			level_rot._low_level_set_level(LEVEL_LORE_DUMP)
+		else:
+			# Load game!
+			level_rot._start_level(level_rot.current_level)
 		ParticlePreload.preload_particles()
 
 static func _find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
+
+func _load_game_file():
+	var saved = SaveGame.get_saved_state()
+	if saved is Dictionary and saved.get("current_level", -1.0) > -1.0:
+		var json_does_not_distinguish_int = floori(saved["current_level"])
+		self.current_level = json_does_not_distinguish_int
+
+func _save_game_file():
+	SaveGame.save_game(func(old_state):
+		old_state["current_level"] = self.current_level
+		return old_state)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_F6:

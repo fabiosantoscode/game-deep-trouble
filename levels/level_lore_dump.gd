@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	_layout()
+	_layout.call_deferred()
 	get_window().size_changed.connect(_layout)
 	wait_then_move_on()
 

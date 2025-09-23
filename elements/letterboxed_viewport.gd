@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready():
 	get_window().size_changed.connect(_layout)
-	_layout()
+	_layout.call_deferred()
 
 func _layout():
 	var window_size = Vector2(get_window().size)

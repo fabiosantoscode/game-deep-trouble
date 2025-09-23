@@ -12,16 +12,28 @@ func _ready() -> void:
 	self.visible = OS.has_feature(\"debug\")
 "
 
-[sub_resource type="GDScript" id="GDScript_ll5mm"]
-script/source = "extends ItemList
+[sub_resource type="GDScript" id="GDScript_4j44j"]
+script/source = "extends OptionButton
 
 @onready var pause_menu: PauseMenu = $\"../../../../..\"
 @onready var levels = LevelRotator.all_level_files
+@onready var auto_jump_toggle: CheckButton = $\"../AutoJumpToggle\"
+
+func _on_go_to_level(idx):
+	SaveGame.save_game(func(state: Dictionary):
+		if auto_jump_toggle.button_pressed:
+			state[\"developer_auto_jump\"] = idx
+		else:
+			state.erase(\"developer_auto_jump\")
+		return state
+		)
+	LevelRotator.dev_change_level(self, idx)
+	pause_menu.set_paused(false)
 
 func _ready() -> void:
 	self.item_selected.connect(func(idx):
-		LevelRotator.dev_change_level(self, idx)
-		pause_menu.set_paused(false))
+		idx -= 1 # first item is the \"go to level\" label
+		_on_go_to_level(idx))
 
 	for level in levels:
 		level = (level
@@ -81,8 +93,16 @@ script = SubResource("GDScript_i1130")
 layout_mode = 2
 text = "Dev options"
 
-[node name="ItemList" type="ItemList" parent="Margins/VBoxContainer/HBoxContainer/DeveloperOptions"]
+[node name="OptionButton" type="OptionButton" parent="Margins/VBoxContainer/HBoxContainer/DeveloperOptions"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 8
-script = SubResource("GDScript_ll5mm")
+text_overrun_behavior = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "Go to Level"
+popup/item_0/id = 0
+script = SubResource("GDScript_4j44j")
+
+[node name="AutoJumpToggle" type="CheckButton" parent="Margins/VBoxContainer/HBoxContainer/DeveloperOptions"]
+layout_mode = 2
+text = "Auto-jump
+next time"
