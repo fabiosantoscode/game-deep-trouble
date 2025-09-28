@@ -38,7 +38,7 @@ func _prepare_camera(t_map: TileMapLayer):
 		camera_2d.owner = self
 		camera_2d.make_current()
 
-	camera_offset = _get_camera_offset_from_level().round()
+	camera_offset = _get_camera_offset_from_level()
 
 	var limit_top = int(t_map.global_position.y) + rect.position.y * cell
 	var limit_bottom = int(t_map.global_position.y) + rect.position.y * cell + rect.size.y * cell
@@ -78,7 +78,7 @@ func _prepare_camera(t_map: TileMapLayer):
 
 func _get_camera_offset_from_level():
 	var level_flags = LevelSpecificSettings.find(self)
-	var shift = level_flags.shift_camera# if level_flags else LevelSpecificSettings.ShiftCamera.NO
+	var shift = level_flags.shift_camera if level_flags else LevelSpecificSettings.ShiftCamera.NO
 	match shift:
 		LevelSpecificSettings.ShiftCamera.NO:
 			return Vector2.ZERO
