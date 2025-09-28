@@ -11,19 +11,42 @@ const ON_DEATH = preload("res://elements/on_death.tscn")
 const ON_LEVEL_COMPLETE = preload("res://elements/on_level_complete.tscn")
 const PAUSE_MENU = preload("res://elements/pause_menu.tscn")
 
+const SAVEKEY_DEVELOPER_AUTO_JUMP = "developer_auto_jump"
+
 ## level files are "res://levels/level" {any digit} {anything} ".tscn"
 static var all_level_files = _find_all_levels()
+static var test_level_files = _find_test_levels()
+
 ## Index into all_level_files
-var current_level = -1
+var current_level: String = ""
 
 func _ready():
 	_load_game_file()
 	_ready_pause_menu()
-	# To test a level when you press F5: comment the next line
-	# and uncomment the one after
-	_low_level_set_level(LEVEL_TITLE_SCREEN)
-	# _start_level(10)
 
+	if not _dev_auto_jump():
+		_low_level_set_level(LEVEL_TITLE_SCREEN)
+
+## Skip to a level because we're a dev and we asked. See dev_change_level
+func _dev_auto_jump():
+	var skip_to_lvl = SaveGame.get_saved_state().get(SAVEKEY_DEVELOPER_AUTO_JUMP, "")
+	if skip_to_lvl != "":
+		LevelRotator.dev_change_level(self, skip_to_lvl)
+		return true
+	return false
+
+## When we click "start" on the title screen
+static func start_game(from_child: Node):
+	var level_rot = _find_level_rotator(from_child)
+	if level_rot != null:
+		if level_rot.current_level == "":
+			level_rot._low_level_set_level(LEVEL_LORE_DUMP)
+		else:
+			# Load game!
+			level_rot._start_level(level_rot.current_level)
+		ParticlePreload.preload_particles()
+
+## On death we restart
 static func restart_level(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
@@ -31,59 +54,61 @@ static func restart_level(from_child: Node):
 		await level_rot.get_tree().create_timer(0.75).timeout
 		level_rot._start_level(level_rot.current_level)
 
-static func title_screen(from_child: Node):
-	var level_rot = _find_level_rotator(from_child)
-	print("Starting level ", "_start_title_screen")
-	if level_rot != null:
-		level_rot._low_level_set_level(LEVEL_TITLE_SCREEN)
-
 ## Go to the next level. Might be the first level.
-static func next_level(from_child: Node):
+static func next_level(from_child: Node, play_jingle = true):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
-		# Jingle does not apply to level -1 which is the lore dump
-		if level_rot.current_level > -1:
+		if test_level_files.has(level_rot.current_level):
+			# It's a developer level. Just restart it
+			level_rot._start_level(level_rot.current_level)
+			return
+
+		if play_jingle:
 			level_rot._low_level_set_level(ON_LEVEL_COMPLETE)
 			await level_rot.get_tree().create_timer(1.5).timeout
 
-		if level_rot.current_level >= len(all_level_files) - 1:
-			print("Starting level ", "_beat_game")
-			level_rot.current_level = -1
-			level_rot._beat_game()
+		var level_idx = all_level_files.find(level_rot.current_level)
+		if level_idx + 1 < len(all_level_files):
+			level_rot._start_level(all_level_files[level_idx + 1])
 		else:
-			level_rot._start_level(level_rot.current_level + 1)
+			print("Starting level ", "_beat_game")
+			level_rot.current_level = ""
+			level_rot._beat_game()
 		level_rot._save_game_file()
+
+## After the player beat the game and saw/skipped credits they go back to the title screen
+static func after_credits(from_child: Node):
+	var level_rot = _find_level_rotator(from_child)
+	if level_rot != null:
+		print("Starting level ", "_start_title_screen")
+		level_rot._low_level_set_level(LEVEL_TITLE_SCREEN)
 
 ## Used for developer menu
-static func dev_change_level(from_child: Node, level_idx: int):
+static func dev_change_level(from_child: Node, level_name: String):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
-		level_rot._start_level(level_idx)
+		level_rot._start_level(level_name)
 		level_rot._save_game_file()
 
-static func story_level(from_child: Node):
-	var level_rot = _find_level_rotator(from_child)
-	if level_rot != null:
-		if level_rot.current_level == -1:
-			level_rot._low_level_set_level(LEVEL_LORE_DUMP)
-		else:
-			# Load game!
-			level_rot._start_level(level_rot.current_level)
-		ParticlePreload.preload_particles()
+static func dev_set_auto_jump(auto_jump=""):
+	SaveGame.save_game(func(state: Dictionary):
+		state[SAVEKEY_DEVELOPER_AUTO_JUMP] = auto_jump)
 
 static func _find_level_rotator(from_child: Node) -> LevelRotator:
 	return from_child.find_parent("LevelRotator")
 
 func _load_game_file():
 	var saved = SaveGame.get_saved_state()
-	if saved is Dictionary and saved.get("current_level", -1.0) > -1.0:
-		var json_does_not_distinguish_int = floori(saved["current_level"])
-		self.current_level = json_does_not_distinguish_int
+	if (
+		saved is Dictionary
+		and saved.get("current_level") is String
+		and all_level_files.has(saved["current_level"])
+	):
+		self.current_level = saved["current_level"]
 
 func _save_game_file():
 	SaveGame.save_game(func(old_state):
-		old_state["current_level"] = self.current_level
-		return old_state)
+		old_state["current_level"] = self.current_level)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_F6:
@@ -95,18 +120,15 @@ func _clear_current_level():
 		_current_level_node.queue_free()
 		_current_level_node = null
 
-func _start_level(level_num: int):
+func _start_level(level_file: String):
 	_clear_current_level()
 
-	current_level = level_num
-	print("Starting level ", all_level_files[level_num])
+	self.current_level = level_file
+	print("Starting level ", level_file)
 
 	assert(_current_level_node == null)
-	_current_level_node = load(all_level_files[level_num]).instantiate()
+	_current_level_node = load(level_file).instantiate()
 	level_container.inner_viewport.add_child(_current_level_node)
-
-func _start_title_screen():
-	_low_level_set_level(LEVEL_TITLE_SCREEN)
 
 func _beat_game():
 	_low_level_set_level(LEVEL_END_SCREEN)
@@ -124,6 +146,14 @@ static func _find_all_levels():
 			var digit = file[len("level")]
 			if "0123456789".contains(digit):
 				ret.push_back("res://levels/" + file)
+	return ret
+
+## Levels for the developer only
+static func _find_test_levels():
+	var ret = []
+	for file in ResourceLoader.list_directory("res://levels/test/"):
+		if file.begins_with("level") and file.ends_with(".tscn"):
+			ret.push_back("res://levels/test/" + file)
 	return ret
 
 func _ready_pause_menu():

@@ -30,6 +30,7 @@ position = Vector2(232, 248)
 
 [node name="EnemySub" parent="." instance=ExtResource("4_e8p81")]
 position = Vector2(133, 154)
+initial_progress = 0.2
 progress_ratio_per_second = 0.1
 
 [node name="Path2D" type="Path2D" parent="EnemySub"]

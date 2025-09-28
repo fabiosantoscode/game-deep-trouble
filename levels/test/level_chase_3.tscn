@@ -25,6 +25,7 @@ point_count = 7
 
 [node name="Goal" parent="." instance=ExtResource("2_vis66")]
 position = Vector2(215, -2057)
+requires_rock = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-32, 0)

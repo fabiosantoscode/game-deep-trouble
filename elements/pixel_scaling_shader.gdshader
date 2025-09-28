@@ -17,7 +17,7 @@ void vertex() {
 
 void fragment() {
 	// Get the texture size
-    vec2 texture_size = vec2(textureSize(scaled_subviewport, 0));   
+    vec2 texture_size = vec2(textureSize(scaled_subviewport, 0));
     // Calculate the box filter size in texel units
     vec2 box_size = clamp(fwidth(UV_) * texture_size, vec2(1e-5), vec2(1.0));
     // Scale UV by texture size to get texel coordinate

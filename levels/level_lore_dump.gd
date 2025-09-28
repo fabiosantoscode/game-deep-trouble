@@ -7,11 +7,13 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("skip"):
-		LevelRotator.next_level(self)
+		var play_jingle = false # don't say "level complete"
+		LevelRotator.next_level(self, play_jingle)
 
 func wait_then_move_on():
 	await get_tree().create_timer(5.0).timeout
-	LevelRotator.next_level(self)
+	var play_jingle = false # don't say "level complete"
+	LevelRotator.next_level(self, play_jingle)
 
 func _layout():
 	var vp = get_viewport()
