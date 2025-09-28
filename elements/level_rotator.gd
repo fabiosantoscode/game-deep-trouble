@@ -95,6 +95,7 @@ static func dev_set_auto_jump(auto_jump=""):
 		state[SAVEKEY_DEVELOPER_AUTO_JUMP] = auto_jump)
 
 static func _find_level_rotator(from_child: Node) -> LevelRotator:
+	if from_child is LevelRotator: return from_child
 	return from_child.find_parent("LevelRotator")
 
 func _load_game_file():
