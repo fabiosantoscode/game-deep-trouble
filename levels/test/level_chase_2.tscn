@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://fwlg5rdy0hvg"]
+[gd_scene load_steps=12 format=4 uid="uid://fwlg5rdy0hvg"]
 
 [ext_resource type="PackedScene" uid="uid://dkst1g4ixfwbr" path="res://elements/level_specific_settings.tscn" id="1_6oodd"]
 [ext_resource type="PackedScene" uid="uid://bx516lm8nikuw" path="res://elements/goal.tscn" id="2_cfcp4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c6v3mktw5r5gy" path="res://sub/enemy_sub.tscn" id="5_cmy37"]
 [ext_resource type="PackedScene" uid="uid://c5brongnhcuac" path="res://elements/out_of_bounds_wall.tscn" id="6_w1bhn"]
 [ext_resource type="PackedScene" uid="uid://c1y30a67bhfp1" path="res://sub/enemy_sub_rot.tscn" id="7_cfcp4"]
+[ext_resource type="PackedScene" uid="uid://bpywvbkje77tg" path="res://elements/end_of_content.tscn" id="9_0g15y"]
 
 [sub_resource type="Curve2D" id="Curve2D_brk24"]
 _data = {
@@ -87,12 +88,6 @@ rotation = -1.5708
 scale = Vector2(1, 0.9625)
 curve = SubResource("Curve2D_brk24")
 
-[node name="OutOfBoundsWall" parent="." instance=ExtResource("6_w1bhn")]
-position = Vector2(-48, 176)
-
-[node name="OutOfBoundsWall2" parent="." instance=ExtResource("6_w1bhn")]
-position = Vector2(48, -2112)
-
 [node name="EnemySubRot" parent="." instance=ExtResource("7_cfcp4")]
 position = Vector2(96, -1508)
 rotation = -0.769797
@@ -138,3 +133,26 @@ position = Vector2(192, -738)
 rotation = -2.28355
 max_angle = -100.0
 rotation_cycle_duration = 2.0
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="OutOfBoundsWall" parent="Bounds" instance=ExtResource("6_w1bhn")]
+position = Vector2(-48, 176)
+
+[node name="OutOfBoundsWall2" parent="Bounds" instance=ExtResource("6_w1bhn")]
+position = Vector2(48, -2112)
+
+[node name="EndOfContent2" parent="Bounds" instance=ExtResource("9_0g15y")]
+position = Vector2(144, -2136)
+direction = 3
+
+[node name="EndOfContent" parent="Bounds" instance=ExtResource("9_0g15y")]
+position = Vector2(88, 232)
+direction = 2
+
+[node name="EndOfContent4" parent="Bounds" instance=ExtResource("9_0g15y")]
+position = Vector2(200, 232)
+
+[node name="EndOfContent3" parent="Bounds" instance=ExtResource("9_0g15y")]
+position = Vector2(112, 416)
+direction = 1

@@ -5,7 +5,7 @@ class_name CameraFollowsSub
 #@onready var camera_2d: Camera2D = $Camera2D
 var tilemap: TileMapLayer
 var camera_2d: Camera2D
-var shift_camera_pc = 0.28#% from the left/bottom
+var shift_camera_pc = 0.33#% from the left/bottom
 var camera_offset = Vector2.ZERO
 
 func _ready():
