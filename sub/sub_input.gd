@@ -15,8 +15,15 @@ const touch_input_slow_speed_ratio = 0.5
 func _ready() -> void:
 	_ready_touch_input()
 
+var _input_override = null
+## for cutscenes
+func set_input_override(null_or_joystickvec):
+	_input_override = null_or_joystickvec
+
 ## User input for the sub (WASD, arrow keys or controller).
 func get_movement_input() -> Vector2:
+	if _input_override != null:
+		return _input_override
 	return (_get_joy_input() + _get_touch_input()).limit_length(1.0)
 
 func _ready_touch_input():

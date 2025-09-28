@@ -37,11 +37,12 @@ func _update_visuals(old_pos, new_pos, ang):
 	var x_delta = new_pos.x - old_pos.x
 	var y_delta = new_pos.y - old_pos.y
 
-	var rot = 0.0 # radians from Vector2.RIGHT, because the sprite faces right
+	# radians from Vector2.RIGHT, because the sprite faces right
+	var rot = 0.0
 	var do_hflip = false
 	if absf(x_delta) > 0.01 or absf(y_delta) > 0.01:
 		if absf(x_delta) > absf(y_delta):
-			do_hflip = x_delta < 0.0
+			do_hflip = x_delta < 0.0 # left/right
 		else:
 			if y_delta < 0.0: rot = -(TAU/4.0) # face up
 			else:             rot = TAU/4.0

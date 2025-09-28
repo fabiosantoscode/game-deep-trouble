@@ -40,3 +40,9 @@ func get_speed_percent():
 
 func get_last_input() -> Vector2:
 	return sub_input.last_input
+
+func get_max_speed():
+	return sub_movement.speed
+
+func set_input_override(null_or_joystickvec):
+	sub_input.set_input_override(null_or_joystickvec)
