@@ -5,6 +5,16 @@ static func frame_independent_lerp(from, to, amount: float, delta: float):
 	var e = 2.718281828459045
 	return lerp(from, to, 1 - pow(e, -amount * delta))
 
+## Goes up the node tree until `map_or_null` returns non-null
+## var found = map_closest(self, func(node): return find_or_null(node))
+static func map_closest(from: Node, map_or_null: Callable):
+	var cur = from
+	while cur is Node:
+		var ret = map_or_null.call(cur)
+		if ret != null: return ret
+		cur = cur.get_parent()
+	return null
+
 static func spawn(parent: Node, child, position = null):
 	if child is String and (child.begins_with("res://") or child.begins_with("uid://")):
 		child = load(child)

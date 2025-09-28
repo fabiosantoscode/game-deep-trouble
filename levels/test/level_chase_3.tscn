@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://dudwpnctsxryb"]
+[gd_scene load_steps=11 format=4 uid="uid://dudwpnctsxryb"]
 
+[ext_resource type="PackedScene" uid="uid://dkst1g4ixfwbr" path="res://elements/level_specific_settings.tscn" id="1_xjhsf"]
 [ext_resource type="PackedScene" uid="uid://bx516lm8nikuw" path="res://elements/goal.tscn" id="2_vis66"]
 [ext_resource type="TileSet" uid="uid://d6cg2e2fg0l7" path="res://elements/tileset.tres" id="3_g772p"]
 [ext_resource type="PackedScene" uid="uid://djmdirnx2svhw" path="res://sub/sub.tscn" id="4_4n17c"]
@@ -22,6 +23,9 @@ _data = {
 point_count = 7
 
 [node name="LevelChase3" type="Node2D"]
+
+[node name="LevelFlags" parent="." instance=ExtResource("1_xjhsf")]
+shift_camera = 1
 
 [node name="Goal" parent="." instance=ExtResource("2_vis66")]
 position = Vector2(215, -2057)

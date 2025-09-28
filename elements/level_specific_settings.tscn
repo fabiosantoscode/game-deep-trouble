@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkst1g4ixfwbr"]
+
+[ext_resource type="Script" uid="uid://ddlrgujl0ecsl" path="res://elements/level_specific_settings.gd" id="1_csotx"]
+
+[node name="LevelSpecificSettings" type="Node2D"]
+script = ExtResource("1_csotx")

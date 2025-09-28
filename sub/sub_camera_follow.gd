@@ -5,9 +5,16 @@ class_name CameraFollowsSub
 #@onready var camera_2d: Camera2D = $Camera2D
 var tilemap: TileMapLayer
 var camera_2d: Camera2D
+var shift_camera_pc = 0.28#% from the left/bottom
+var camera_offset = Vector2.ZERO
 
 func _ready():
-	if sub.owner == null: return # when we press F6 on the sub and not a level
+	# when we press F6 on the sub and not a level
+	# or when no camera
+	if sub.owner == null:
+		self.process_mode = Node.PROCESS_MODE_DISABLED
+		return
+
 	var level = sub.owner
 	var tilemaps = level.find_children("", "TileMapLayer", true, false)
 	if len(tilemaps) == 0: print("warning: TileMapLayer not found in the level")
@@ -18,8 +25,7 @@ func _ready():
 			_prepare_camera(tilemaps[0]))
 
 func _process(_delta: float) -> void:
-	if camera_2d is Camera2D and sub is Sub:
-		camera_2d.global_position = sub.global_position
+	camera_2d.global_position = sub.global_position + camera_offset
 
 func _prepare_camera(t_map: TileMapLayer):
 	var viewport_size = Vector2(get_viewport().size)
@@ -31,6 +37,8 @@ func _prepare_camera(t_map: TileMapLayer):
 		self.add_child(camera_2d)
 		camera_2d.owner = self
 		camera_2d.make_current()
+
+	camera_offset = _get_camera_offset_from_level().round()
 
 	var limit_top = int(t_map.global_position.y) + rect.position.y * cell
 	var limit_bottom = int(t_map.global_position.y) + rect.position.y * cell + rect.size.y * cell
@@ -67,6 +75,21 @@ func _prepare_camera(t_map: TileMapLayer):
 	camera_2d.limit_bottom = limit_bottom
 	camera_2d.limit_left = limit_left
 	camera_2d.limit_right = limit_right
+
+func _get_camera_offset_from_level():
+	var level_flags = LevelSpecificSettings.find(self)
+	var shift = level_flags.shift_camera# if level_flags else LevelSpecificSettings.ShiftCamera.NO
+	match shift:
+		LevelSpecificSettings.ShiftCamera.NO:
+			return Vector2.ZERO
+		LevelSpecificSettings.ShiftCamera.UP:
+			return (Vector2.UP
+				* (0.5 - shift_camera_pc)
+				* float(get_viewport().size.y)).round()
+		LevelSpecificSettings.ShiftCamera.RIGHT:
+			return (Vector2.RIGHT
+				* (0.5 - shift_camera_pc)
+				* float(get_viewport().size.x)).round()
 
 func get_only_or_warn(arr, warning):
 	if len(arr) >= 1:
