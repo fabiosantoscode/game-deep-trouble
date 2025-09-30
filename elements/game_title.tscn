@@ -8,37 +8,37 @@
 script = ExtResource("1_ffodl")
 
 [node name="TitleLarge" parent="." instance=ExtResource("2_hgs7e")]
-visible = false
 modulate = Color(0.940362, 5.34251e-06, 3.85046e-07, 1)
-offset_left = 4.0
-offset_top = 26.0
-offset_right = 244.0
-offset_bottom = 75.0
-theme_override_font_sizes/font_size = 21
-text = "deep trouble․"
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 237.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 33
+text = "deep trouble."
 
 [node name="SubtitleLarge" parent="." instance=ExtResource("1_ol1oj")]
-visible = false
-offset_left = 6.0
-offset_top = 53.0
-offset_right = 229.0
-offset_bottom = 110.0
-text = "by Fa'bio Santos and Jose' Pedro Dias"
+offset_left = 9.0
+offset_top = 36.0
+offset_right = 232.0
+offset_bottom = 93.0
+text = "by Fábio Santos and José Pedro Dias"
 
 [node name="TitleSmall" parent="." instance=ExtResource("2_hgs7e")]
+visible = false
 modulate = Color(0.940362, 5.34251e-06, 3.85046e-07, 1)
-offset_left = 4.0
-offset_top = 27.0
-offset_right = 208.0
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 14
-text = "deep trouble․
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 211.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 22
+text = "deep trouble.
 "
 
 [node name="SubtitleSmall" parent="." instance=ExtResource("1_ol1oj")]
-offset_left = 5.0
-offset_top = 47.0
-offset_right = 228.0
-offset_bottom = 104.0
-text = "by Fa'bio Santos
-and Jose' Pedro Dias"
+visible = false
+offset_left = 9.0
+offset_top = 29.0
+offset_right = 232.0
+offset_bottom = 86.0
+text = "by Fábio Santos
+and José Pedro Dias"

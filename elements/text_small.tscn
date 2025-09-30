@@ -5,5 +5,9 @@ offset_right = 212.0
 offset_bottom = 57.0
 text = "0123456789
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
-!.?
-abcdefghijklmnopqrstuvwxyz"
+!.?-_
+abcdefghijklmnopqrstuvwxyz
+áé
+
+colon:x
+closedot.x"

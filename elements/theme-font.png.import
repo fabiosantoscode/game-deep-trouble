@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://ba0qqgsutafho"
+path="res://.godot/imported/theme-font.png-361e20e349d93f5e2dd63db9a0eb77c8.fontdata"
+
+[deps]
+
+source_file="res://elements/theme-font.png"
+dest_files=["res://.godot/imported/theme-font.png-361e20e349d93f5e2dd63db9a0eb77c8.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-31", "32-32 -2 0 0", "33-33 -4 0 0", "34-43", "44-44 -3 0 0", "45", "46-46 -4 0 0", "47-48", "49-49 -3 0 0", "50-57", "58-58 -4 0 0", "59-72", "73-73 -4 0 0", "74-104", "105-105 -4 0 0", "106-255")
+kerning_pairs=PackedStringArray("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!.?0123456789éá\' \'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!.?0123456789éá -1")
+columns=16
+rows=16
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=1

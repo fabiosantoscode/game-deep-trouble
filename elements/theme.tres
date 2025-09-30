@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=19 format=3 uid="uid://cl0hh3l5xwi4b"]
 
-[ext_resource type="FontFile" uid="uid://cf34ng3bxcb0j" path="res://elements/font.png" id="1_28heq"]
+[ext_resource type="FontFile" uid="uid://ba0qqgsutafho" path="res://elements/theme-font.png" id="1_28heq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28heq"]
 content_margin_left = 4.0
@@ -112,7 +112,7 @@ content_margin_bottom = 2.0
 
 [resource]
 default_font = ExtResource("1_28heq")
-default_font_size = 7
+default_font_size = 11
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
@@ -146,8 +146,7 @@ CheckButton/styles/hover = SubResource("StyleBoxEmpty_xrgc3")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_ev0oy")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_v20ra")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_381o2")
-Label/constants/line_spacing = 1
-Label/fonts/font = ExtResource("1_28heq")
+Label/constants/line_spacing = -2
 MarginContainer/constants/margin_bottom = 4
 MarginContainer/constants/margin_left = 4
 MarginContainer/constants/margin_right = 4

@@ -92,7 +92,7 @@ layout_mode = 2
 modulate = Color(0.941176, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 33
 text = "Pause"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margins/VBoxContainer"]
@@ -105,13 +105,13 @@ layout_mode = 2
 [node name="ButtonQuit" type="Button" parent="Margins/VBoxContainer/HBoxContainer/SettingsMenu"]
 modulate = Color(0.79, 0.4029, 0.4029, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 22
 text = "Quit"
 script = SubResource("GDScript_s0ymg")
 
 [node name="ButtonResume" type="Button" parent="Margins/VBoxContainer/HBoxContainer/SettingsMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 22
 text = "Continue"
 
 [node name="DeveloperOptions" type="VBoxContainer" parent="Margins/VBoxContainer/HBoxContainer"]

@@ -58,7 +58,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="GameTitle2" parent="VBoxContainer/GameTitle" instance=ExtResource("5_dkps8")]
-position = Vector2(0, -15)
 
 [node name="Labels" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -112,7 +111,7 @@ offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "game design, code, music:
-Fa'bio Santos"
+Fábio Santos"
 
 [node name="TextCommon4" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
 visible = false
@@ -129,7 +128,7 @@ offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "game+level design, SFX:
-Jose' Pedro Dias"
+José Pedro Dias"
 
 [node name="TextCommon5" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
 visible = false

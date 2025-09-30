@@ -31,7 +31,6 @@ size_flags_horizontal = 0
 
 [node name="GameTitle" parent="VBoxContainer/GameTitle" instance=ExtResource("2_4lkc1")]
 modulate = Color(0.106311, 0.14407, 0.261466, 1)
-position = Vector2(0, -15)
 
 [node name="TextCommon" parent="VBoxContainer" instance=ExtResource("2_la855")]
 layout_mode = 2

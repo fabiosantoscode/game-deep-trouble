@@ -1,9 +1,6 @@
 extends Node2D
 
 @onready var large_title_x = floori($TitleLarge.size.x)
-static var large_font_size = 21
-static var small_font_size = 14
-static var max_leftover_width = -4 # I am wider than the text because the "." in the title is thin
 
 # Make sure we fit onscreen haha
 func _ready() -> void:
@@ -14,7 +11,7 @@ func _layout():
 	var vp = get_viewport()
 	var size_diff = vp.size.x - large_title_x
 
-	var is_small = size_diff < max_leftover_width
+	var is_small = size_diff < 0
 
 	$TitleLarge.visible = not is_small
 	$SubtitleLarge.visible = not is_small

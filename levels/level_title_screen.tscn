@@ -36,7 +36,6 @@ size_flags_vertical = 3
 script = ExtResource("1_0kro2")
 
 [node name="GameTitle" parent="." instance=ExtResource("5_kkmxp")]
-position = Vector2(-1, -15)
 
 [node name="CenterEnemies" type="Control" parent="."]
 layout_mode = 1
@@ -154,5 +153,5 @@ grow_vertical = 0
 
 [node name="Start" type="Button" parent="SettingsMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 22
 text = "start"
