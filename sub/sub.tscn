@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://djmdirnx2svhw"]
+[gd_scene load_steps=21 format=3 uid="uid://djmdirnx2svhw"]
 
 [ext_resource type="Script" uid="uid://ml3wvgo8ls00" path="res://sub/sub.gd" id="1_jrcp4"]
 [ext_resource type="Script" uid="uid://bcaugltumbb12" path="res://sub/sub_camera_follow.gd" id="2_3ibi6"]
@@ -22,9 +22,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8wm4"]
 radius = 2.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_edyj4"]
-radius = 4.5
 
 [node name="Sub" type="CharacterBody2D"]
 position = Vector2(170, 126)
@@ -63,8 +60,7 @@ modulate = Color(1, 1, 1, 0.301961)
 texture = ExtResource("7_tffbf")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="SubVisuals"]
-visible = false
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 sprite_frames = ExtResource("8_5x3bp")
 frame_progress = 0.994834
 
@@ -74,6 +70,7 @@ position = Vector2(0, 2)
 sprite_frames = ExtResource("9_ogrk5")
 
 [node name="SpriteUp" type="AnimatedSprite2D" parent="SubVisuals"]
+visible = false
 position = Vector2(0, 2)
 sprite_frames = ExtResource("10_cna0k")
 
@@ -121,6 +118,5 @@ stream = ExtResource("12_nxarw")
 volume_db = -18.0
 pitch_scale = 0.78
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_edyj4")
-debug_color = Color(0, 0.588235, 0.686275, 0)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, -4, 5, -1, 5, 1, 2, 4, -2, 4, -5, 1, -5, -1, -2, -4)

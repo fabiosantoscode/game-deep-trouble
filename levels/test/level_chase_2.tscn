@@ -66,28 +66,6 @@ rotation = -1.5708
 scale = Vector2(1, 0.9625)
 curve = SubResource("Curve2D_brk24")
 
-[node name="Chaser3" parent="." instance=ExtResource("5_cmy37")]
-position = Vector2(121, 104)
-initial_progress = 0.04
-progress_ratio_per_second = 0.014
-
-[node name="Path2D" type="Path2D" parent="Chaser3"]
-position = Vector2(14, 14)
-rotation = -1.5708
-scale = Vector2(1, 0.9625)
-curve = SubResource("Curve2D_brk24")
-
-[node name="Chaser4" parent="." instance=ExtResource("5_cmy37")]
-position = Vector2(168, 112)
-initial_progress = 0.04
-progress_ratio_per_second = 0.014
-
-[node name="Path2D" type="Path2D" parent="Chaser4"]
-position = Vector2(14, 14)
-rotation = -1.5708
-scale = Vector2(1, 0.9625)
-curve = SubResource("Curve2D_brk24")
-
 [node name="EnemySubRot" parent="." instance=ExtResource("7_cfcp4")]
 position = Vector2(96, -1508)
 rotation = -0.769797
