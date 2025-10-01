@@ -13,8 +13,8 @@ offset_left = 7.0
 offset_top = 3.0
 offset_right = 237.0
 offset_bottom = 52.0
-theme_override_font_sizes/font_size = 33
-text = "deep trouble."
+theme_override_font_sizes/font_size = 36
+text = "Deep Trouble."
 
 [node name="SubtitleLarge" parent="." instance=ExtResource("1_ol1oj")]
 offset_left = 9.0
@@ -30,7 +30,7 @@ offset_left = 7.0
 offset_top = 6.0
 offset_right = 211.0
 offset_bottom = 55.0
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 text = "deep trouble.
 "
 

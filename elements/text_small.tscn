@@ -1,13 +1,31 @@
 [gd_scene format=3 uid="uid://cmhamebdrnu3k"]
 
 [node name="TextSmall" type="Label"]
-offset_right = 212.0
-offset_bottom = 57.0
-text = "0123456789
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-!.?-_
-abcdefghijklmnopqrstuvwxyz
-áé
+offset_left = 31.0
+offset_top = 2.0
+offset_right = 243.0
+offset_bottom = 389.0
+text = "the quick brown fox jumps over the lazy dog
 
-colon:x
-closedot.x"
+123 * 32 + [1,2].push(3);
+
+
+U+0020 -> U+007F
+
+20:  !\"#$%&'()*+,-./
+30: 0123456789:;<=>?
+40: @ABCDEFGHIJKLMNO
+50: PQRSTUVWXYZ[\\]^_
+60: `abcdefghijklmno
+70: pqrstuvwxyz{|}~
+
+
+U+00A0 -> U+00FF
+
+A0:  ¡¢£¤¥¦§¨©ª«¬­®¯
+B0: °±²³´µ¶·¸¹º»¼½¾¿
+C0: ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏ
+D0: ÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß
+E0: àáâãäåæçèéêëìíîï
+F0: ðñòóôõö÷øùúûüýþÿ
+"
