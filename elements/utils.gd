@@ -26,6 +26,14 @@ static func spawn(parent: Node, child, position = null):
 		child.global_position = position
 	return child
 
+## Decrement "wait" key of a dictionary. Tells you if it reached zero
+static func decrement_wait(dict: Dictionary, delta: float) -> bool:
+	var wait = dict.get("wait", 0.0)
+	if wait > 0.0:
+		dict["wait"] = maxf(wait - delta, 0.0)
+		return wait == 0.0
+	return false
+
 static func clear_children(node: Node):
 	for child in node.get_children():
 		child.queue_free()
