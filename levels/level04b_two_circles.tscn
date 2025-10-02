@@ -55,6 +55,7 @@ curve = SubResource("Curve2D_bufqw")
 
 [node name="Sub" parent="." instance=ExtResource("5_pgfrf")]
 position = Vector2(455, 721)
+face_left_when_spawned = true
 
 [node name="OutOfBoundsWall" parent="." instance=ExtResource("6_11pla")]
 position = Vector2(336, 160)

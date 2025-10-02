@@ -27,6 +27,8 @@ func _ready() -> void:
 	_ready_bubbles()
 
 var _was_facing_left = false
+func set_initial_facing_left(facing_left):
+	_was_facing_left = facing_left
 func should_face_left(player_input: Vector2):
 	if absf(player_input.x) > 0.1:
 		_was_facing_left = player_input.x < 0

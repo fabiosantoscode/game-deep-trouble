@@ -36,6 +36,7 @@ curve = SubResource("Curve2D_0fm5q")
 
 [node name="Sub" parent="." instance=ExtResource("4_1xfnq")]
 position = Vector2(313, 76)
+face_left_when_spawned = true
 
 [node name="EndOfContentTop" parent="." instance=ExtResource("6_iv7sh")]
 position = Vector2(160, 16)

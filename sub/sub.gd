@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Sub
 
+@export var face_left_when_spawned: bool = false
 @onready var sub_movement: SubMovement = $SubMovement
 @onready var sub_input: SubInput = $SubInput
 @onready var sub_visuals: SubVisuals = $SubVisuals
@@ -14,6 +15,9 @@ signal movement_started(direction: Vector2, intensity_01: float)
 ## Stealth system. When hidden, stealth_changed(true)
 signal stealth_changed()
 var is_stealthy: bool = false
+
+func _ready() -> void:
+	sub_movement.set_initial_facing_left(face_left_when_spawned)
 
 func _physics_process(delta: float) -> void:
 	var player_input = sub_input.get_movement_input()
