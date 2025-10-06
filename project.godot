@@ -29,6 +29,10 @@ SaveGame="*res://elements/save_game.tscn"
 window/size/viewport_width=240
 window/size/viewport_height=180
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
+
 [gui]
 
 theme/custom="uid://cl0hh3l5xwi4b"
