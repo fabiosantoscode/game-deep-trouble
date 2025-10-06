@@ -4,7 +4,7 @@ set -euo pipefail
 
 DEPLOY_DIR=".deploy"
 DIST_DIR="web"
-REPOSITORY="https://github.com/fabiosantoscode/game-deep-trouble.git"
+REPOSITORY="git@github.com:fabiosantoscode/game-deep-trouble.git"
 
 # 1. Clean deploy folder
 rm -rf "$DEPLOY_DIR"
