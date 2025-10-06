@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwf30qh2q2g57"]
 
 [ext_resource type="Script" uid="uid://dc44ohr4e10oy" path="res://elements/bubble_spawner.gd" id="1_5jax2"]
-[ext_resource type="Texture2D" uid="uid://crbio3l7phwmd" path="res://sprites/bubble.png" id="2_7ycx1"]
+[ext_resource type="Texture2D" uid="uid://bdvjbobcuhxu5" path="res://sprites/bubble.aseprite" id="2_5jax2"]
 
 [node name="BubbleSpawner" type="Node2D"]
 script = ExtResource("1_5jax2")
@@ -13,4 +13,4 @@ sway_width = 30
 
 [node name="Template" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_7ycx1")
+texture = ExtResource("2_5jax2")

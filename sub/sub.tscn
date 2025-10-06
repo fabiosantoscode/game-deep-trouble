@@ -7,17 +7,17 @@
 [ext_resource type="Script" uid="uid://eoihi0qptjyp" path="res://sub/sub_visuals.gd" id="4_v8wm4"]
 [ext_resource type="Script" uid="uid://c5uxnj06ygkxm" path="res://sub/sub_movement.gd" id="5_egpih"]
 [ext_resource type="Script" uid="uid://d4id2tllwyatg" path="res://sub/sub_input.gd" id="6_edyj4"]
-[ext_resource type="Texture2D" uid="uid://d3c2m33dafov6" path="res://sub/player_sub_glow.png" id="7_tffbf"]
-[ext_resource type="SpriteFrames" uid="uid://cfeybkmrgpu2v" path="res://sub/sub_sprite_frames.tres" id="8_5x3bp"]
+[ext_resource type="Texture2D" uid="uid://d0oi1kh6a4af8" path="res://sub/player_sub_glow.aseprite" id="7_ogrk5"]
+[ext_resource type="SpriteFrames" uid="uid://cuk67u75jsv5p" path="res://sub/sub.aseprite" id="8_ogrk5"]
 [ext_resource type="Script" uid="uid://biijowp4awwbt" path="res://sub/sub_rock_grabbing.gd" id="8_v8wm4"]
-[ext_resource type="SpriteFrames" uid="uid://colb4h0jf3l1y" path="res://sub/sub_sprite_frames_down.tres" id="9_ogrk5"]
-[ext_resource type="SpriteFrames" uid="uid://ctob81jh70ugg" path="res://sub/sub_sprite_frames_up.tres" id="10_cna0k"]
+[ext_resource type="SpriteFrames" uid="uid://bt7bg1h4w040b" path="res://sub/sub_down.aseprite" id="9_ogrk5"]
 [ext_resource type="Script" uid="uid://opxsuokcshbb" path="res://sub/sub_sound.gd" id="10_ghaol"]
-[ext_resource type="Texture2D" uid="uid://ckfrme2wkollo" path="res://sprites/bubble-small.png" id="10_nxarw"]
+[ext_resource type="SpriteFrames" uid="uid://bep0d8ijwhqon" path="res://sub/sub_up.aseprite" id="10_ogrk5"]
 [ext_resource type="AudioStream" uid="uid://cnjbblb5pefdm" path="res://sfx/dock.mp3" id="11_c7c14"]
-[ext_resource type="Texture2D" uid="uid://cyrdc454dg6d0" path="res://sprites/bubble-boost.png" id="12_6c8vj"]
 [ext_resource type="AudioStream" uid="uid://jv2pnhjrjuqq" path="res://sfx/engine.wav" id="12_nxarw"]
+[ext_resource type="Texture2D" uid="uid://b8kiislobta8v" path="res://sprites/bubble-small.aseprite" id="12_ogrk5"]
 [ext_resource type="Material" uid="uid://oquscto5dkyc" path="res://sub/sub_idle_particles.tres" id="12_tcdut"]
+[ext_resource type="Texture2D" uid="uid://dpvjiq31hbeev" path="res://sprites/bubble-boost.aseprite" id="14_cna0k"]
 [ext_resource type="Material" uid="uid://byowjdofldtvl" path="res://sub/sub_acceleration_boost_particles.tres" id="14_ogrk5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8wm4"]
@@ -57,12 +57,13 @@ texture = ExtResource("2_egpih")
 
 [node name="PlayerSubGlow" type="Sprite2D" parent="SubVisuals"]
 modulate = Color(1, 1, 1, 0.301961)
-texture = ExtResource("7_tffbf")
+texture = ExtResource("7_ogrk5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="SubVisuals"]
+visible = false
 position = Vector2(0, 1)
-sprite_frames = ExtResource("8_5x3bp")
-frame_progress = 0.994834
+sprite_frames = ExtResource("8_ogrk5")
+frame_progress = 0.18687683
 
 [node name="SpriteDown" type="AnimatedSprite2D" parent="SubVisuals"]
 visible = false
@@ -70,9 +71,8 @@ position = Vector2(0, 2)
 sprite_frames = ExtResource("9_ogrk5")
 
 [node name="SpriteUp" type="AnimatedSprite2D" parent="SubVisuals"]
-visible = false
 position = Vector2(0, 2)
-sprite_frames = ExtResource("10_cna0k")
+sprite_frames = ExtResource("10_ogrk5")
 
 [node name="SubBubbleTrail" type="Node2D" parent="SubVisuals"]
 script = ExtResource("4_c7c14")
@@ -81,7 +81,7 @@ script = ExtResource("4_c7c14")
 position = Vector2(-8, 0)
 amount = 4
 amount_ratio = 0.0583
-texture = ExtResource("10_nxarw")
+texture = ExtResource("12_ogrk5")
 lifetime = 0.7
 randomness = 0.56
 fixed_fps = 10
@@ -91,7 +91,7 @@ process_material = ExtResource("12_tcdut")
 position = Vector2(3, 0)
 emitting = false
 amount = 64
-texture = ExtResource("12_6c8vj")
+texture = ExtResource("14_cna0k")
 lifetime = 0.4
 process_material = ExtResource("14_ogrk5")
 

@@ -2,13 +2,13 @@
 
 importer="Aseprite SpriteFrames"
 type="SpriteFrames"
-uid="uid://3bp8i3a1ayfn"
-path="res://.godot/imported/goal.aseprite-da7ed484d42f4d377bfcaa3c95cf8017.res"
+uid="uid://cekwc3ot18nlf"
+path="res://.godot/imported/algae.aseprite-3fa17af11073005add2bb62243e45638.res"
 
 [deps]
 
-source_file="res://sprites/goal.aseprite"
-dest_files=["res://.godot/imported/goal.aseprite-da7ed484d42f4d377bfcaa3c95cf8017.res"]
+source_file="res://sprites/algae.aseprite"
+dest_files=["res://.godot/imported/algae.aseprite-3fa17af11073005add2bb62243e45638.res"]
 
 [params]
 

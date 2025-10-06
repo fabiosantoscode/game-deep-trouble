@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dwfgbugpynr7e"]
 
 [ext_resource type="Script" uid="uid://cjq2gogseu8on" path="res://levels/level_title_screen.gd" id="1_0kro2"]
-[ext_resource type="Texture2D" uid="uid://da6b5k1qrxgyp" path="res://sub/sub1.png" id="1_iersk"]
 [ext_resource type="Texture2D" uid="uid://2bahieafjh65" path="res://elements/rock.png" id="2_1f1ub"]
 [ext_resource type="PackedScene" uid="uid://cwf30qh2q2g57" path="res://elements/bubble_spawner.tscn" id="3_nkytd"]
 [ext_resource type="PackedScene" uid="uid://dum2btrk8qyos" path="res://elements/algae.tscn" id="4_nkytd"]
+[ext_resource type="SpriteFrames" uid="uid://cuk67u75jsv5p" path="res://sub/sub.aseprite" id="4_r1yjf"]
 [ext_resource type="PackedScene" uid="uid://dyqgqlakf1l05" path="res://elements/game_title.tscn" id="5_kkmxp"]
 [ext_resource type="PackedScene" uid="uid://bkswdv104118w" path="res://elements/settings_menu.tscn" id="7_7yong"]
 
@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	var old_pos = self.global_position
 	self.progress_ratio += speed * delta
 	$Sub2.flip_h = self.global_position.x < old_pos.x
+	$Sub2.play(\"default\")
 "
 
 [node name="LevelTitleScreen" type="Control"]
@@ -66,11 +67,13 @@ cubic_interp = false
 script = SubResource("GDScript_1f1ub")
 speed = 0.45
 
-[node name="Sub2" type="Sprite2D" parent="CenterEnemies/Enemies/Path2D/PathFollow2D"]
+[node name="Sub2" type="AnimatedSprite2D" parent="CenterEnemies/Enemies/Path2D/PathFollow2D"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0.400695, 9.53674e-07)
 scale = Vector2(2, 2)
-texture = ExtResource("1_iersk")
+sprite_frames = ExtResource("4_r1yjf")
+frame = 1
+frame_progress = 0.43101275
 
 [node name="Path2D2" type="Path2D" parent="CenterEnemies/Enemies"]
 position = Vector2(-26, 22)
@@ -83,11 +86,11 @@ rotates = false
 cubic_interp = false
 script = SubResource("GDScript_1f1ub")
 
-[node name="Sub2" type="Sprite2D" parent="CenterEnemies/Enemies/Path2D2/PathFollow2D"]
+[node name="Sub2" type="AnimatedSprite2D" parent="CenterEnemies/Enemies/Path2D2/PathFollow2D"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0.400695, 9.53674e-07)
 scale = Vector2(2, 2)
-texture = ExtResource("1_iersk")
+sprite_frames = ExtResource("4_r1yjf")
 
 [node name="RightHandSide" type="Control" parent="."]
 layout_mode = 1
@@ -102,11 +105,12 @@ grow_vertical = 0
 [node name="RightHandSide" type="Node2D" parent="RightHandSide"]
 position = Vector2(7, -11)
 
-[node name="Sub1" type="Sprite2D" parent="RightHandSide/RightHandSide"]
+[node name="Sub1" type="AnimatedSprite2D" parent="RightHandSide/RightHandSide"]
 modulate = Color(0.34902, 0.6, 0.34902, 1)
 position = Vector2(-51, -40)
 scale = Vector2(3, 3)
-texture = ExtResource("1_iersk")
+sprite_frames = ExtResource("4_r1yjf")
+frame_progress = 0.7345434
 flip_h = true
 
 [node name="BubbleSpawner2" parent="RightHandSide/RightHandSide" instance=ExtResource("3_nkytd")]

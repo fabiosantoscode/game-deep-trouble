@@ -1,23 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dum2btrk8qyos"]
+[gd_scene load_steps=5 format=3 uid="uid://dum2btrk8qyos"]
 
 [ext_resource type="Script" uid="uid://0jyklxb0ks0b" path="res://elements/algae.gd" id="1_byl7m"]
-[ext_resource type="Texture2D" uid="uid://crvvpbir6wj7q" path="res://sprites/algae1.png" id="1_y1pkx"]
-[ext_resource type="Texture2D" uid="uid://dc81jqa5yiidp" path="res://sprites/algae2.png" id="2_byl7m"]
 [ext_resource type="AudioStream" uid="uid://derbnsva5a5d3" path="res://sfx/hide-in-grass.mp3" id="2_l610t"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_l610t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_y1pkx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_byl7m")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://cekwc3ot18nlf" path="res://sprites/algae.aseprite" id="3_byl7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1pkx"]
 size = Vector2(39, 39)
@@ -30,8 +15,8 @@ stealth_modulate = Color(1, 1, 1, 0.643137)
 stream = ExtResource("2_l610t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_l610t")
-frame_progress = 0.254662
+sprite_frames = ExtResource("3_byl7m")
+frame_progress = 0.8755648
 speed_scale = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
