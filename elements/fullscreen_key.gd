@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var _wnd = get_window()
+@onready var wnd = get_window()
 
 signal fullscreen_change(bool)
 
@@ -16,8 +16,10 @@ func toggle_fullscreen():
 	set_fullscreen(not is_fullscreen())
 
 func is_fullscreen():
-	return _wnd.mode == Window.MODE_FULLSCREEN
+	return wnd.mode == Window.MODE_FULLSCREEN
 
 func set_fullscreen(fullscreen: bool):
-	_wnd.mode = Window.MODE_FULLSCREEN if fullscreen else Window.MODE_WINDOWED
+	wnd.mode = Window.MODE_FULLSCREEN if fullscreen else Window.MODE_WINDOWED
+	# takes some time to switch to fullscreen
+	await get_tree().create_timer(1.0).timeout
 	fullscreen_change.emit(is_fullscreen())
