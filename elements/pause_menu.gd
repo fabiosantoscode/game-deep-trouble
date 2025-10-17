@@ -10,6 +10,10 @@ func _on_pause():
 func _on_resume():
 	pass
 
+func _focus_exited():
+	if not LevelRotator.is_in_title_screen(self):
+		set_paused(true)
+
 func set_paused(is_paused):
 	if get_tree().paused == is_paused:
 		return
@@ -28,7 +32,7 @@ func _ready():
 	get_viewport().size_changed.connect(_layout)
 	_layout()
 	button_resume.pressed.connect(func(): set_paused(false))
-	get_window().focus_exited.connect(func(): set_paused(true))
+	get_window().focus_exited.connect(_focus_exited)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):

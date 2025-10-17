@@ -35,6 +35,11 @@ func _dev_auto_jump():
 		return true
 	return false
 
+static func is_in_title_screen(from_child: Node):
+	var level_rot = _find_level_rotator(from_child)
+	if level_rot != null:
+		return level_rot._current_level_node is LevelTitleScreen
+
 ## When we click "start" on the title screen
 static func start_game(from_child: Node):
 	var level_rot = _find_level_rotator(from_child)

@@ -1,4 +1,5 @@
 extends Node
+class_name LevelTitleScreen
 
 @onready var start: Button = $SettingsMenu/Start
 
