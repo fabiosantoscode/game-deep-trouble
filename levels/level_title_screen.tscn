@@ -164,7 +164,12 @@ offset_bottom = -5.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="Start" type="Button" parent="SettingsMenu"]
+[node name="NewGame" type="Button" parent="SettingsMenu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "start"
+
+[node name="Continue" type="Button" parent="SettingsMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "continue"

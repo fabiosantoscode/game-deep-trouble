@@ -41,9 +41,13 @@ static func is_in_title_screen(from_child: Node):
 		return level_rot._current_level_node is LevelTitleScreen
 
 ## When we click "start" on the title screen
-static func start_game(from_child: Node):
+static func start_game(from_child: Node, new_game_or_continue = "continue"):
 	var level_rot = _find_level_rotator(from_child)
 	if level_rot != null:
+		if new_game_or_continue == "new_game":
+			SaveGame.delete_saved_game()
+			level_rot._load_game_file()
+
 		if level_rot.current_level == "":
 			level_rot._low_level_set_level(LEVEL_LORE_DUMP)
 		else:
@@ -111,6 +115,8 @@ func _load_game_file():
 		and all_level_files.has(saved["current_level"])
 	):
 		self.current_level = saved["current_level"]
+	else:
+		self.current_level = ""
 
 func _save_game_file():
 	SaveGame.save_game(func(old_state):
