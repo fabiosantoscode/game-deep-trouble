@@ -4,5 +4,5 @@ set -euo pipefail
 
 ./scripts/build.sh
 
-ecstatic ./web --port 9000
+python -m http.server 8060 --directory ./web
 

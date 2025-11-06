@@ -2,28 +2,19 @@
 
 set -euo pipefail
 
-DEPLOY_DIR=".deploy"
 DIST_DIR="web"
-REPOSITORY="git@github.com:fabiosantoscode/game-deep-trouble.git"
+BUTLER=""
+# To ship to prod, override from the outside
+ITCH_CHANNEL="${ITCH_CHANNEL:-fabiosantoscode/test-submarine-game:html}"
 
-# 1. Clean deploy folder
-rm -rf "$DEPLOY_DIR"
-mkdir -p "$DEPLOY_DIR"
-cd "$DEPLOY_DIR"
+if [ -f '/g/My Drive/Software/butler/butler.exe' ]; then
+	BUTLER='/g/My Drive/Software/butler/butler.exe'
+else
+	BUTLER="butler"
+fi
 
-# 2. Clone gh-pages into deploy folder
-git init
-git checkout --orphan gh-pages
-git remote add origin "$REPOSITORY"
+# 1. Publish to personal account on itch
+"$BUTLER" push "$DIST_DIR/" "$ITCH_CHANNEL"
 
-# 3. publish the contents of ../dist
-cp -r "../$DIST_DIR"/* .  # Copy new files
+echo "✅ Deployed to itch!"
 
-# 4. Commit and push
-git add --all
-git commit -m "Deploy $(date +'%Y-%m-%d %H:%M:%S')"
-git push --force origin gh-pages
-
-cd ..
-rm -rf "$DEPLOY_DIR"  # Cleanup
-echo "✅ Deployed to gh-pages!"
