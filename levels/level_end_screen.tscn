@@ -60,72 +60,79 @@ size_flags_horizontal = 0
 [node name="GameTitle2" parent="VBoxContainer/GameTitle" instance=ExtResource("5_dkps8")]
 
 [node name="Labels" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25.7)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 10
 
 [node name="TextCommon" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.5
-offset_top = -10.0
-offset_right = 75.5
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.033195022
+anchor_right = 0.033195022
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 151.0
+offset_bottom = 20.0
+pivot_offset = Vector2(-8.07, 0)
 text = "Thank you for playing!"
+metadata/_edit_use_anchors_ = true
 
 [node name="TextCommon2" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -10.0
-offset_right = 28.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.033195022
+anchor_right = 0.033195022
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 56.0
+offset_bottom = 20.0
+pivot_offset = Vector2(-8.07, 0)
 text = "CREDITS:"
+metadata/_edit_use_anchors_ = true
 
 [node name="TextCommon3" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -21.5
-offset_right = 88.0
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.033195022
+anchor_right = 0.033195022
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 176.0
+offset_bottom = 43.0
+pivot_offset = Vector2(-8.07, 0)
 text = "game design, code, music:
 Fábio Santos"
+metadata/_edit_use_anchors_ = true
 
 [node name="TextCommon4" parent="VBoxContainer/Labels" instance=ExtResource("2_he0vu")]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -81.5
-offset_top = -21.5
-offset_right = 81.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = -1
+anchor_left = 0.033195022
+anchor_right = 0.033195022
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 163.0
+offset_bottom = 43.0
+pivot_offset = Vector2(-8.07, 0)
 text = "game+level design, SFX:
 José Pedro Dias"
+metadata/_edit_use_anchors_ = true
+
+[node name="Labels2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25.7)
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/Labels2"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 228.0
+offset_bottom = 18.699997
+theme_override_colors/font_color = Color(0.41000003, 0.6066668, 1, 1)
+theme_override_constants/underline_spacing = 6
+text = "https://gamehameha.games"
+uri = "https://www.gamehameha.games"
